@@ -128,7 +128,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         //current URL of the Page. cart_update.php redirects back to this URL
                         $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
                             
-                           $results = $mysqli->query("SELECT * FROM producto ORDER BY IdProducto ASC");
+                           $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
                             if ($results) { 
                                 //output results from database
                                 while($obj = $results->fetch_object())
