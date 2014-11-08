@@ -10,6 +10,7 @@ Grill Template
 http://www.templatemo.com/preview/templatemo_417_grill 
 -->
     <head>
+		
         <meta charset="utf-8">
         <title>HolaCupcakes</title>
         <meta name="description" content="">
