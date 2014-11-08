@@ -164,8 +164,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     <div class="hover">
                                                         <div class="hover-iner">
                                                             <a class="fancybox" href="images/<?php echo $obj->product_img_name?>"><img src="images/open-icon.png" alt="" /></a>
-                                                            <button class="add_to_cart">Add To Cart</button>
-                                                            <span><?php echo $obj->product_name ?></span>                                                            
+                                                            <span><?php echo $obj->product_name ?></span>
+                                                            <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
                                                         </div>
                                                     </div>                                                    
                                                 </div>  
