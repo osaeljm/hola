@@ -44,7 +44,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="col-md-6">
                                 <div class="cart-info">
                                     <i class="fa fa-shopping-cart"></i>
-                                    (<a href="#">5 items</a>) in your cart (<a href="#">$45.80</a>)
+                                    (<a href="#">5 items</a>) Carrito (<a href="#">$45.80</a>)
                                 </div>
                             </div>
                         </div>
