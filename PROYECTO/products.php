@@ -109,19 +109,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="filters col-md-12 col-xs-12">
-                            <ul id="filters" class="clearfix">
-                                <li><span class="filter" data-filter="all">all</span></li>
-                                <li><span class="filter" data-filter=".ginger">Ginger</span></li>
-                                <li><span class="filter" data-filter=".pizza">Pizza</span></li>
-                                <li><span class="filter" data-filter=".pasta">Pasta</span></li>
-                                <li><span class="filter" data-filter=".drink">Drink</span></li>
-                                <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
-                            </ul>
-                        </div>
-                    </div>
-
+                    
                     <div class="row" id="Container"> 
 
                         <?php
