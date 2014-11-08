@@ -104,19 +104,31 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div id="product-heading">
-                                <h2>PRUEBA?</h2>
+                                <h2>Hungry ?</h2>
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="row">
+                        <div class="filters col-md-12 col-xs-12">
+                            <ul id="filters" class="clearfix">
+                                <li><span class="filter" data-filter="all">All</span></li>
+                                <li><span class="filter" data-filter=".ginger">Ginger</span></li>
+                                <li><span class="filter" data-filter=".pizza">Pizza</span></li>
+                                <li><span class="filter" data-filter=".pasta">Pasta</span></li>
+                                <li><span class="filter" data-filter=".drink">Drink</span></li>
+                                <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="row" id="Container"> 
 
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL
                         $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
                             
-                           $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
+                           $results = $mysqli->query("SELECT * FROM producto ORDER BY IdProducto ASC");
                             if ($results) { 
                                 //output results from database
                                 while($obj = $results->fetch_object())
