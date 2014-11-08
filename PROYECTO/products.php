@@ -67,7 +67,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <ul>
                                         <li><a href="index.html">Inicio</a></li>
                                         <li><a href="about-us.html">Nosotros</a></li>
-                                        <li><a href="products.html">Productos</a></li>
+                                        <li><a href="products.php">Productos</a></li>
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
