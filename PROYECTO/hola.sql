@@ -34,7 +34,9 @@ CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
   `FechaFactura` datetime NOT NULL,
   `NumeroDetalle` int(11) NOT NULL,
   `TotalFactura` int(11) NOT NULL,
-  PRIMARY KEY (`NumeroFactura`)
+  `Usuario_Usuario` varchar(45) NOT NULL,   
+  PRIMARY KEY (`NumeroFactura`,`Usuario_Usuario`),
+  KEY `fk_EncabezadoFactura1_Usuario_idx` (`Usuario_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -55,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `Producto` (
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
 
-INSERT INTO `producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
+INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
 (1, 'abc123', 'ASUS D450CA', 11, 'Una Notebook de precio amigable y extra-confiable diseñada para PYMES\r\n\r\nWindows 8\r\nCon Intel Inside® y Procesador Intel® Core™ i3.\r\nCon la tecnología exclusiva ASUS Super Hybrid Engine II con suspensión de hasta dos semanas y respaldo automático ', 'computadora.png', 340000),
 (2, 'xyz123', 'Galaxy S5 G900F', 10, 'Galaxy S5 es un smartphone pensado para ofrecer la más completa experiencia de uso que puedas imaginar, con soluciones como su pulsómetro que te ayudan a mantenerte en forma, y un atractivo diseño resistente al agua y al polvo.\r\n\r\nNo te preocupes si te', 'celular.png', 410000);
 
@@ -79,8 +81,7 @@ INSERT INTO `producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `Canti
 
 CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
   `NumeroDetalle` int(11) NOT NULL,
-  `EncabezadoFactura_NumeroEncabezadoFactura` int(11) NOT NULL,
-  `IdProducto` int(11) NOT NULL, 
+  `EncabezadoFactura_NumeroEncabezadoFactura` int(11) NOT NULL,  
   `Cantidad` int(11) NOT NULL,
   `SubTotal` int(11) NOT NULL,
   `Producto_IdProducto` int(11) NOT NULL, 
@@ -95,13 +96,12 @@ CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
 --
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
-  `NombreUsuario` varchar(45) NOT NULL,
+  `Usuario` varchar(45) NOT NULL,
+  `Nombre` varchar(45) NOT NULL,
   `Contraseña` varchar(45) NOT NULL,
   `Correo` varchar(45) NOT NULL,
   `Tarjeta` varchar(45) NOT NULL,
-  `EncabezadoFactura_NumeroFactura` int(11) NOT NULL,
-  PRIMARY KEY (`Correo`,`EncabezadoFactura_NumeroFactura`),
-  KEY `fk_Usuario_EncabezadoFactura1_idx` (`EncabezadoFactura_NumeroFactura`)
+  PRIMARY KEY (`Usuario`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -111,25 +111,8 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 --
 -- Filtros para la tabla `FacturaDetalle`
 --
-ALTER TABLE `FacturaDetalle`
-  ADD CONSTRAINT `fk_FacturaDetalle_Producto1`
-      FOREIGN KEY (`Producto_IdProducto`) 
-      REFERENCES `Producto` (`IdProducto`) 
-      ON DELETE NO ACTION ON UPDATE NO ACTION,
 
-  ADD CONSTRAINT `fk_FacturaDetalle_EncabezadoFactura1` 
-      FOREIGN KEY (`EncabezadoFactura_NumeroEncabezadoFactura`) 
-      REFERENCES `EncabezadoFactura` (`NumeroFactura`) 
-      ON DELETE NO ACTION ON UPDATE NO ACTION;
 
---
--- Filtros para la tabla `Usuario`
---
-ALTER TABLE `Usuario`
-  ADD CONSTRAINT `fk_Usuario_EncabezadoFactura1` 
-      FOREIGN KEY (`EncabezadoFactura_NumeroFactura`) 
-      REFERENCES `EncabezadoFactura` (`NumeroFactura`) 
-      ON DELETE NO ACTION ON UPDATE NO ACTION;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
