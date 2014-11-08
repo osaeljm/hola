@@ -249,7 +249,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         </div>
                                         <div class="col-md-4">
                                             <div class="info">
-                                                <p>Sed dignissim, diam id molestie faucibus, purus nisl pretium quam, in pulvinar velit massa id elit. </p>
+                                                <p>Esta es una prueba para GitHub.</p>
                                                 <ul>
                                                     <li><i class="fa fa-phone"></i>010-020-0340</li>
                                                     <li><i class="fa fa-globe"></i>123 Dagon Studio, Yakin Street, Digital Estate</li>
