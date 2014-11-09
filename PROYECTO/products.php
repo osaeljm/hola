@@ -48,9 +48,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="cart-info">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    (<a href="#">5 artículos</a>) en el carrito
+                                <div class="cart-info">                                    
+                                    <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
+                                    
+                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=<?php   $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); echo $current_url ?>">Empty Cart</a></span> -->
+                                    (<a href="#">5 artículos</a>)
                                 </div>
                             </div>
                         </div>
@@ -126,7 +128,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL
-                        $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+                      
                             
                            $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
                             if ($results) { 
@@ -147,14 +149,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                             <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
                                                         </div>
                                                     </div>                                                    
-                                                </div>  
-                                                <div class="label-text">
-                                                    <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
-                                                    <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span> 
-                                                    <h7><a href="#">Detalle</a></h7>
-                                                    <h7><a href="#">/ Agregar  <i class="fa fa-shopping-cart" ></i></a></h7>                                                    
-                                                </div>
-                                            </div>          
+                                                </div>                                                
+                                            </div>    
+                                            <div class="label-text">
+                                                <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
+                                                <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
+                                                <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
+                                            </div>      
                                         </div>
                                     </form>
 
