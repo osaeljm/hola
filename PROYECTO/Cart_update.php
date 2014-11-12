@@ -13,8 +13,8 @@ if(isset($_GET["emptycart"]) && $_GET["emptycart"]==1)
 //add item in shopping cart
 if(isset($_POST["type"]) && $_POST["type"]=='add')
 {
-    $CodigoProducto   = filter_var($_POST["CodigoProducto"], FILTER_SANITIZE_STRING); //product code
-    $CantidadProducto    = filter_var($_POST["CantidadProducto"], FILTER_SANITIZE_NUMBER_INT); //product code
+    $product_code   = filter_var($_POST["CodigoProducto"], FILTER_SANITIZE_STRING); //product code
+    $product_qty    = filter_var($_POST["product_qty"], FILTER_SANITIZE_NUMBER_INT); //product code
     $return_url     = base64_decode($_POST["return_url"]); //return url
     
     //limit quantity for single product
@@ -23,13 +23,13 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
     //}
 
     //MySqli query - get details of item from db using product code
-    $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$CodigoProducto' LIMIT 1");
+    $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
     $obj = $results->fetch_object();
     
     if ($results) { //we have the product info 
         
         //prepare array for the session variable
-        $new_product = array(array('name'=>$obj->NombreProducto, 'code'=>$CodigoProducto, 'qty'=>$CantidadProducto, 'price'=>$obj->PrecioProducto));
+        $new_product = array(array('name'=>$obj->NombreProducto, 'code'=>$product_code, 'qty'=>$CantidadProducto, 'price'=>$obj->PrecioProducto));
         
         if(isset($_SESSION["products"])) //if we have the session
         {
@@ -37,9 +37,9 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
             
             foreach ($_SESSION["products"] as $cart_itm) //loop through session array
             {
-                if($cart_itm["code"] == $CodigoProducto){ //the item exist in array
+                if($cart_itm["code"] == $product_code){ //the item exist in array
 
-                    $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$CantidadProducto, 'price'=>$cart_itm["price"]);
+                    $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$product_qty, 'price'=>$cart_itm["price"]);
                     $found = true;
                 }else{
                     //item doesn't exist in the list, just retrive old info and prepare array for session var
@@ -70,13 +70,13 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
 //remove item from shopping cart
 if(isset($_GET["removep"]) && isset($_GET["return_url"]) && isset($_SESSION["products"]))
 {
-    $CodigoProducto   = $_GET["removep"]; //get the product code to remove
+    $product_code   = $_GET["removep"]; //get the product code to remove
     $return_url     = base64_decode($_GET["return_url"]); //get return url
 
     
     foreach ($_SESSION["products"] as $cart_itm) //loop through session array var
     {
-        if($cart_itm["code"]!=$CodigoProducto){ //item does,t exist in the list
+        if($cart_itm["code"]!=$product_code){ //item does,t exist in the list
             $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$cart_itm["qty"], 'price'=>$cart_itm["price"]);
         }
         

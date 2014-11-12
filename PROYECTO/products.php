@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once("config.php");
+$current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -51,7 +52,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="cart-info">                                    
                                     <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
                                     
-                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=<?php   $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); echo $current_url ?>">Empty Cart</a></span> -->
+                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
                                     (<a href="#">5 artículos</a>)
                                 </div>
                             </div>
@@ -135,6 +136,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 //output results from database
                                 while($obj = $results->fetch_object())
                                 { 
+                                    $obj->CantidadProducto = 1;
                         ?>                      
                                                               
                                     <form method="post" action="cart_update.php">
@@ -155,6 +157,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
                                                 <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
                                                 <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
+                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
+                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
+                                                <input type="hidden" name="type" value="add" />
+                                                <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
                                             </div>      
                                         </div>
                                     </form>
