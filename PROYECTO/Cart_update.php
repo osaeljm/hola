@@ -29,7 +29,11 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
     if ($results) { //we have the product info 
         
         //prepare array for the session variable
-        $new_product = array(array('name'=>$obj->NombreProducto, 'code'=>$product_code, 'qty'=>$CantidadProducto, 'price'=>$obj->PrecioProducto));
+        $new_product = array(array(
+            'name'=>$obj->NombreProducto, 
+            'code'=>$product_code, 
+            'qty'=>$CantidadProducto, 
+            'price'=>$obj->PrecioProducto));
         
         if(isset($_SESSION["products"])) //if we have the session
         {
@@ -39,11 +43,19 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
             {
                 if($cart_itm["code"] == $product_code){ //the item exist in array
 
-                    $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$product_qty, 'price'=>$cart_itm["price"]);
+                    $product[] = array(
+                        'name'=>$cart_itm["name"], 
+                        'code'=>$cart_itm["code"], 
+                        'qty'=>$product_qty, 
+                        'price'=>$cart_itm["price"]);
                     $found = true;
                 }else{
                     //item doesn't exist in the list, just retrive old info and prepare array for session var
-                    $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$cart_itm["qty"], 'price'=>$cart_itm["price"]);
+                    $product[] = array(
+                        'name'=>$cart_itm["name"], 
+                        'code'=>$cart_itm["code"], 
+                        'qty'=>$cart_itm["qty"], 
+                        'price'=>$cart_itm["price"]);
                 }
             }
             
@@ -77,7 +89,11 @@ if(isset($_GET["removep"]) && isset($_GET["return_url"]) && isset($_SESSION["pro
     foreach ($_SESSION["products"] as $cart_itm) //loop through session array var
     {
         if($cart_itm["code"]!=$product_code){ //item does,t exist in the list
-            $product[] = array('name'=>$cart_itm["name"], 'code'=>$cart_itm["code"], 'qty'=>$cart_itm["qty"], 'price'=>$cart_itm["price"]);
+            $product[] = array(
+                'name'=>$cart_itm["name"], 
+                'code'=>$cart_itm["code"], 
+                'qty'=>$cart_itm["qty"], 
+                'price'=>$cart_itm["price"]);
         }
         
         //create a new product list for cart

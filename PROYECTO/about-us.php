@@ -1,8 +1,3 @@
-<?php
-session_start();
-include_once("config.php");
-$current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
-?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -14,7 +9,7 @@ $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_U
 Grill Template 
 http://www.templatemo.com/preview/templatemo_417_grill 
 -->
-    <head>
+    <head>		
         <meta charset="utf-8">
         <title>HolaCupcakes</title>
         <meta name="description" content="">
@@ -45,6 +40,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="col-md-6">
                                 <div class="home-account">
                                     <?php
+                                    session_start();
                                     if(isset($_SESSION["usuario"])){
                                         echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
                                         echo '<a href="#"> Perfil</a>';
@@ -57,11 +53,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="cart-info">                                    
-                                    <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
-                                    
-                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#">5 artículos</a>)
+                                <div class="cart-info">
+                                    <i class="fa fa-shopping-cart"></i>
+                                   (<a href="#">5 artículos</a>) en el carrito
                                 </div>
                             </div>
                         </div>
@@ -72,7 +66,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logoCupcake.png" title="Holacupcakes" alt="Holacupcakes" ></a>
+                                    <a href="index.html"><img src="images/logoCupcake.png" title="HolaCupcakes" alt="HolaCupcakes" ></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -103,129 +97,68 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                           
+                            <div class="heading-content">
+                                <h2></h2>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
 
-            <div id="products-post">
+            <div id="timeline-post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="product-heading">
-                                <h2>Hungry ?</h2>
+                            <div class="heading-section">
+                                <h2>¿Quiénes somos?</h2>
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
-                        <div class="filters col-md-12 col-xs-12">
-                            <ul id="filters" class="clearfix">
-                                <li><span class="filter" data-filter="all">All</span></li>
-                                <li><span class="filter" data-filter=".ginger">Ginger</span></li>
-                                <li><span class="filter" data-filter=".pizza">Pizza</span></li>
-                                <li><span class="filter" data-filter=".pasta">Pasta</span></li>
-                                <li><span class="filter" data-filter=".drink">Drink</span></li>
-                                <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
-                            </ul>
+                        <div class="col-md-6">
+                        	<p>¡Hola! Cupcakes es una pequeña empresa familiar conformada por Edalía Saborío Chavez, madre de familia y experta en el área de la preparación y distribución de alimentos; y Daniela Zúñiga Saborío, estudiante avanzada de la carrera de psicología y amante de la cocina, las manualidades, el diseño y la fotografía.</br></br>
+                            Un domingo de Setiembre del 2010, tía y sobrina se reunieron a discutir una forma en la cuál pudieran fusionar sus intereses y aficiones y convertirlos en una empresa familiar que les diera no solo ganancias económicas sino también entretenimiento y satisfacción.</br></br>
+                            Edalía desde hacía muchos años se había dedicado a diferentes negocios en el área de los alimentos, pero sobre todo se había enfocado en la elaboración de queques. Sin embargo, con la inspiración del boom de los cupcakes que Daniela pudo observar en un viaje a New York fue que nació la idea de los quequitos, y con esto en mente ambas quisieron retomar en Costa Rica una idea más novedosa y menos común que los queques regulares.</p></br></br>                         
                         </div>
-                    </div>
-
-                    <div class="row" id="Container"> 
-
-
-
-                        <?php
-
-
-
-                        //current URL of the Page. cart_update.php redirects back to this URL
-                      
-                            
-                           $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
-                            if ($results) { 
-                                //output results from database
-                                while($obj = $results->fetch_object())
-                                { 
-                                    $obj->CantidadProducto = 1;
-                        ?>                      
-                                                              
-                                    <form method="post" action="cart_update.php">
-                                        <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
-                                            <div class="portfolio-wrapper">                
-                                                <div class="portfolio-thumb">
-                                                    <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
-                                                    <div class="hover">
-                                                        <div class="hover-iner">
-                                                            <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
-                                                            <span><?php echo $obj->NombreProducto ?> </span>
-                                                            <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
-                                                        </div>
-                                                    </div>                                                    
-                                                </div>                                                
-                                            </div>    
-                                            <div class="label-text">
-                                                <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
-                                                <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
-                                                <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
-                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
-                                                <input type="hidden" name="type" value="add" />
-                                                <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
-                                            </div>      
-                                        </div>
-                                    </form>
-
-
-                        <?php   
-                                }               
-                            }
-                        ?>
-
-
-
-
-
-                    <!--      <div class="col-md-3 col-sm-6 mix portfolio-item ginger">       
-                            <div class="portfolio-wrapper">                
-                                <div class="portfolio-thumb">
-                                    <img src="images/product2.jpg" alt="" />
-                                    <div class="hover">
-                                        <div class="hover-iner">
-                                            <a class="fancybox" href="images/product2_big.jpg"><img src="images/open-icon.png" alt="" /></a>
-                                            <span>Ginger</span>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="label-text">
-                                    <h3><a href="single-post.html">Ginger Tea</a></h3>
-                                    <span class="text-category">$24.00</span>
-                                </div>
-                            </div>          
-                        </div> -->
-                       
-
-                       </div>
-                    <div class="pagination">
-                        <div class="row">   
-                            <div class="col-md-12">
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">>></a></li>
-                                </ul>
+                        <div class="col-md-6">                        	
+                            <p>Fue así que en menos de un mes de estar discutiendo ideas para el negocio nació ¡Hola! Cupcakes.</br></br>
+    						La idea inicial fue enfocada no sólo en la calidad del sabor de los quequitos, sino también en la calidad de la decoración y el diseño. Así se convirtió también en parte importante del mercadeo de ¡Hola! Cupcakes el tener fotografías de calidad de los quequitos, para que así la gente pudiese ver los detalles y diferentes temáticas trabajadas.</br></br>
+                            El contacto con los clientes por medio de las redes sociales se convirtió asímismo en parte importante del crecimiento del negocio y ahora con menos de seis meses de existencia ¡Hola! Cupcakes ha podido disfrutar de un éxito grande e incluso inesperado para sus fundadoras.</br></br>
+                            Así en el futuro ¡Hola! Cupcakes solo espera seguir en crecimiento, manteniendo siempre la originalidad, novedad y sobre todo la calidad en sus sabores y diseños.</p>
+                        </div>
+                    </div>              
+                                       
+                </div>
+            </div>
+            <div id="our-team">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                               <img src="images/nosotras1.jpg" alt="" >
                             </div>
                         </div>
-                    </div>     
+                    </div>
                 </div>
             </div>
 
+            <div id="our-team">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                               <img src="images/under-heading.png" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
 
-
-			<footer>
+                        
+            <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
                     </div>  -->                    
@@ -265,7 +198,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </footer>
 
-    
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/jquery.gmap3.min.js"></script>
         <script src="js/plugins.js"></script>

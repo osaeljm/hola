@@ -165,6 +165,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
         echo 'Your Cart is empty';
     }
     echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
+    echo ' <a class="fancybox" href="sesion_usuario/iniciar_sesion.php">COMPRAR <?php include("dbconfig.php"); ?></a>';
+
+
 ?>
 
 

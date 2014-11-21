@@ -1,8 +1,3 @@
-<?php
-session_start();
-include_once("config.php");
-$current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
-?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -15,6 +10,7 @@ Grill Template
 http://www.templatemo.com/preview/templatemo_417_grill 
 -->
     <head>
+		
         <meta charset="utf-8">
         <title>HolaCupcakes</title>
         <meta name="description" content="">
@@ -45,6 +41,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="col-md-6">
                                 <div class="home-account">
                                     <?php
+                                    session_start();
                                     if(isset($_SESSION["usuario"])){
                                         echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
                                         echo '<a href="#"> Perfil</a>';
@@ -57,11 +54,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="cart-info">                                    
-                                    <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
-                                    
-                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#">5 artículos</a>)
+                                <div class="cart-info">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    (<a href="#">5 artículos</a>) en el carrito
                                 </div>
                             </div>
                         </div>
@@ -86,12 +81,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="search-box">  
+                               <!--  <div class="search-box">  
                                     <form name="search_form" method="get" class="search_form">
                                         <input id="search" type="text" />
                                         <input type="submit" id="search-button" />
                                     </form>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -99,133 +94,90 @@ http://www.templatemo.com/preview/templatemo_417_grill
             </header>
 
 
-            <div id="heading">
+          <!--   <div id="heading">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                           
+                            <div class="heading-content">
+                                <h2>Contact Us</h2>
+                                <span>Home / <a href="contact-us.html">Contact Us</a></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
-            <div id="products-post">
+            <div id="product-post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="product-heading">
-                                <h2>Hungry ?</h2>
+                            <div class="heading-section">
+                                <h2>Inicio de sesión</h2>
+                                <!-- <img src="images/under-heading.png" alt="" > -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="contact-us">
+                        <div class="container">
+                            <div class="row">
+                                <div class="product-item col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-8">  
+                                            <div class="message-form">
+
+                                                <?php
+                                                // Evitar los warnings the variables no definidas!!!
+                                                $err = isset($_GET['error']) ? $_GET['error'] : null ;
+
+                                                ?>
+
+                                                <?php if($err==1){
+                                                    echo "Usuario o Contraseña Erróneos <br />";
+                                                }
+                                                if($err==2){
+                                                    echo "Debe iniciar sesion para poder acceder el sitio. <br />";
+                                                }
+                                                ?>
+
+                                                <form action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                    <div class="row">
+                                                        <div class="name col-md-4">
+                                                            <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
+                                                            <input type="text" name="passwd" placeholder="Contraseña" value=""/>
+                                                        </div>                                                 
+                                                    </div>                                                                                 
+                                                    <div class="send">
+                                                        <button name="enter" type="submit">Iniciar sesión</button>
+                                                    </div>
+                                                </form>   
+                                            </div>
+                                        </div>
+
+                                           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                                <h2>Find Us On Map</h2>
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="filters col-md-12 col-xs-12">
-                            <ul id="filters" class="clearfix">
-                                <li><span class="filter" data-filter="all">All</span></li>
-                                <li><span class="filter" data-filter=".ginger">Ginger</span></li>
-                                <li><span class="filter" data-filter=".pizza">Pizza</span></li>
-                                <li><span class="filter" data-filter=".pasta">Pasta</span></li>
-                                <li><span class="filter" data-filter=".drink">Drink</span></li>
-                                <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
-                            </ul>
+                        <div class="col-md-12">
+                            <div id="googleMap" style="height:420px;"></div>
                         </div>
-                    </div>
-
-                    <div class="row" id="Container"> 
-
-
-
-                        <?php
-
-
-
-                        //current URL of the Page. cart_update.php redirects back to this URL
-                      
-                            
-                           $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
-                            if ($results) { 
-                                //output results from database
-                                while($obj = $results->fetch_object())
-                                { 
-                                    $obj->CantidadProducto = 1;
-                        ?>                      
-                                                              
-                                    <form method="post" action="cart_update.php">
-                                        <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
-                                            <div class="portfolio-wrapper">                
-                                                <div class="portfolio-thumb">
-                                                    <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
-                                                    <div class="hover">
-                                                        <div class="hover-iner">
-                                                            <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
-                                                            <span><?php echo $obj->NombreProducto ?> </span>
-                                                            <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
-                                                        </div>
-                                                    </div>                                                    
-                                                </div>                                                
-                                            </div>    
-                                            <div class="label-text">
-                                                <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
-                                                <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
-                                                <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
-                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
-                                                <input type="hidden" name="type" value="add" />
-                                                <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
-                                            </div>      
-                                        </div>
-                                    </form>
-
-
-                        <?php   
-                                }               
-                            }
-                        ?>
-
-
-
-
-
-                    <!--      <div class="col-md-3 col-sm-6 mix portfolio-item ginger">       
-                            <div class="portfolio-wrapper">                
-                                <div class="portfolio-thumb">
-                                    <img src="images/product2.jpg" alt="" />
-                                    <div class="hover">
-                                        <div class="hover-iner">
-                                            <a class="fancybox" href="images/product2_big.jpg"><img src="images/open-icon.png" alt="" /></a>
-                                            <span>Ginger</span>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="label-text">
-                                    <h3><a href="single-post.html">Ginger Tea</a></h3>
-                                    <span class="text-category">$24.00</span>
-                                </div>
-                            </div>          
-                        </div> -->
-                       
-
-                       </div>
-                    <div class="pagination">
-                        <div class="row">   
-                            <div class="col-md-12">
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">>></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>     
+                    </div>    -->  
                 </div>
             </div>
 
 
-
-			<footer>
+            <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
                     </div>  -->                    
@@ -265,11 +217,36 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </footer>
 
-    
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/jquery.gmap3.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&amp;sensor=false">
+        </script>
+                
+        <script>
+		
+		var map;
+		
+        function initialize()
+        {
+			var map_options = {
+			  center: new google.maps.LatLng(16.8496189,96.1288854),
+			  zoom: 15,
+			  mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			var map = new google.maps.Map(document.getElementById("googleMap"), map_options);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+		google.maps.event.addDomListener(window, "resize", function() 
+		{
+		 	var center = map.getCenter();
+		 	google.maps.event.trigger(map, "resize");
+		 	map.setCenter(center); 
+		});
+        </script>
 
     </body>
 </html>
