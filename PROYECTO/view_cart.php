@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("config.php");
+include_once("autenticacion/class/config.php"); //include config file
 $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
 ?>
 <!DOCTYPE html>

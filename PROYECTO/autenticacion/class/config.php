@@ -14,7 +14,7 @@ class Connection{
 		$this->server = 'localhost';
 		$this->userdb = 'root';
 		$this->passdb = '';
-		$this->dbname = 'sesion';
+		$this->dbname = 'hola';
 		
 	}
 	
@@ -28,5 +28,14 @@ class Connection{
 	}
 	
 }
+
+//Conexion para carrito
+
+$currency = '$'; 
+$db_username = 'root';
+$db_password = '';
+$db_name = 'hola';
+$db_host = 'localhost';
+$mysqli = new mysqli($db_host, $db_username, $db_password,$db_name);
 
 ?>

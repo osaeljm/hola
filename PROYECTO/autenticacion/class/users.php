@@ -18,8 +18,8 @@ class Users{
 	
 	public function login_in(){
 		
-		$query = "SELECT * FROM users, profiles WHERE users.loginUsers = '".$_POST["usern"]."' 
-			AND users.passUsers = '".$_POST["passwd"]."' AND users.idprofile = profiles.idProfile ";
+		$query = "SELECT * FROM Usuario, Perfil WHERE Usuario.LoginUsuario = '".$_POST["usern"]."' 
+			AND Usuario.ContrasenaUsuario = '".$_POST["passwd"]."' AND Usuario.IdPerfil = Perfil.IdPerfil ";
 		$this->result = $this->objDb->select($query);
 		$this->rows = mysql_num_rows($this->result);
 		if($this->rows > 0){
@@ -27,18 +27,20 @@ class Users{
 			if($row=mysql_fetch_array($this->result)){
 				
 				$this->objSe->init();
-				$this->objSe->set('user', $row["loginUsers"]);
-				$this->objSe->set('iduser', $row["idUsers"]);
-				$this->objSe->set('idprofile', $row["idprofile"]);
+				$this->objSe->set('usuario', $row["LoginUsuario"]);
+				$this->objSe->set('idusuario', $row["IdUsuario"]);
+				$this->objSe->set('idperfil', $row["IdPerfil"]);
 				
-				$this->useropc = $row["nameProfi"];
+				$this->useropc = $row["NombrePerfil"];
 
-				$_SESSION["usuario"] = $row["nameUser"];
+				$_SESSION["idusuario"] = $row["IdUsuario"];
+				$_SESSION["usuario"] = $row["NombreUsuario"];
+
 				// $cedula = $_SESSION["cedula"];
 				
 				switch($this->useropc){
 					
-					case 'Standard':
+					case 'Cliente':
 						header('Location: ../iniciar_sesion.php');
 						break;
 						

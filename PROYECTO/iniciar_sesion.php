@@ -140,11 +140,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
                                                 ?>
 
-                                                <form action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                <form style="align:center" action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
                                                     <div class="row">
                                                         <div class="name col-md-4">
                                                             <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
-                                                            <input type="text" name="passwd" placeholder="Contraseña" value=""/>
+                                                            <input type="password" name="passwd" placeholder="Contraseña" value=""/>
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send">

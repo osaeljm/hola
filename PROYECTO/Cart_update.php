@@ -1,6 +1,6 @@
 <?php
 session_start(); //start session
-include_once("config.php"); //include config file
+include_once("autenticacion/class/config.php"); //include config file
 
 //empty cart by distroying current session
 if(isset($_GET["emptycart"]) && $_GET["emptycart"]==1)

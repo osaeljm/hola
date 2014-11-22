@@ -95,15 +95,41 @@ CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
 -- Estructura de tabla para la tabla `Usuario`
 --
 
+-- CREATE TABLE IF NOT EXISTS `Usuario` (
+--   `Usuario` varchar(45) NOT NULL,
+--   `Nombre` varchar(45) NOT NULL,
+--   `Contraseña` varchar(45) NOT NULL,
+--   `Correo` varchar(45) NOT NULL,
+--   `Tarjeta` varchar(45) NOT NULL,
+--   PRIMARY KEY (`Usuario`) 
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 CREATE TABLE IF NOT EXISTS `Usuario` (
-  `Usuario` varchar(45) NOT NULL,
-  `Nombre` varchar(45) NOT NULL,
-  `Contraseña` varchar(45) NOT NULL,
-  `Correo` varchar(45) NOT NULL,
-  `Tarjeta` varchar(45) NOT NULL,
-  PRIMARY KEY (`Usuario`) 
+  `IdUsuario` INT NOT NULL auto_increment,
+  `LoginUsuario` VARCHAR(15) NOT NULL,
+  `ContrasenaUsuario` VARCHAR(10) NOT NULL,
+  `IdPerfil`INT NOT NULL,
+  `CorreoUsuario` VARCHAR(50) NOT NULL,
+  `NombreUsuario` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`IdUsuario`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE IF NOT EXISTS `Perfil`(
+  `IdPerfil` INT unsigned NOT NULL auto_increment,
+  `NombrePerfil` varchar(20) NOT NULL,
+  PRIMARY KEY (`IdPerfil`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `Usuario` (`IdUsuario`, `LoginUsuario`, `ContrasenaUsuario`, `IdPerfil`, `CorreoUsuario`, `NombreUsuario`) VALUES
+(1, 'cesar', '123', 1, 'ejemplo@mail.com', 'C&eacute;sar Retana J'),
+(2, 'osael', '123', 1, 'ejemplo@mail.com', 'Osael Jim&eacute;nez M');
+
+
+INSERT INTO `Perfil` (`IdPerfil`, `NombrePerfil`) VALUES
+(1, 'Administrador'),
+(2, 'Cliente');
 --
 -- Restricciones para tablas volcadas
 --
@@ -120,3 +146,36 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 
 
 
+
+
+
+
+
+
+
+
+-- CREATE TABLE IF NOT EXISTS `users` (
+--   `idUsers` INT unsigned NOT NULL auto_increment,
+--   `loginUsers` VARCHAR(15) NOT NULL,
+--   `passUsers` VARCHAR(10) NOT NULL,
+--   `idprofile`INT NOT NULL,
+--   `emailUser` VARCHAR(50) NOT NULL,
+--   `nameUser` VARCHAR(100) NOT NULL,
+--   PRIMARY KEY (`idUsers`) 
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- CREATE TABLE IF NOT EXISTS `profiles`(
+--   `idProfile` INT unsigned NOT NULL auto_increment,
+--   `nameProfi` varchar(20) NOT NULL,
+--   PRIMARY KEY (`idProfile`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- INSERT INTO `users` (`idUsers`, `loginUsers`, `passUsers`, `idprofile`, `emailUser`, `nameUser`) VALUES
+-- (1, 'cesar', '123', 1, 'ejemplo@mail.com', 'Jose Fonseca Prueba'),
+-- (2, 'osael', '123', 1, 'ejemplo@mail.com', 'Osael Castro Prueba');
+
+
+-- INSERT INTO `profiles` (`idProfile`, `nameProfi`) VALUES
+-- (1, 'Adminitrador'),
+-- (2, 'Cliente');
