@@ -98,6 +98,7 @@ if(isset($_GET["removep"]) && isset($_GET["return_url"]) && isset($_SESSION["pro
         
         //create a new product list for cart
         $_SESSION["products"] = $product;
+        $_SESSION["cart_items"] = $cart_itm;
     }
     
     //redirect back to original page

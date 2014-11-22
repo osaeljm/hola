@@ -61,7 +61,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#">5 artículos</a>)
+                                    (<a href="#"><?php 
+                                        if(isset($_SESSION["cart_items"])){
+                                            echo ''.$_SESSION["cart_items"].' artículos';
+                                        } else {
+                                            echo '0 artículos'; 
+                                        }
+                                    ?></a>)
                                 </div>
                             </div>
                         </div>
@@ -78,8 +84,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="col-md-6">
                                 <div class="main-menu">
                                     <ul>
-                                        <li><a href="index.html">Inicio</a></li>
-                                        <li><a href="about-us.html">Nosotros</a></li>
+                                        <li><a href="index.php">Inicio</a></li>
+                                        <li><a href="about-us.php">Nosotros</a></li>
                                         <li><a href="products.php">Productos</a></li>
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
@@ -111,72 +117,75 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
 
             <div id="products-post">
-                <div class="container">
-                   
-
+                <div class="container">  
                     <div class="row" id="Container"> 
 
-<?php
+                        <?php
 
-     if(isset($_SESSION["products"]))
-    {
-        $total = 0;
-        echo '<form method="post" action="PAYMENT-GATEWAY">';
-        echo '<ul>';
-        $cart_items = 0;
-       
-        foreach ($_SESSION["products"] as $cart_itm)
-        {
-           $product_code = $cart_itm["code"];
-           $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
-           $obj = $results->fetch_object();
-            echo '<li class="cart-itm">';
-            echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times; Eliminar</a></span>';
-            echo '<div class="p-price">'.$currency.$obj->PrecioProducto.'</div>';
-            echo '<div class="product-info">';
-            echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';
-            echo '<select>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>';
-            echo '<div>'.$obj->DescripcionProducto.'</div>';
-            echo '</div>';
-            echo '</li>';
-            $subtotal = ($cart_itm["price"]*$cart_itm["qty"]);
-            $total = ($total + $subtotal);
+                             if(isset($_SESSION["products"]))
+                            {
+                                $total = 0;
+                                echo '<form method="post" action="PAYMENT-GATEWAY">';
+                                echo '<table style="width:60%">';
+                                $cart_items = 0;
 
-            echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';
-            echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
-            echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
-            echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
-            $cart_items ++;
+                               
+                                foreach ($_SESSION["products"] as $cart_itm)                                    
+                                {
+                                    echo '<tr>';
+                                   $product_code = $cart_itm["code"];
+                                   $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
+                                   $obj = $results->fetch_object();
+                                    echo '<td class="cart-itm">';
+                                    echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';                       
+                                    echo '<div class="p-price">'.$currency.$obj->PrecioProducto.'</div>';
+                                    echo '<div class="product-info">';            
+                                    echo '<select>
+                                          <option value="1">1</option>
+                                          <option value="2">2</option>
+                                          <option value="3">3</option>
+                                          <option value="4">4</option>
+                                          <option value="5">5</option>
+                                          <option value="6">6</option>
+                                          <option value="7">7</option>
+                                          <option value="8">8</option>
+                                          <option value="9">9</option>
+                                          <option value="10">10</option>
+                                        </select>';            
+                                    echo '<div>'.$obj->DescripcionProducto.'</div>';
+                                    echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">Eliminar del carrito</a></span>';
+                                    echo '</div>';
+                                    echo '</td>';
+                                    $subtotal = ($cart_itm["price"]*$cart_itm["qty"]);
+                                    $total = ($total + $subtotal);
 
-
-             
-        }
-        echo $cart_items ;
-        echo '</ul>';
-        echo '<span class="check-out-txt">';
-        echo '<strong>Total : '.$currency.$total.'</strong>  ';
-        echo '</span>';
-        echo '</form>';
-        
-    }else{
-        echo 'Your Cart is empty';
-    }
-    echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
-    echo ' <a class="fancybox" href="sesion_usuario/iniciar_sesion.php">COMPRAR <?php include("dbconfig.php"); ?></a>';
+                                    echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';
+                                    echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
+                                    echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
+                                    echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+                                    $cart_items ++;
 
 
-?>
+                                     echo '</tr>';
+                                }
+
+                                //echo $cart_items ;
+                                $_SESSION["cart_items"] = $cart_items;
+
+                                echo '</table>';
+                                echo '<span class="check-out-txt">';
+                                echo '<strong>Total : '.$currency.$total.'</strong>  ';
+                                echo '</span>';
+                                echo '</form>';
+                                
+                            }else{
+                                echo 'Your Cart is empty';
+                            }
+                            echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
+                            echo ' <a class="fancybox" href="sesion_usuario/iniciar_sesion.php">COMPRAR <?php include("dbconfig.php"); ?></a>';
+
+
+                        ?>
 
 
                        </div>
