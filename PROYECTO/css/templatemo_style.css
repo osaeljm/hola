@@ -12,7 +12,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 /*-- Basic --*/
 a {
   text-decoration: none;
-  color: #29BEE7;
+  color: #fff;
 }
 
 a:hover {
@@ -21,8 +21,9 @@ a:hover {
 }
 
 p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
+  text-align : justify;
   color: #666;
 }
 
@@ -32,7 +33,7 @@ p {
 }
 
 .heading-section h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 20px;
   color: #333;
   font-weight: 700;
@@ -64,14 +65,17 @@ p {
   margin-right: 15px;
   padding: 10px 0;
   font-size: 13px;
-  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
 }
 
 .cart-info {
   text-align: right;
   padding: 8px 0;
-  font-size: 13px;
-  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
 }
 
 .logo {
@@ -91,9 +95,9 @@ p {
 }
 
 .main-menu a {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   color: #444;
   text-transform: uppercase;
   margin-right: 35px;
@@ -228,7 +232,7 @@ p {
 
 .timeline-caption h4 {
   padding-top: 80px;
-  font-family: 'Open Sans', sans-serif;
+    font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 700;
@@ -237,7 +241,7 @@ p {
 }
 
 .timeline-caption p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 300;
   color: #29BEE7;
@@ -333,7 +337,7 @@ p {
 }
 
 #product-heading h2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 20px;
   color: #333;
   font-weight: 700;
@@ -371,7 +375,7 @@ p {
 
 #filters span {
   text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 300;
   color: #444;
@@ -403,7 +407,7 @@ p {
 .label-text span {
   color: #777;
   text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-weight: 300;
   display: block;
   color: #29BEE7
@@ -501,7 +505,7 @@ p {
 }
 
 a:hover {
-  color: #fff;
+  color: #29BEE7;
 }
 /*- End Products --*/
 
@@ -649,7 +653,7 @@ textarea {
   line-height: 30px;
   text-align: center;
   background-color: #29BEE7; 
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -666,7 +670,7 @@ textarea {
   text-align: center;
   background-color: #29BEE7; 
   color: #fff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -705,7 +709,7 @@ textarea {
 .info li {
   list-style: none;
   margin: 10px 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 13px;
   color: #666;
 }
@@ -791,7 +795,7 @@ textarea {
 }
 
 .recent-post-info h6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -812,7 +816,7 @@ textarea {
 }
 
 .recent-post-info span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 13px;
   color: #29BEE7;
 }
@@ -850,23 +854,26 @@ textarea {
   position: absolute;
   width: 100%;
   margin-top: 160px;
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
+  color: #000;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
 }
 
 .slider-caption h1 {
-  text-shadow: 1px 1px #777;
+  text-shadow: 1px 1px #29BEE7;
   font-size: 48px;
   padding-bottom: 10px;
-  font-weight: 500;
-  color: #29BEE7;
+  font-weight: 600;
+  color: #000;
   text-transform: uppercase;
+
+  /*#29BEE7*/
 }
 
 .slider-caption p {
+  text-align: center;
   font-size: 18px;
-  font-weight: 300;
-  color: #fff;
+  font-weight: 500;
+  color: #000;
   line-height: 15px;
 }
 
@@ -908,7 +915,7 @@ textarea {
 }
 
 .service-item h4 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #333;
@@ -949,7 +956,7 @@ textarea {
 }
 
 .content-show a {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #fff;
@@ -1012,7 +1019,7 @@ footer {
 }
 
 .social-bottom span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #333;
@@ -1052,7 +1059,7 @@ footer {
 }
 
 .subscribe-form span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: 600;
   color: #333;
@@ -1094,7 +1101,7 @@ footer {
 }
 
 .footer-title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #333;
@@ -1145,7 +1152,7 @@ footer {
 }
 
 .recent-post-info h6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1161,7 +1168,7 @@ footer {
 }
 
 .recent-post-info span {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 13px;
   color: #29BEE7;
 }
@@ -1178,7 +1185,7 @@ footer {
 .more-info li {
   list-style: none;
   margin: 10px 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 13px;
   color: #666;
 }

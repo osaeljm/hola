@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("autenticacion/class/config.php"); //include config file
+include_once("autenticacion/class/config.php");
 $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
 ?>
 <!DOCTYPE html>
@@ -44,16 +44,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="home-account">
-                                    <?php
-                                    if(isset($_SESSION["usuario"])){
-                                        echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
-                                        echo '<a href="#"> Perfil</a>';
-                                        echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
-                                    } else{
-                                        echo '<a href="#">Registrar</a>';
-                                        echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
-                                    }
-                                    ?>
+                                    <a href="#">Home</a>
+                                    <a href="#">My account</a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -61,13 +53,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#"><?php 
-                                        if(isset($_SESSION["cart_items"])){                                           
-                                            echo ''.$_SESSION["cart_items"].' artículos';
-                                        } else {
-                                            echo '0 artículos'; 
-                                        }
-                                    ?></a>)
+                                    (<a href="#">5 artículos</a>)
                                 </div>
                             </div>
                         </div>
@@ -84,8 +70,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="col-md-6">
                                 <div class="main-menu">
                                     <ul>
-                                        <li><a href="index.php">Inicio</a></li>
-                                        <li><a href="about-us.php">Nosotros</a></li>
+                                        <li><a href="index.html">Inicio</a></li>
+                                        <li><a href="about-us.html">Nosotros</a></li>
                                         <li><a href="products.php">Productos</a></li>
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
@@ -117,75 +103,72 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
 
             <div id="products-post">
-                <div class="container">  
+                <div class="container">
+                   
+
                     <div class="row" id="Container"> 
 
-                        <?php
+<?php
 
-                             if(isset($_SESSION["products"]))
-                            {
-                                $total = 0;
-                                echo '<form method="post" action="PAYMENT-GATEWAY">';
-                                echo '<table style="width:60%">';
-                                $cart_items = 0;
+     if(isset($_SESSION["products"]))
+    {
+        $total = 0;
+        echo '<form method="post" action="PAYMENT-GATEWAY">';
+        echo '<ul>';
+        $cart_items = 0;
+       
+        foreach ($_SESSION["products"] as $cart_itm)
+        {
+           $product_code = $cart_itm["code"];
+           $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
+           $obj = $results->fetch_object();
+            echo '<li class="cart-itm">';
+            echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">&times; Eliminar</a></span>';
+            echo '<div class="p-price">'.$currency.$obj->PrecioProducto.'</div>';
+            echo '<div class="product-info">';
+            echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';
+            echo '<select>
+                  <option value="1"selected>1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>';
+            echo '<div>'.$obj->DescripcionProducto.'</div>';
+            echo '</div>';
+            echo '</li>';
+            $subtotal = ($cart_itm["price"]*$cart_itm["qty"]);
+            $total = ($total + $subtotal);
 
-                               
-                                foreach ($_SESSION["products"] as $cart_itm)                                    
-                                {
-                                    echo '<tr>';
-                                   $product_code = $cart_itm["code"];
-                                   $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
-                                   $obj = $results->fetch_object();
-                                    echo '<td class="cart-itm">';
-                                    echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';                       
-                                    echo '<div class="p-price">'.$currency.$obj->PrecioProducto.'</div>';
-                                    echo '<div class="product-info">';            
-                                    echo '<select>
-                                          <option value="1">1</option>
-                                          <option value="2">2</option>
-                                          <option value="3">3</option>
-                                          <option value="4">4</option>
-                                          <option value="5">5</option>
-                                          <option value="6">6</option>
-                                          <option value="7">7</option>
-                                          <option value="8">8</option>
-                                          <option value="9">9</option>
-                                          <option value="10">10</option>
-                                        </select>';            
-                                    echo '<div>'.$obj->DescripcionProducto.'</div>';
-                                    echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">Eliminar del carrito</a></span>';
-                                    echo '</div>';
-                                    echo '</td>';
-                                    $subtotal = ($cart_itm["price"]*$cart_itm["qty"]);
-                                    $total = ($total + $subtotal);
-
-                                    echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';
-                                    echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
-                                    echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
-                                    echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
-                                    $cart_items ++;
+            echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';
+            echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
+            echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
+            echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+            $cart_items ++;
 
 
-                                     echo '</tr>';
-                                }
-
-                                //echo $cart_items ;
-                                $_SESSION["cart_items"] = $cart_items;
-
-                                echo '</table>';
-                                echo '<span class="check-out-txt">';
-                                echo '<strong>Total : '.$currency.$total.'</strong>  ';
-                                echo '</span>';
-                                echo '</form>';
-                                
-                            }else{
-                                echo 'Your Cart is empty';
-                            }
-                            echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
-                            echo ' <a class="fancybox" href="sesion_usuario/iniciar_sesion.php">COMPRAR <?php include("dbconfig.php"); ?></a>';
+             
+        }
+        echo $cart_items ;
+        echo '</ul>';
+        echo '<span class="check-out-txt">';
+        echo '<strong>Total : '.$currency.$total.'</strong>  ';
+        echo '</span>';
+        echo '</form>';
+        
+    }else{
+        echo 'Your Cart is empty';
+    }
+    echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
+    echo ' <a class="fancybox" href="sesion_usuario/iniciar_sesion.php">COMPRAR <?php include("dbconfig.php"); ?></a>';
 
 
-                        ?>
+?>
 
 
                        </div>
@@ -194,41 +177,91 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
             <footer>
                 <div class="container">
-                    <!-- <div class="top-footer">                     
-                    </div>  -->                    
+                    <div class="top-footer">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="subscribe-form">
+                                    <span>Get in touch with us</span>
+                                    <form method="get" class="subscribeForm">
+                                        <input id="subscribe" type="text" />
+                                        <input type="submit" id="submitButton" />
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="social-bottom">
+                                    <span>Follow us:</span>
+                                    <ul>
+                                        <li><a href="#" class="fa fa-facebook"></a></li>
+                                        <li><a href="#" class="fa fa-twitter"></a></li>
+                                        <li><a href="#" class="fa fa-rss"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="main-footer">
                         <div class="row">
                             <div class="col-md-3">
-                               <div class="social-bottom">
-                                    <span>Siganos en :</span>
+                                <div class="about">
+                                    <h4 class="footer-title">About Grill</h4>
+                                    <p>Grill is free HTML5 website template by templatemo and it is a free responsive bootstrap layout that can be applied for any purpose.
+                                    <br><br>Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for photos used in this template. Nam commodo erat quis ligula placerat viverra.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="shop-list">
+                                    <h4 class="footer-title">Shop Categories</h4>
                                     <ul>
-                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>New Grill Menu</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>Healthy Fresh Juices</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>Spicy Delicious Meals</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>Simple Italian Pizzas</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>Pure Good Yogurts</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>Ice-cream for kids</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="social-bottom">
-                                    <div class="more-info">
-                                        <h4 class="footer-title">Para obtener más información:</h4>
+                                <div class="recent-posts">
+                                    <h4 class="footer-title">Recent posts</h4>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumb">
+                                            <img src="images/recent-post1.jpg" alt="">
+                                        </div>
+                                        <div class="recent-post-info">
+                                            <h6><a href="#">Delicious and Healthy Menus</a></h6>
+                                            <span>24/12/2084</span>
+                                        </div>
+                                    </div>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumb">
+                                            <img src="images/recent-post2.jpg" alt="">
+                                        </div>
+                                        <div class="recent-post-info">
+                                            <h6><a href="#">Simple and effective meals</a></h6>
+                                            <span>18/12/2084</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="social-bottom">
-                                    <div class="more-info">
-                                        <ul>
-                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
-                                            <li><i class="fa fa-envelope"></i><a>hola@holacupcakes.com</a></li>
-                                        </ul>
-                                    </div>
+                                <div class="more-info">
+                                    <h4 class="footer-title">More info</h4>
+                                    <p>Sed dignissim, diam id molestie faucibus, purus nisl pretium quam, in pulvinar velit massa id elit.</p>
+                                    <ul>
+                                        <li><i class="fa fa-phone"></i>010-020-0340</li>
+                                        <li><i class="fa fa-globe"></i>123 Dagon Studio, Yakin Street, Digital Estate</li>
+                                        <li><i class="fa fa-envelope"></i><a href="#">info@company.com</a></li>
+                                    </ul>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
-                         <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>
-                    <!-- <div class="bottom-footer">                     
-                    </div>  -->                   
+                    <div class="bottom-footer">
+                        <p>Copyright © 2084 <a href="#">Your Company Name</a> <!-- Credit: www.templatemo.com --></p>
+                    </div>
+                    
                 </div>
             </footer>
 
@@ -237,16 +270,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
         <script src="js/vendor/jquery.gmap3.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
-        <script>
-        window.onload=function(){
-        var pos=window.name || 0;
-        window.scrollTo(0,pos);
-        }
-        window.onunload=function(){
-        window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
-        }
-        </script>
 
     </body>
 </html>

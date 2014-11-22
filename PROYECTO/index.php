@@ -134,7 +134,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
-
+<!-- 
             <div id="services">
                 <div class="container">
                     <div class="row">
@@ -167,7 +167,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="col-md-3 col-sm-6"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             <!--/div>-->
             <div id="latest-blog">
                 <div class="container">
