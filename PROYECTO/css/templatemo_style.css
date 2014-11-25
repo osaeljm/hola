@@ -9,7 +9,60 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
 */
 
+
+
+/*-- Tabla --*/
+
+#Container form{
+   width: 700px; 
+}
+#Container table tr{
+  border-top: 1px solid black;
+  border-color: #D8AC69;
+  color:#000;  
+}
+#Container table td{
+  border-bottom: 1px solid black;
+  color:#000;
+  border-color: #D8AC69;
+}
+span a {
+   color:#8AD7E3;
+}
+
+/*-- End Tabla --*/
+
+/*-- Tarjeta --*/
+
+
+aside { 
+    float:left;
+    width:300px;  
+    margin-top:40px;  
+}
+
+.error{
+    color:red;
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:red;    
+}
+.error h3{
+    padding: 5px;
+    margin: 0px;
+}
+.validcard{
+    outline: 1px solid #4EC910;
+}
+.invalidcard{
+    outline: 1px solid #FF5454;
+}
+
+/*-- End Tarjeta --*/
+
 /*-- Basic --*/
+
 a {
   text-decoration: none;
   color: #fff;
@@ -509,8 +562,9 @@ a:hover {
 }
 /*- End Products --*/
 
+/*-- Table --*/
 
-
+/*-- End Table --*/
 
 
 /*-- Single Post --*/
@@ -661,6 +715,22 @@ textarea {
   border: 0;
   outline: none;
 }
+.send2 button {
+  width: 110px;
+  color: #fff;
+  cursor: pointer;
+  height: 35px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #29BEE7; 
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 0;
+  outline: none;
+}
 
 .leave input {
   width: 90px;
@@ -694,6 +764,9 @@ textarea {
 }
 
 .send {
+  margin-top: 20px;
+}
+.send2 {
   margin-top: 20px;
 }
 

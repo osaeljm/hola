@@ -55,8 +55,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    (<a href="#">5 artículos</a>) en el carrito
+                                    <!-- <i class="fa fa-shopping-cart"></i>
+                                    (<a href="#">5 artículos</a>) en el carrito -->
                                 </div>
                             </div>
                         </div>
@@ -138,9 +138,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 if($err==2){
                                                     echo "Debe iniciar sesion para poder acceder el sitio. <br />";
                                                 }
+                                                if($err==3){
+                                                    echo "Debe iniciar sesion antes de comprar. <br />";
+                                                }
                                                 ?>
 
-                                                <form style="align:center" action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                <form style="width:700px;margin-left:20%;" action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
                                                     <div class="row">
                                                         <div class="name col-md-4">
                                                             <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
@@ -152,9 +155,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     </div>
                                                 </form>   
                                             </div>
-                                        </div>
-
-                                           
+                                        </div>                                           
                                     </div>
                                 </div>
                             </div>

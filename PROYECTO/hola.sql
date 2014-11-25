@@ -40,41 +40,6 @@ CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `Producto`
---
-
-CREATE TABLE IF NOT EXISTS `Producto` (
-  `IdProducto` int(11) NOT NULL AUTO_INCREMENT, 
-  `CodigoProducto` varchar(45) NOT NULL,
-  `NombreProducto` varchar(45) NOT NULL,
-  `CantidadProducto` int(11) NOT NULL, 
-  `DescripcionProducto` tinytext NOT NULL, 
-  `ImagenProducto` tinytext NOT NULL, 
-  `PrecioProducto` int(11) NOT NULL,
-  PRIMARY KEY (`IdProducto`)
-) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
-
-
-INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
-(1, 'abc123', 'ASUS D450CA', 11, 'Una Notebook de precio amigable y extra-confiable diseñada para PYMES\r\n\r\nWindows 8\r\nCon Intel Inside® y Procesador Intel® Core™ i3.\r\nCon la tecnología exclusiva ASUS Super Hybrid Engine II con suspensión de hasta dos semanas y respaldo automático ', 'computadora.png', 340000),
-(2, 'xyz123', 'Galaxy S5 G900F', 10, 'Galaxy S5 es un smartphone pensado para ofrecer la más completa experiencia de uso que puedas imaginar, con soluciones como su pulsómetro que te ayudan a mantenerte en forma, y un atractivo diseño resistente al agua y al polvo.\r\n\r\nNo te preocupes si te', 'celular.png', 410000);
-
-
--- CREATE TABLE IF NOT EXISTS `Producto` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `product_code` varchar(60) NOT NULL,
---   `product_name` varchar(60) NOT NULL,
---   `product_qty` int(100) NOT NULL,
---   `product_desc` tinytext NOT NULL,
---   `product_img_name` varchar(60) NOT NULL,
---   `price` decimal(10,2) NOT NULL,
---   PRIMARY KEY (id),
---   UNIQUE KEY product_code (product_code)
--- ) AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `FacturaDetalle`
 --
@@ -130,9 +95,42 @@ INSERT INTO `Usuario` (`IdUsuario`, `LoginUsuario`, `ContrasenaUsuario`, `IdPerf
 INSERT INTO `Perfil` (`IdPerfil`, `NombrePerfil`) VALUES
 (1, 'Administrador'),
 (2, 'Cliente');
+
+
+-- --------------------------------------------------------
+
 --
--- Restricciones para tablas volcadas
+-- Estructura de tabla para la tabla `Producto`
 --
+
+CREATE TABLE IF NOT EXISTS `Producto` (
+  `IdProducto` int(11) NOT NULL AUTO_INCREMENT, 
+  `CodigoProducto` varchar(45) NOT NULL,
+  `NombreProducto` varchar(45) NOT NULL,
+  `CantidadProducto` int(11) NOT NULL, 
+  `DescripcionProducto` tinytext NOT NULL, 
+  `ImagenProducto` tinytext NOT NULL, 
+  `PrecioProducto` int(11) NOT NULL,
+  PRIMARY KEY (`IdProducto`)
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+
+
+INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
+(1, 'abc123', 'ASUS D450CA', 11, 'Una Notebook de precio amigable y extra-confiable diseñada para PYMES\r\n\r\nWindows 8\r\nCon Intel Inside® y Procesador Intel® Core™ i3.\r\nCon la tecnología exclusiva ASUS Super Hybrid Engine II con suspensión de hasta dos semanas y respaldo automático ', 'computadora.png', 340000),
+(2, 'xyz123', 'Galaxy S5 G900F', 10, 'Galaxy S5 es un smartphone pensado para ofrecer la más completa experiencia de uso que puedas imaginar, con soluciones como su pulsómetro que te ayudan a mantenerte en forma, y un atractivo diseño resistente al agua y al polvo.\r\n\r\nNo te preocupes si te', 'celular.png', 410000);
+
+
+-- CREATE TABLE IF NOT EXISTS `Producto` (
+--   `id` int(11) NOT NULL AUTO_INCREMENT,
+--   `product_code` varchar(60) NOT NULL,
+--   `product_name` varchar(60) NOT NULL,
+--   `product_qty` int(100) NOT NULL,
+--   `product_desc` tinytext NOT NULL,
+--   `product_img_name` varchar(60) NOT NULL,
+--   `price` decimal(10,2) NOT NULL,
+--   PRIMARY KEY (id),
+--   UNIQUE KEY product_code (product_code)
+-- ) AUTO_INCREMENT=1 ;
 
 --
 -- Filtros para la tabla `FacturaDetalle`

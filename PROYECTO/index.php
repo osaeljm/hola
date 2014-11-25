@@ -53,7 +53,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">
-                                    <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
+                                   <a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
                                      (<a href="#"><?php 
@@ -114,7 +114,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </li>
                     <li>
                         <div class="slider-caption">
-                            <h1>Fiestas infantiles</h1>
+                            <h1>Fiestas<br>infantiles</h1>
                             <p>Diferenrentes temas  
                             <br><br>Diseños variados.</p>
                             <a href="single-post.html">Descripción</a>
