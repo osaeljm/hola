@@ -30,7 +30,7 @@ USE hola;
 --
 
 CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
-  `NumeroFactura` INT NOT NULL auto_increment,
+  `NumeroFactura` INT NOT NULL AUTO_INCREMENT,
   `FechaFactura` datetime NOT NULL,
   `TotalFactura` int(11),
   `Usuario_IdUsuario` INT NOT NULL,   
@@ -41,16 +41,6 @@ CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
 
 
 
--- DELIMITER //
--- CREATE PROCEDURE `Insertar_EncabezadoFactura`
--- (IN proc_TotalFactura int(11),
---  IN proc_Usuario_IdUsuario int,
---  @new_identity INT = NULL OUTPUT)
--- BEGIN
---   INSERT INTO `EncabezadoFactura` (`FechaFactura`,`TotalFactura`,`Usuario_IdUsuario`)
---   VALUES (NOW(),proc_TotalFactura, proc_Usuario_IdUsuario);
--- END //
--- DELIMITER ;
 
 
 
@@ -60,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
 --
 
 CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
-  `NumeroDetalle` int(11) NOT NULL,
+  `NumeroDetalle` int(11) NOT NULL AUTO_INCREMENT,
   `EncabezadoFactura_NumeroEncabezadoFactura` int(11) NOT NULL,  
   `Cantidad` int(11) NOT NULL,
   `SubTotal` int(11) NOT NULL,
@@ -68,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
   PRIMARY KEY (`NumeroDetalle`,`Producto_IdProducto`), 
   KEY `fk_FacturaDetalle_EncabezadoFactura1_idx` (`EncabezadoFactura_NumeroEncabezadoFactura`),
   KEY `fk_FacturaDetalle_Producto1_idx` (`Producto_IdProducto`) 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 --
@@ -86,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
 
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
-  `IdUsuario` INT NOT NULL auto_increment,
+  `IdUsuario` INT NOT NULL AUTO_INCREMENT,
   `LoginUsuario` VARCHAR(15) NOT NULL,
   `ContrasenaUsuario` VARCHAR(10) NOT NULL,
   `IdPerfil`INT NOT NULL,
@@ -97,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 
 
 CREATE TABLE IF NOT EXISTS `Perfil`(
-  `IdPerfil` INT unsigned NOT NULL auto_increment,
+  `IdPerfil` INT unsigned NOT NULL AUTO_INCREMENT,
   `NombrePerfil` varchar(20) NOT NULL,
   PRIMARY KEY (`IdPerfil`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,30 +127,31 @@ INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `Canti
 (2, 'xyz123', 'Galaxy S5 G900F', 10, 'Galaxy S5 es un smartphone pensado para ofrecer la más completa experiencia de uso que puedas imaginar, con soluciones como su pulsómetro que te ayudan a mantenerte en forma, y un atractivo diseño resistente al agua y al polvo.\r\n\r\nNo te preocupes si te', 'celular.png', 410000);
 
 
-
--- CREATE TABLE IF NOT EXISTS `Producto` (
---   `id` int(11) NOT NULL AUTO_INCREMENT,
---   `product_code` varchar(60) NOT NULL,
---   `product_name` varchar(60) NOT NULL,
---   `product_qty` int(100) NOT NULL,
---   `product_desc` tinytext NOT NULL,
---   `product_img_name` varchar(60) NOT NULL,
---   `price` decimal(10,2) NOT NULL,
---   PRIMARY KEY (id),
---   UNIQUE KEY product_code (product_code)
--- ) AUTO_INCREMENT=1 ;
-
 --
--- Filtros para la tabla `FacturaDetalle`
---
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
 --
 -- PROCEDIMIENTOS ALMACENADOS
 --
+--
 
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Insertar_EncabezadoFactura`
+(IN proc_TotalFactura int(11), IN proc_Usuario_IdUsuario int)
+BEGIN
+  INSERT INTO `EncabezadoFactura` (`FechaFactura`,`TotalFactura`,`Usuario_IdUsuario`)
+  VALUES (NOW(),proc_TotalFactura, proc_Usuario_IdUsuario);
+  SELECT LAST_INSERT_ID() outid;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Insertar_FacturaDetalle`
+(IN proc_EncabezadoFactura_NumeroEncabezadoFactura int(11), IN proc_Cantidad int(11),
+  IN proc_SubTotal int(11), IN proc_Producto_IdProducto int(11))                                     
+BEGIN
+  INSERT INTO `FacturaDetalle` (`EncabezadoFactura_NumeroEncabezadoFactura`,`Cantidad`,
+                                `SubTotal`,`Producto_IdProducto`)
+  VALUES (proc_EncabezadoFactura_NumeroEncabezadoFactura,proc_Cantidad, proc_SubTotal,proc_Producto_IdProducto);
+END //
+DELIMITER ;

@@ -155,8 +155,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 //output results from database
                                 while($obj = $results->fetch_object())
                                 { 
-                                    
-                        ?>                      
+                                    $obj->CantidadProducto = 1;                       ?>                      
                                                               
                                     <form method="post" action="cart_update.php">
                                         <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       

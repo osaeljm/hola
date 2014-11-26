@@ -137,7 +137,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 foreach ($_SESSION["products"] as $cart_itm)
                                 {
                                    $product_code = $cart_itm["code"];
-                                   $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
+                                   $results = $mysqli->query("SELECT IdProducto,NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
                                    $obj = $results->fetch_object();
                                     echo '<tr >';
                                     echo '<td class="cart-itm">';
@@ -168,11 +168,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
                                     echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
                                     echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+                                    echo '<input type="hidden" name="item_id['.$cart_items.']" value="'.$obj->IdProducto.'" />';
                                     $cart_items ++;
                                      
                                 }
                                 echo $cart_items ;
-                                $_SESSION["cart_items"] = $cart_items;
+                                $_SESSION["cart_items"] = $cart_items;                                
 
                                 echo '</table>';
                                 echo '<span class="check-out-txt">';

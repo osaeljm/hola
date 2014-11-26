@@ -153,28 +153,63 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             //   echo "Failed: " . $e->getMessage();
                             // }
 
-
+                             $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
 
 
                             try { 
-                                $total = 0;  
-                                $idusuari = 1;
-                                $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
+                                $total = 0;                                
                                 $sql = "call Insertar_EncabezadoFactura(:proc_TotalFactura,:proc_Usuario_IdUsuario)";
                                 $stmt = $conn->prepare($sql); 
                                 $stmt->bindParam(":proc_TotalFactura", $total, PDO::PARAM_INT);
-                                $stmt->bindParam(":proc_Usuario_IdUsuario", $idusuari, PDO::PARAM_INT);
+                                $stmt->bindParam(":proc_Usuario_IdUsuario", $idusuario, PDO::PARAM_INT);
                                 $stmt->execute();
+                                $r = $stmt->fetch();
                             }
                             catch (PDOException $pe) {
                                 die("Ocurrio un error: " . $pe->getMessage());
                                 
                             }
+                            // echo $r["outid"];
 
+                            if(isset($_SESSION["products"]))
+                            {
+                                $total = 0;
+                                $cart_items = 0;                               
+                                foreach ($_SESSION["products"] as $cart_itm)
+                                {
+                                   $product_code = $cart_itm["code"];
+                                  echo $product_price = $cart_itm["price"];
+                                  echo $cart_itm["id"];
+                                   $product_id = $cart_itm["id"];
+                                   // $results = $mysqli->query("SELECT IdProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
+                                   // $obj = $results->fetch_object();
 
-                             
-
-                     
+                                   //Ingreso de detalle en la tabla FacturaDetalle
+                                   try { 
+                                        $total = 0;  
+                                        $cantidad = 1;
+                                        $subtotal = $cantidad *  $product_price;
+                                        // $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
+                                        $sql = "call Insertar_FacturaDetalle(:proc_EncabezadoFactura_NumeroEncabezadoFactura,
+                                        :proc_Cantidad,:proc_SubTotal,:Producto_IdProducto)";
+                                        $stmt = $conn->prepare($sql); 
+                                        $stmt->bindParam(":proc_EncabezadoFactura_NumeroEncabezadoFactura", $r["outid"], PDO::PARAM_INT);
+                                        $stmt->bindParam(":proc_Cantidad", $cantidad, PDO::PARAM_INT);
+                                        $stmt->bindParam(":proc_SubTotal", $subtotal, PDO::PARAM_INT);
+                                        $stmt->bindParam(":Producto_IdProducto", $product_id, PDO::PARAM_INT);
+                                        $stmt->execute();
+                                        $r1 = $stmt->fetch();
+                                    }
+                                    catch (PDOException $pe) {
+                                        die("Ocurrio un error: " . $pe->getMessage());                                        
+                                    }
+                                    $cart_items ++;                                     
+                                }
+                                                                
+                            }else{
+                               
+                            }
+                                     
 
 
 

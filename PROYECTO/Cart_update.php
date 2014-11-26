@@ -23,13 +23,14 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
     //}
 
     //MySqli query - get details of item from db using product code
-    $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
+    $results = $mysqli->query("SELECT IdProducto,NombreProducto,CantidadProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
     $obj = $results->fetch_object();
     
     if ($results) { //we have the product info 
         
         //prepare array for the session variable
         $new_product = array(array(
+            'id'=>$obj->IdProducto,
             'name'=>$obj->NombreProducto, 
             'code'=>$product_code, 
             'qty'=>$CantidadProducto, 
@@ -44,6 +45,7 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
                 if($cart_itm["code"] == $product_code){ //the item exist in array
 
                     $product[] = array(
+                        'id'=>$cart_itm["id"],
                         'name'=>$cart_itm["name"], 
                         'code'=>$cart_itm["code"], 
                         'qty'=>$product_qty, 
@@ -52,6 +54,7 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
                 }else{
                     //item doesn't exist in the list, just retrive old info and prepare array for session var
                     $product[] = array(
+                        'id'=>$cart_itm["id"],
                         'name'=>$cart_itm["name"], 
                         'code'=>$cart_itm["code"], 
                         'qty'=>$cart_itm["qty"], 
@@ -90,6 +93,7 @@ if(isset($_GET["removep"]) && isset($_GET["return_url"]) && isset($_SESSION["pro
     {
         if($cart_itm["code"]!=$product_code){ //item does,t exist in the list
             $product[] = array(
+                'id'=>$cart_itm["id"],
                 'name'=>$cart_itm["name"], 
                 'code'=>$cart_itm["code"], 
                 'qty'=>$cart_itm["qty"], 
