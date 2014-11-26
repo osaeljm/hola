@@ -102,26 +102,28 @@ function handleEvent(event){
            break;
         case "visae":                
            document.getElementById('img').src = "images/tarjeta/visae.jpg";
-		   document.getElementById('img').style.visibility = "visible";
-		   document.getElementById('error').style.visibility="hidden";
-		   ValidCard();
+    		   document.getElementById('img').style.visibility = "visible";
+    		   document.getElementById('error').style.visibility="hidden";
+    		   ValidCard();
            break;
         default:                
             var card = document.getElementsByClassName('card');            
             for (var i = 0; i < card.length; i ++) {
             	card[i].style.visibility="hidden";
-				document.getElementById('error').style.visibility="visible";
-				InvalidCard();
+      				document.getElementById('error').style.visibility="visible";
+      				InvalidCard();
             }
     }
 }
 
 function ValidCard(){
 document.getElementById("card").className = "validcard";
+document.getElementById("send2").style.visibility="visible";
 };
 
 function InvalidCard(){
 document.getElementById("card").className = "invalidcard";
+document.getElementById("send2").style.visibility="hidden";
 };
 
 var LuhnCheck = (function () {

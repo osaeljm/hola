@@ -67,9 +67,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#"><?php 
-                                        if($_SESSION["cart_items"] > 0){                                           
-                                            echo ''.$_SESSION["cart_items"].' artículos';
+                                    (<a href="#"><?php                                        
+                                        if(!empty(filter_var($_SESSION["cart_items"],FILTER_SANITIZE_NUMBER_INT))){
+                                            if($_SESSION["cart_items"] != 'Array'){                                           
+                                                echo ''.$_SESSION["cart_items"].' artículos';
+                                            } else {
+                                                echo '0 artículos'; 
+                                            }
                                         } else {
                                             echo '0 artículos'; 
                                         }
@@ -127,7 +131,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-section">
-                               <form style="width:300px;float:left;text-align:left;margin-left:20%;" action="#" method="post" class="send-message">                                         
+                               <form style="width:300px;float:left;text-align:left;margin-left:20%;" action="fin_compra.php" method="post" class="send-message">                                         
                                     <h3>Tarjeta de crédito o débito</h3>
                                     <div id="error" class="error" style="visibility:hidden"><h3>Tarjeta inválida.</h3></div>                                                        
                                     <h4>Número de tarjeta</h4>
@@ -137,7 +141,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <input id="name" type="text"/>
                                     <h4>Fecha de expiración (MM/YYYY)</h4>  
                                     <input name="date" type="text"/><br>                                               
-                                    <div class="send2">
+                                    <div id="send2" class="send2" Disable='true'>
                                         <button name="enter" type="submit">Procesar</button>
                                     </div>
                                 </form>

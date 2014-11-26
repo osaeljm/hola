@@ -61,9 +61,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#"><?php 
-                                        if($_SESSION["cart_items"] > 0){                                           
-                                            echo ''.$_SESSION["cart_items"].' artículos';
+                                     (<a href="#"><?php                                        
+                                        if(!empty(filter_var($_SESSION["cart_items"],FILTER_SANITIZE_NUMBER_INT))){
+                                            if($_SESSION["cart_items"] != 'Array'){                                           
+                                                echo ''.$_SESSION["cart_items"].' artículos';
+                                            } else {
+                                                echo '0 artículos'; 
+                                            }
                                         } else {
                                             echo '0 artículos'; 
                                         }

@@ -30,14 +30,29 @@ USE hola;
 --
 
 CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
-  `NumeroFactura` int(11) NOT NULL,
+  `NumeroFactura` INT NOT NULL auto_increment,
   `FechaFactura` datetime NOT NULL,
-  `NumeroDetalle` int(11) NOT NULL,
-  `TotalFactura` int(11) NOT NULL,
-  `Usuario_Usuario` varchar(45) NOT NULL,   
-  PRIMARY KEY (`NumeroFactura`,`Usuario_Usuario`),
-  KEY `fk_EncabezadoFactura1_Usuario_idx` (`Usuario_Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `TotalFactura` int(11),
+  `Usuario_IdUsuario` INT NOT NULL,   
+  PRIMARY KEY (`NumeroFactura`,`Usuario_IdUsuario`),
+  KEY `fk_EncabezadoFactura1_Usuario_idx` (`Usuario_IdUsuario`)
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+-- DELIMITER //
+-- CREATE PROCEDURE `Insertar_EncabezadoFactura`
+-- (IN proc_TotalFactura int(11),
+--  IN proc_Usuario_IdUsuario int,
+--  @new_identity INT = NULL OUTPUT)
+-- BEGIN
+--   INSERT INTO `EncabezadoFactura` (`FechaFactura`,`TotalFactura`,`Usuario_IdUsuario`)
+--   VALUES (NOW(),proc_TotalFactura, proc_Usuario_IdUsuario);
+-- END //
+-- DELIMITER ;
+
+
 
 -- --------------------------------------------------------
 --
@@ -78,14 +93,14 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `CorreoUsuario` VARCHAR(50) NOT NULL,
   `NombreUsuario` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`IdUsuario`) 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE IF NOT EXISTS `Perfil`(
   `IdPerfil` INT unsigned NOT NULL auto_increment,
   `NombrePerfil` varchar(20) NOT NULL,
   PRIMARY KEY (`IdPerfil`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `Usuario` (`IdUsuario`, `LoginUsuario`, `ContrasenaUsuario`, `IdPerfil`, `CorreoUsuario`, `NombreUsuario`) VALUES
 (1, 'cesar', '123', 1, 'ejemplo@mail.com', 'C&eacute;sar Retana J'),
@@ -102,6 +117,8 @@ INSERT INTO `Perfil` (`IdPerfil`, `NombrePerfil`) VALUES
 --
 -- Estructura de tabla para la tabla `Producto`
 --
+USE hola;
+
 
 CREATE TABLE IF NOT EXISTS `Producto` (
   `IdProducto` int(11) NOT NULL AUTO_INCREMENT, 
@@ -118,6 +135,7 @@ CREATE TABLE IF NOT EXISTS `Producto` (
 INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
 (1, 'abc123', 'ASUS D450CA', 11, 'Una Notebook de precio amigable y extra-confiable diseñada para PYMES\r\n\r\nWindows 8\r\nCon Intel Inside® y Procesador Intel® Core™ i3.\r\nCon la tecnología exclusiva ASUS Super Hybrid Engine II con suspensión de hasta dos semanas y respaldo automático ', 'computadora.png', 340000),
 (2, 'xyz123', 'Galaxy S5 G900F', 10, 'Galaxy S5 es un smartphone pensado para ofrecer la más completa experiencia de uso que puedas imaginar, con soluciones como su pulsómetro que te ayudan a mantenerte en forma, y un atractivo diseño resistente al agua y al polvo.\r\n\r\nNo te preocupes si te', 'celular.png', 410000);
+
 
 
 -- CREATE TABLE IF NOT EXISTS `Producto` (
@@ -142,38 +160,7 @@ INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `Canti
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
+--
+-- PROCEDIMIENTOS ALMACENADOS
+--
 
-
-
-
-
-
-
-
-
-
--- CREATE TABLE IF NOT EXISTS `users` (
---   `idUsers` INT unsigned NOT NULL auto_increment,
---   `loginUsers` VARCHAR(15) NOT NULL,
---   `passUsers` VARCHAR(10) NOT NULL,
---   `idprofile`INT NOT NULL,
---   `emailUser` VARCHAR(50) NOT NULL,
---   `nameUser` VARCHAR(100) NOT NULL,
---   PRIMARY KEY (`idUsers`) 
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
--- CREATE TABLE IF NOT EXISTS `profiles`(
---   `idProfile` INT unsigned NOT NULL auto_increment,
---   `nameProfi` varchar(20) NOT NULL,
---   PRIMARY KEY (`idProfile`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- INSERT INTO `users` (`idUsers`, `loginUsers`, `passUsers`, `idprofile`, `emailUser`, `nameUser`) VALUES
--- (1, 'cesar', '123', 1, 'ejemplo@mail.com', 'Jose Fonseca Prueba'),
--- (2, 'osael', '123', 1, 'ejemplo@mail.com', 'Osael Castro Prueba');
-
-
--- INSERT INTO `profiles` (`idProfile`, `nameProfi`) VALUES
--- (1, 'Adminitrador'),
--- (2, 'Cliente');

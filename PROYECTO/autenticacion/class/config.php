@@ -1,5 +1,5 @@
 <?php
-
+//Conexion para autenticacion
 class Connection{
 	
 	//variables para los datos de la base de datos
@@ -31,7 +31,7 @@ class Connection{
 
 //Conexion para carrito
 
-$currency = '$'; 
+$currency = '₡'; 
 $db_username = 'root';
 $db_password = '';
 $db_name = 'hola';

@@ -1,7 +1,13 @@
 <?php
 session_start();
-include_once("autenticacion/class/config.php"); //include config file
+include_once("autenticacion/class/config.php");
 $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
+
+if(isset($_SESSION["usuario"])){
+ $idusuario =  $_SESSION["idusuario"];
+} else{
+   header('Location:iniciar_sesion.php?error=3');
+}
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -44,7 +50,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="home-account">
-                                    <?php
+                                     <?php
                                     if(isset($_SESSION["usuario"])){
                                         echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
                                         echo '<a href="#"> Perfil</a>';
@@ -58,12 +64,16 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">                                    
-                                    <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
+                                    <a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    (<a href="#"><?php 
-                                        if(isset($_SESSION["cart_items"])){                                           
-                                            echo ''.$_SESSION["cart_items"].' artículos';
+                                    (<a href="#"><?php                                        
+                                        if(!empty(filter_var($_SESSION["cart_items"],FILTER_SANITIZE_NUMBER_INT))){
+                                            if($_SESSION["cart_items"] != 'Array'){                                           
+                                                echo ''.$_SESSION["cart_items"].' artículos';
+                                            } else {
+                                                echo '0 artículos'; 
+                                            }
                                         } else {
                                             echo '0 artículos'; 
                                         }
@@ -104,134 +114,82 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </header>
 
-
             <div id="heading">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                           
+                            <div class="heading-content">
+                                <h2>¡Gracias por su compra!</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>    
 
-
-            <div id="products-post">
+            <div id="our-team">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="product-heading">
-                                <h2>Hungry ?</h2>
-                                <img src="images/under-heading.png" alt="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="filters col-md-12 col-xs-12">
-                            <ul id="filters" class="clearfix">
-                                <li><span class="filter" data-filter="all">All</span></li>
-                                <li><span class="filter" data-filter=".ginger">Ginger</span></li>
-                                <li><span class="filter" data-filter=".pizza">Pizza</span></li>
-                                <li><span class="filter" data-filter=".pasta">Pasta</span></li>
-                                <li><span class="filter" data-filter=".drink">Drink</span></li>
-                                <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
-                            </ul>
-                        </div>
-                    </div>
+                            <div class="heading-section">
+                               
 
-                    <div class="row" id="Container"> 
+                            <?php
+
+                           
 
 
 
-                        <?php
+                            // try {  
+                            //   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            //   $dbh->beginTransaction();
+                            //   $dbh->exec("insert into staff (id, first, last) values (23, 'Joe', 'Bloggs')");
+                            //   $dbh->exec("insert into salarychange (id, amount, changedate) 
+                            //       values (23, 50000, NOW())");
+                            //   $dbh->commit();
+                              
+                            // } catch (Exception $e) {
+                            //   $dbh->rollBack();
+                            //   echo "Failed: " . $e->getMessage();
+                            // }
 
 
 
-                        //current URL of the Page. cart_update.php redirects back to this URL
-                      
-                            
-                           $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
-                            if ($results) { 
-                                //output results from database
-                                while($obj = $results->fetch_object())
-                                { 
-                                    
-                        ?>                      
-                                                              
-                                    <form method="post" action="cart_update.php">
-                                        <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
-                                            <div class="portfolio-wrapper">                
-                                                <div class="portfolio-thumb">
-                                                    <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
-                                                    <div class="hover">
-                                                        <div class="hover-iner">
-                                                            <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
-                                                            <span><?php echo $obj->NombreProducto ?> </span>
-                                                            <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
-                                                        </div>
-                                                    </div>                                                    
-                                                </div>                                                
-                                            </div>    
-                                            <div class="label-text">
-                                                <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
-                                                <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
-                                                <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
-                                                <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
-                                                <input type="hidden" name="type" value="add" />
-                                                <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
-                                            </div>      
-                                        </div>
-                                    </form>
 
-
-                        <?php   
-                                }               
+                            try { 
+                                $total = 0;  
+                                $idusuari = 1;
+                                $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
+                                $sql = "call Insertar_EncabezadoFactura(:proc_TotalFactura,:proc_Usuario_IdUsuario)";
+                                $stmt = $conn->prepare($sql); 
+                                $stmt->bindParam(":proc_TotalFactura", $total, PDO::PARAM_INT);
+                                $stmt->bindParam(":proc_Usuario_IdUsuario", $idusuari, PDO::PARAM_INT);
+                                $stmt->execute();
                             }
-                        ?>
+                            catch (PDOException $pe) {
+                                die("Ocurrio un error: " . $pe->getMessage());
+                                
+                            }
+
+
+                             
+
+                     
 
 
 
+                            ?>
 
 
-                    <!--      <div class="col-md-3 col-sm-6 mix portfolio-item ginger">       
-                            <div class="portfolio-wrapper">                
-                                <div class="portfolio-thumb">
-                                    <img src="images/product2.jpg" alt="" />
-                                    <div class="hover">
-                                        <div class="hover-iner">
-                                            <a class="fancybox" href="images/product2_big.jpg"><img src="images/open-icon.png" alt="" /></a>
-                                            <span>Ginger</span>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="label-text">
-                                    <h3><a href="single-post.html">Ginger Tea</a></h3>
-                                    <span class="text-category">$24.00</span>
-                                </div>
-                            </div>          
-                        </div> -->
-                       
 
-                       </div>
-                    <div class="pagination">
-                        <div class="row">   
-                            <div class="col-md-12">
-                                <ul>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">>></a></li>
-                                </ul>
+                                 
                             </div>
                         </div>
-                    </div>     
+                    </div>
                 </div>
             </div>
 
-
-
-			<footer>
+            <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
                     </div>  -->                    
@@ -276,16 +234,74 @@ http://www.templatemo.com/preview/templatemo_417_grill
         <script src="js/vendor/jquery.gmap3.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
-        <script>
-        window.onload=function(){
-        var pos=window.name || 0;
-        window.scrollTo(0,pos);
-        }
-        window.onunload=function(){
-        window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
-        }
-        </script>
+        <script src="js/validacard.js"></script>
 
     </body>
 </html>
+
+
+
+ <?php
+
+                            //  if(isset($_SESSION["products"]))
+                            // {
+                            //     $total = 0;
+                            //     echo '<form method="post" action="PAYMENT-GATEWAY">';
+                            //     echo '<table >'; //class="table" id="table"
+                                
+                            //     $cart_items = 0;
+                               
+                            //     foreach ($_SESSION["products"] as $cart_itm)
+                            //     {
+                            //        $product_code = $cart_itm["code"];
+                            //        $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
+                            //        $obj = $results->fetch_object();
+                            //         echo '<tr >';
+                            //         echo '<td class="cart-itm">';
+                            //         echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';
+                            //         echo '<div class="p-price">Precio: '.$currency.$obj->PrecioProducto.'</div>';                                   
+                            //         echo '<div class="product-info">';                                 
+                            //         echo 'Cantidad: <select>
+                            //               <option value="1"selected>1</option>
+                            //               <option value="2">2</option>
+                            //               <option value="3">3</option>
+                            //               <option value="4">4</option>
+                            //               <option value="5">5</option>
+                            //               <option value="6">6</option>
+                            //               <option value="7">7</option>
+                            //               <option value="8">8</option>
+                            //               <option value="9">9</option>
+                            //               <option value="10">10</option>
+                            //             </select>';
+                            //         echo '<div>'.$obj->DescripcionProducto.'</div>';
+                            //         echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">Eliminar del carrito</a></span>';
+                            //         echo '</div>';
+                            //         echo '</td>';
+                            //         echo '</tr >';
+                            //         $subtotal = ($cart_itm["price"]*1); //$cart_itm["qty"]
+                            //         $total = ($total + $subtotal);
+
+                            //         echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';
+                            //         echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
+                            //         echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
+                            //         echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+                            //         $cart_items ++;
+                                     
+                            //     }
+                            //     echo $cart_items ;
+                            //     $_SESSION["cart_items"] = $cart_items;
+
+                            //     echo '</table>';
+                            //     echo '<span class="check-out-txt">';
+                            //     echo '<strong>Total : '.$currency.$total.'</strong>  ';
+                            //     echo '</span>';
+                            //     echo '</form>';
+                                
+                            // }else{
+                            //     echo 'Your Cart is empty';
+                            // }
+                            // echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
+                            // echo '<span class="check-out-txt"><a href="#">COMPRAR</a></span>';
+
+
+                        ?>

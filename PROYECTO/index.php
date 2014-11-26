@@ -56,9 +56,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                    <a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                     (<a href="#"><?php 
-                                        if(isset($_SESSION["cart_items"])){                                           
-                                            echo ''.$_SESSION["cart_items"].' artículos';
+                                     (<a href="#"><?php                                        
+                                        if(!empty(filter_var($_SESSION["cart_items"],FILTER_SANITIZE_NUMBER_INT))){
+                                            if($_SESSION["cart_items"] != 'Array'){                                           
+                                                echo ''.$_SESSION["cart_items"].' artículos';
+                                            } else {
+                                                echo '0 artículos'; 
+                                            }
                                         } else {
                                             echo '0 artículos'; 
                                         }
@@ -169,14 +173,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </div>
                 </div> -->
             <!--/div>-->
-
-            <?php
-            $str = 'apple';
-
-            if (md5($str) === '1f3870be274f6c49b3e31a0c6728957f') {
-                echo "Would you like a green or red apple?";
-            }
-            ?>
+           
             
             <div id="latest-blog">
                 <div class="container">
