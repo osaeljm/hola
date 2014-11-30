@@ -121,17 +121,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 <?php
                                                 // Evitar los warnings the variables no definidas!!!
                                                 $err = isset($_GET['error']) ? $_GET['error'] : null ;
-
-                                                ?>
-
-                                                <?php if($err==1){
-                                                    echo "Usuario o Contraseña Erróneos <br />";
+                                                
+                                                if($err==1){
+                                                    echo "<p class='error-login'>Usuario o contraseña erróneos.</p>";
                                                 }
                                                 if($err==2){
-                                                    echo "Debe iniciar sesion para poder acceder el sitio. <br />";
+                                                    echo ".<p class='error-login'>Debe iniciar sesion para poder acceder el sitio.</p>";
                                                 }
                                                 if($err==3){
-                                                    echo "Debe iniciar sesion antes de comprar. <br />";
+                                                    echo "<p class='error-login'>Debe iniciar sesion antes de comprar</p>.";
                                                 }
                                                 ?>
 
@@ -173,7 +171,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="social-bottom">                                    
                                     <div class="more-info">
                                         <ul>
-                                            <li><h4>Para obtener más información:</h4></li>                                        
+                                            <li><h5>Para obtener más información:</h5></li>                                        
                                         </ul>
                                     </div>
                                 </div>
