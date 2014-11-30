@@ -42,7 +42,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <?php
                                     session_start();
                                     if(isset($_SESSION["usuario"])){
-                                        echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
+                                         echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
                                         echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
@@ -54,20 +54,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">
-                                   <span class="check-out-txt"><a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a></span>
+                                   <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>
                                     
                                     <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                     (<a href="#"><?php                                        
-                                        if(!empty(filter_var($_SESSION["cart_items"],FILTER_SANITIZE_NUMBER_INT))){
-                                            if($_SESSION["cart_items"] != 'Array'){                                           
-                                                echo ''.$_SESSION["cart_items"].' artículos';
-                                            } else {
-                                                echo '0 artículos'; 
-                                            }
-                                        } else {
-                                            echo '0 artículos'; 
-                                        }
-                                    ?></a>)
+                                   
                                 </div>
                             </div>
                         </div>
@@ -105,12 +95,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
             </header>
 
 
-            <div id="heading">
+            <div id="heading3">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                <h2></h2>
+                                 <h2>¿Quiénes somos?</h2>
                             </div>
                         </div>
                     </div>
@@ -123,7 +113,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-section">
-                                <h2>¿Quiénes somos?</h2>
+                               
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
@@ -195,13 +185,20 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="social-bottom">
                                     <div class="more-info">
                                         <ul>
-                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
-                                            <li><i class="fa fa-envelope"></i><a>hola@holacupcakes.com</a></li>
+                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>                                           
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div> 
+                            <div class="col-md-3">
+                                <div class="social-bottom">
+                                    <div class="more-info">
+                                        <ul>
+                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                           
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>

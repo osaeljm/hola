@@ -10,23 +10,18 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
 -- Base de datos: `hola`
+
 CREATE DATABASE IF NOT EXISTS hola;
 
 USE hola;
 --
 
--- --------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `EncabezadoFactura`
+-- TABLA `EncabezadoFactura`
 --
 
 CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
@@ -39,14 +34,9 @@ CREATE TABLE IF NOT EXISTS `EncabezadoFactura` (
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-
-
-
-
-
--- --------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------
 --
--- Estructura de tabla para la tabla `FacturaDetalle`
+-- TABLA `FacturaDetalle`
 --
 
 CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
@@ -60,9 +50,9 @@ CREATE TABLE IF NOT EXISTS `FacturaDetalle` (
   KEY `fk_FacturaDetalle_Producto1_idx` (`Producto_IdProducto`) 
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+-- ----------------------------------------------------------------------------------------------------------------
 --
--- Estructura de tabla para la tabla `Usuario`
+-- TABLA `Usuario` Y `Perfil`
 --
 
 -- CREATE TABLE IF NOT EXISTS `Usuario` (
@@ -92,6 +82,11 @@ CREATE TABLE IF NOT EXISTS `Perfil`(
   PRIMARY KEY (`IdPerfil`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- ----------------------------------------------------------------------------------------------------------------
+--
+-- INSERTS TABLA `Usuario` Y `Perfil`
+--
+--
 INSERT INTO `Usuario` (`IdUsuario`, `LoginUsuario`, `ContrasenaUsuario`, `IdPerfil`, `CorreoUsuario`, `NombreUsuario`) VALUES
 (1, 'cesar', '123', 1, 'ejemplo@mail.com', 'C&eacute;sar Retana J'),
 (2, 'osael', '123', 1, 'ejemplo@mail.com', 'Osael Jim&eacute;nez M');
@@ -102,13 +97,10 @@ INSERT INTO `Perfil` (`IdPerfil`, `NombrePerfil`) VALUES
 (2, 'Cliente');
 
 
--- --------------------------------------------------------
-
+-- ----------------------------------------------------------------------------------------------------------------
 --
--- Estructura de tabla para la tabla `Producto`
+-- TABLA `Producto`
 --
-USE hola;
-
 
 CREATE TABLE IF NOT EXISTS `Producto` (
   `IdProducto` int(11) NOT NULL AUTO_INCREMENT, 
@@ -121,15 +113,19 @@ CREATE TABLE IF NOT EXISTS `Producto` (
   PRIMARY KEY (`IdProducto`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
+-- ----------------------------------------------------------------------------------------------------------------
+--
+-- INSERTS TABLA `Producto`
+--
+--
 
 INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
 (1, 'abc123', 'ASUS D450CA', 11, 'Una Notebook de precio amigable y extra-confiable diseñada para PYMES\r\n\r\nWindows 8\r\nCon Intel Inside® y Procesador Intel® Core™ i3.\r\nCon la tecnología exclusiva ASUS Super Hybrid Engine II con suspensión de hasta dos semanas y respaldo automático ', 'computadora.png', 340000),
 (2, 'xyz123', 'Galaxy S5 G900F', 10, 'Galaxy S5 es un smartphone pensado para ofrecer la más completa experiencia de uso que puedas imaginar, con soluciones como su pulsómetro que te ayudan a mantenerte en forma, y un atractivo diseño resistente al agua y al polvo.\r\n\r\nNo te preocupes si te', 'celular.png', 410000);
 
-
+-- ----------------------------------------------------------------------------------------------------------------
 --
---
--- PROCEDIMIENTOS ALMACENADOS
+-- PROCEDIMIENTOS ALMACENADOS PARA COMPRAR PRODUCTOS
 --
 --
 
@@ -155,3 +151,58 @@ BEGIN
   VALUES (proc_EncabezadoFactura_NumeroEncabezadoFactura,proc_Cantidad, proc_SubTotal,proc_Producto_IdProducto);
 END //
 DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Consultar_CantidadProducto`
+(IN proc_IdProducto int(11))                                     
+BEGIN
+  
+  SELECT `CantidadProducto` FROM  `Producto` 
+  WHERE `IdProducto` = proc_IdProducto;
+  
+  
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Modificar_CantidadProducto`
+(IN proc_IdProducto int(11), IN proc_Cantidad int(11))                                     
+BEGIN
+
+    UPDATE `Producto` SET CantidadProducto = proc_Cantidad
+    WHERE `IdProducto` = proc_IdProducto;
+
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Consultar_TotalFacturaDetalle`
+(IN proc_EncabezadoFactura_NumeroEncabezadoFactura int(11))                                     
+BEGIN
+
+    SELECT SUM(`SubTotal`) SubTotal FROM `FacturaDetalle`
+    WHERE `EncabezadoFactura_NumeroEncabezadoFactura` = proc_EncabezadoFactura_NumeroEncabezadoFactura;
+
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Modificar_TotalEncabezadoFactura`
+(IN proc_NumeroFactura int(11),IN proc_TotalFactura int(11))                                     
+BEGIN
+
+    UPDATE `EncabezadoFactura` SET TotalFactura = proc_TotalFactura
+    WHERE `NumeroFactura` = proc_NumeroFactura;
+
+END //
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------
+--
+-- ?
+--
+--

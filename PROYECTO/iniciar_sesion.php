@@ -81,12 +81,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-3">
-                               <!--  <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -94,27 +88,25 @@ http://www.templatemo.com/preview/templatemo_417_grill
             </header>
 
 
-          <!--   <div id="heading">
+          <div id="heading4">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                <h2>Contact Us</h2>
-                                <span>Home / <a href="contact-us.html">Contact Us</a></span>
+                                 <h2>Inicio de sesión</h2>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
 
             <div id="product-post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="heading-section">
-                                <h2>Inicio de sesión</h2>
-                                <!-- <img src="images/under-heading.png" alt="" > -->
+                            <div class="heading-section">                                
+                                <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
                     </div>
@@ -143,7 +135,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
                                                 ?>
 
-                                                <form style="width:700px;margin-left:20%;" action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                <form  action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
                                                     <div class="row">
                                                         <div class="name col-md-4">
                                                             <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
@@ -161,22 +153,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading-section">
-                                <h2>Find Us On Map</h2>
-                                <img src="images/under-heading.png" alt="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="googleMap" style="height:420px;"></div>
-                        </div>
-                    </div>    -->  
-                </div>
             </div>
-
 
             <footer>
                 <div class="container">
@@ -193,9 +170,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="social-bottom">
+                                <div class="social-bottom">                                    
                                     <div class="more-info">
-                                        <h4 class="footer-title">Para obtener más información:</h4>
+                                        <ul>
+                                            <li><h4>Para obtener más información:</h4></li>                                        
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
@@ -204,12 +183,20 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <div class="more-info">
                                         <ul>
                                             <li><i class="fa fa-phone"></i>(506)2431-46-48</li>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
-                                            <li><i class="fa fa-envelope"></i><a>hola@holacupcakes.com</a></li>
+                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>                                           
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div> 
+                            <div class="col-md-3">
+                                <div class="social-bottom">
+                                    <div class="more-info">
+                                        <ul>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                           
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>

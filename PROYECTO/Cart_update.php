@@ -6,7 +6,8 @@ include_once("autenticacion/class/config.php"); //include config file
 if(isset($_GET["emptycart"]) && $_GET["emptycart"]==1)
 {
     $return_url = base64_decode($_GET["return_url"]); //return url
-    session_destroy();
+    // session_destroy();
+    unset($_SESSION['products']);
     header('Location:'.$return_url);
 }
 
@@ -106,5 +107,5 @@ if(isset($_GET["removep"]) && isset($_GET["return_url"]) && isset($_SESSION["pro
     }
     
     //redirect back to original page
-    header('Location:'.$return_url);
+     header('Location:'.$return_url);
 }

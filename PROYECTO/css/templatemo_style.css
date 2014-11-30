@@ -201,16 +201,42 @@ p {
 /*-- Heading --*/
 
 #heading {
-  background-image: url(../images/canastilla4.jpg);
+  background-image: url(../images/slide1.jpg);
   height: 140px;
 }
 
+#heading1 {
+  background-image: url(../images/slide2.jpg);
+  height: 140px;
+}
 #heading2 {
-  background-image: url(../images/cumple5.jpg);
+  background-image: url(../images/slide3.jpg);
+  height: 140px;
+}
+#heading3 {
+  background-image: url(../images/slide4.jpg);
+  height: 140px;
+}
+#heading4 {
+  background-color:#333333;
+  border-bottom: 4px solid #29BEE7;
+  height: 125px;
+}
+#heading5 {
+  background-image: url(../images/slide5.jpg);
   height: 140px;
 }
 
 #heading h2 {
+   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#heading1 h2 {
+   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 36px;
   font-weight: 700;
   color: #fff;
@@ -218,6 +244,30 @@ p {
 }
 
 #heading2 h2 {
+   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#heading3 h2 {
+   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+#heading4 h2 {
+   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+#heading5 h2 {
+   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 36px;
   font-weight: 700;
   color: #fff;
@@ -553,9 +603,42 @@ p {
   text-align: center;
 }
 
-.pagination a:hover {
+.btn-carrito a:hover {
   background-color: #29BEE7;
 }
+
+
+.btn-carrito {
+  margin-top: 60px;
+}
+
+/*.btn-carrito ul {
+  padding: 0;
+  margin: 0;
+}*/
+.btn-carrito li {
+  list-style: none;
+  display: inline-block;
+}
+
+.btn-carrito a {
+  background-color: #444;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+
+.btn-carrito a:hover {
+  background-color: #29BEE7;
+  color: #444;
+}
+
+
 
 a:hover {
   color: #29BEE7;
@@ -675,14 +758,14 @@ a:hover {
 }
 
 input, textarea {
+  font-family: 'Roboto', sans-serif;
   padding: 10px;
   border: 1px solid #e2e2e2;
   width: 100%;
   margin-top: 25px;
   font-size: 13px;
-  font-style: italic;
   font-weight: 300;
-  color: #aaa;
+  color: #000;
   outline: none; 
 }
 
@@ -706,7 +789,7 @@ textarea {
   height: 35px;
   line-height: 30px;
   text-align: center;
-  background-color: #29BEE7; 
+  background-color: #444; 
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -715,6 +798,10 @@ textarea {
   border: 0;
   outline: none;
 }
+.send button:hover {
+  background-color: #29BEE7;
+  color: #444;
+}
 .send2 button {
   width: 110px;
   color: #fff;
@@ -722,7 +809,7 @@ textarea {
   height: 35px;
   line-height: 30px;
   text-align: center;
-  background-color: #29BEE7; 
+  background-color: #444; 
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -730,6 +817,10 @@ textarea {
   text-transform: uppercase;
   border: 0;
   outline: none;
+}
+.send2 button:hover {
+  background-color: #29BEE7;
+  color: #444;
 }
 
 .leave input {
@@ -783,7 +874,7 @@ textarea {
   list-style: none;
   margin: 10px 0;
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
-  font-size: 13px;
+/*  font-size: 14px;*/
   color: #666;
 }
 
@@ -1096,7 +1187,7 @@ footer {
   font-size: 22px;
   font-weight: 600;
   color: #333;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   float: left;
   margin-right: 26px;
 }
@@ -1178,7 +1269,7 @@ footer {
   font-size: 16px;
   font-weight: 700;
   color: #333;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   padding-bottom: 20px;
 }
 
