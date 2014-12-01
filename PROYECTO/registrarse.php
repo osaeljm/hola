@@ -124,17 +124,41 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 $err = isset($_GET['error']) ? $_GET['error'] : null ;
                                                 
                                                 if($err==1){
-                                                    echo "<p class='error-login'>Usuario o contraseña erróneos.</p>";
+                                                    echo "<p class='error-login'>Error al crear usuario.</p>";
                                                 }
                                                 if($err==2){
-                                                    echo ".<p class='error-login'>Debe iniciar sesion para poder acceder el sitio.</p>";
+                                                    echo ".<p class=''>Usuario creado correctamente, inicie sesión para realizar una compra.</p>";
                                                 }
                                                 if($err==3){
-                                                    echo "<p class='error-login'>Debe iniciar sesion antes de comprar</p>.";
+                                                    echo "<p class='error-login'>Debe digitar su nombre completo.</p>";
+                                                }
+                                                if($err==4){
+                                                    echo "<p class='error-login'>El nombre completo es muy extenso.</p>";
+                                                }
+                                                if($err==5){
+                                                    echo "<p class='error-login'>Debe digitar el correo electrónico.</p>";
+                                                }
+                                                if($err==6){
+                                                    echo "<p class='error-login'>Correo electrónico inválido.</p>";
+                                                }
+                                                if($err==7){
+                                                    echo "<p class='error-login'>Debe digitar su nombre completo.</p>";
+                                                }
+                                                if($err==8){
+                                                    echo "<p class='error-login'>El nombre de usuario no debe ser mayor a 15 caracteres.</p>";
+                                                }
+                                                if($err==9){
+                                                    echo "<p class='error-login'>Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.</p>";
+                                                }
+                                                if($err==10){
+                                                    echo "<p class='error-login'>Debe digitar su contraseña.</p>";
+                                                }
+                                                if($err==11){
+                                                    echo "<p class='error-login'>El nombre de usuario no debe ser mayor a 10 caracteres.</p>";
                                                 }
                                                 ?>
 
-                                                <form  action="autenticacion/crear_usuario.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                <form  action="crear_usuario.php" method="post" class="send-message" onsubmit="">
                                                     <div class="row">
 
                                                         <div class="name col-md-5">
