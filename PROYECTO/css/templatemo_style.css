@@ -18,7 +18,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 /*-- Tabla --*/
 
 #Container form{
-  width: 700px; 
+  /*width: 700px; */
 }
 #Container table tr{
   border-top: 1px solid black;
@@ -207,28 +207,35 @@ p {
 #heading {
   background-image: url(../images/slide1.jpg);
   height: 140px;
+  background-repeat: no-repeat;
+
 }
 
 #heading1 {
   background-image: url(../images/slide2.jpg);
   height: 140px;
+  background-repeat: no-repeat;
 }
 #heading2 {
   background-image: url(../images/slide3.jpg);
   height: 140px;
+  background-repeat: no-repeat;
 }
 #heading3 {
   background-image: url(../images/slide4.jpg);
   height: 140px;
+  background-repeat: no-repeat;
 }
 #heading4 {
   background-color:#333333;
   border-bottom: 4px solid #29BEE7;
   height: 125px;
+  background-repeat: no-repeat;
 }
 #heading5 {
   background-image: url(../images/slide5.jpg);
   height: 140px;
+  background-repeat: no-repeat;
 }
 
 #heading h2 {
@@ -649,9 +656,6 @@ a:hover {
 }
 /*- End Products --*/
 
-/*-- Table --*/
-
-/*-- End Table --*/
 
 
 /*-- Single Post --*/
@@ -1176,9 +1180,13 @@ textarea {
 /*--Footer--*/
 
 footer {
-  background-color: #f3f3f3;
+  background-color: #444;
   border-top: 4px solid #29BEE7;
-  margin-top: 120px;
+  margin-top: 50px;
+}
+
+footer p {
+  color: #fff;
 }
 
 .social-bottom {
@@ -1190,7 +1198,7 @@ footer {
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: 600;
-  color: #333;
+  color: #fff;
   /*text-transform: uppercase;*/
   float: left;
   margin-right: 26px;
@@ -1207,7 +1215,7 @@ footer {
 }
 
 .social-bottom a {
-  background-color: #444;
+  background-color: #29BEE7;
   font-size: 18px;
   width: 36px;
   height: 36px;
@@ -1217,8 +1225,8 @@ footer {
 }
 
 .social-bottom a:hover {
-  background-color: #29BEE7;
-  color: #444;
+  background-color: #425F9C;
+  color: #fff;
 }
 
 .subscribe-form {
@@ -1230,7 +1238,7 @@ footer {
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 22px;
   font-weight: 600;
-  color: #333;
+  color: #fff;
   text-transform: uppercase;
   float: left;
   margin-right: 26px;
@@ -1272,8 +1280,7 @@ footer {
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 700;
-  color: #333;
-  /*text-transform: uppercase;*/
+  color: #fff;
   padding-bottom: 20px;
 }
 
@@ -1290,12 +1297,12 @@ footer {
 .shop-list i {
   font-size: 16px;
   margin-right: 5px;
-  color: #29BEE7;
+  color: #fff;
 }
 
 .shop-list a {
   text-transform: uppercase;
-  color: #888;
+  color: #fff;
   font-size: 13px;
 }
 
@@ -1328,7 +1335,7 @@ footer {
 }
 
 .recent-post-info a {
-  color: #333;
+  color: #fff;
 }
 
 .recent-post-info a:hover {
@@ -1338,11 +1345,12 @@ footer {
 .recent-post-info span {
   font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
   font-size: 13px;
-  color: #29BEE7;
+  color: #fff;
 }
 
 .more-info p {
   padding-bottom: 20px;
+  color:#fff;
 }
 
 .more-info ul {
@@ -1355,13 +1363,21 @@ footer {
   margin: 10px 0;
   font-family: 'Roboto', sans-serif;
   font-size: 13px;
-  color: #666;
+  color: #fff;
+  width: 400px;
 }
 
 .more-info i {
   color: #29BEE7;
   margin-right: 10px;
   font-size: 18px;
+}
+.more-info table {
+  color: #fff;
+  font-size: 18px;
+}
+.more-info table tr td{
+  padding: 0 20px 0 0;
 }
 
 .bottom-footer {

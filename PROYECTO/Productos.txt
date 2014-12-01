@@ -1,0 +1,120 @@
+*********** PRODUCTOS ************
+
+T&eacute;s de canastilla:
+
+Nombre: Queque de cubos
+Descripción: Hermoso queque para te de canastilla, para hombre con su nombre deletreado en cubos con decoraci&oacute;n de patos.
+Imagen: images/canastillacubos.jpg
+Precio: 16000
+
+Nombre: Bol de dulces
+Descripción: Deliciosa variedad de dulces en diferentes formas de bol, cada tipo de dulce se puede elegir a combinaci&oacute;n y preferencia.
+Imagen: images/canastilla3.jpg
+Precio: 2400
+
+-----------------------------------------------
+
+Cumpleaños
+
+Nombre: 50 a&ntilde;os
+Descripción: Hermoso queque para cumplea&ntilde;os de 50 a&ntilde;os, para hombre con su actividad favorita.
+Imagen: images/cumple2.jpg
+Precio: 20000
+
+Nombre: Cumplea&ntilde;os infantil
+Descripción: Hermoso queque para cumplea&ntilde;os infantil, para hombre o mujer.
+Imagen: images/cumple3.jpg
+Precio: 24000
+
+
+
+--------------------------------------------
+
+Fiestas
+
+Nombre: Fiesta Hawaiana
+Descripción:
+Imagen: images/fiesta2.jpg
+Precio: 15000
+
+Nombre: Fiesta para mujer
+Descripción: Hermoso queque con el tema preferido para esa mujer especial
+Imagen: images/fiesta.jpg
+Precio: 20000
+
+--------------------------------------------------
+
+
+Mesas de dulces
+
+Nombre: Mesa de dulces para cumplea&ntilde;os de niña
+Descripción: Hermosa mesa de dulces para cumplea&ntilde;os de ni&ntilde;a, color y tema del queque a gusto.
+Imagen: images/mesadulce2.jpg
+Precio: 25000
+
+Nombre: Mesa de dulces para eventos
+Descripción: Hermosa mesa de dulces para diferentes eventos.
+Imagen: images/mesadulce3.jpg
+Precio: 30000
+
+----------------------------------------------------
+
+Queques
+
+Nombre: Queque de mar
+Descripción: Hermoso queque con tema de mar.
+Imagen: images/queque.jpg
+Precio: 10000
+
+Nombre: Queque Simpson
+Descripción: Delicioso queque con tema de los Simpson adornado con cupcakes.
+Imagen: images/queque3.jpg
+Precio: 10000
+
+----------------------------------------------------
+
+Cupcakes
+
+Nombre: Cupcake sencillo
+Descripción: Delicioso cupcake de diferentes sabores.
+Imagen: images/cupcake2.jpg
+Precio: 5000
+
+Nombre: Cupcakes decorado
+Descripción: Delicioso y hermoso cupcakes con decoraci&oacute;n personalizada.
+Imagen: images/cupcake3.jpg
+Precio: 10000
+
+Nombre: Cupcakes navide&ntilde;os
+Descripción: Hermosos y deliciosos cupcakes con el tema navide&ntilde;o.
+Imagen: images/cupcakenavideño.jpg
+Precio: 20000
+
+use hola;
+
+CREATE TABLE IF NOT EXISTS `Producto` (
+  `IdProducto` int(11) NOT NULL AUTO_INCREMENT, 
+  `CodigoProducto` varchar(45) NOT NULL,
+  `NombreProducto` varchar(45) NOT NULL,
+  `CantidadProducto` int(11) NOT NULL, 
+  `DescripcionProducto` tinytext NOT NULL, 
+  `ImagenProducto` tinytext NOT NULL, 
+  `PrecioProducto` int(11) NOT NULL,
+  PRIMARY KEY (`IdProducto`)
+) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
+
+
+INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
+(1, 'abc001', 'Queque de cubos', 30, 'Hermoso queque para te de canastilla, para hombre con su nombre deletreado en cubos con decoraci&oacute;n de patos.', 'canastillacubos.jpg', 16000),
+(2, 'abc002', 'Bol de dulces', 30, 'Deliciosa variedad de dulces en diferentes formas de bol, cada tipo de dulce se puede elegir a combinaci&oacute;n y preferencia.', 'canastilla3.jpg', 2400),
+(3, 'abc003', '50 a&ntilde;os', 30, 'Hermoso queque para cumplea&ntilde;os de 50 a&ntilde;os, para hombre con su actividad favorita.', 'cumple2.jpg', 20000),
+(4, 'abc004', 'Cumplea&ntilde;os infantil', 30, 'Hermoso queque para cumplea&ntilde;os infantil, para hombre o mujer.', 'cumple3.jpg', 24000),
+(5, 'abc005', 'Fiesta Hawaiana', 30, 'Falta...', 'fiesta2.jpg', 15000),
+(6, 'abc006', 'Fiesta para mujer', 30, 'Hermoso queque con el tema preferido para esa mujer especial.', 'fiesta.jpg', 20000),
+(7, 'abc007', 'Mesa de dulces para cumplea&ntilde;os de ni&ntilde;a', 30, 'Hermosa mesa de dulces para cumplea&ntilde;os de ni&ntilde;a, color y tema del queque a gusto.', 'mesadulce2.jpg', 25000),
+(8, 'abc008', 'Mesa de dulces para eventos', 30, 'Hermosa mesa de dulces para diferentes eventos.', 'mesadulce3.jpg', 30000),
+(9, 'abc009', 'Queque de mar', 30, 'Hermoso queque con tema de mar.', 'queque.jpg', 10000),
+(10, 'abc010', 'Queque Simpson', 30, 'Delicioso queque con tema de los Simpson adornado con cupcakes.', 'queque3.jpg', 10000),
+(11, 'abc011', 'Cupcake sencillo', 30, 'Deliciosos cupcakes de diferentes sabores.', 'cupcake2.jpg', 5000),
+(12, 'abc012', 'Cupcake decorado', 30, 'Delicioso y hermoso cupcakes con decoraci&oacute;n personalizada.', 'cupcake3.jpg', 10000),
+(13, 'abc013', 'Cupcakes navide&ntilde;os', 30, 'Hermosos y deliciosos cupcakes con el tema navide&ntilde;o.', 'cupcakenavideño.jpg', 20000);

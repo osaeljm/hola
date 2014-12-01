@@ -144,7 +144,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     $obj->CantidadProducto = 1;
                         ?>                           
                         <form method="post" action="cart_update.php">
-                            <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
+                            <div class="col-md-3 col-sm-6 mix portfolio-item Pizza" style="display:inline-block;">       
                                 <div class="portfolio-wrapper">                
                                     <div class="portfolio-thumb">
                                         <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
@@ -155,16 +155,16 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
                                             </div>
                                         </div>                                                    
-                                    </div>                                                
-                                </div>    
-                                <div class="label-text">
-                                    <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
-                                    <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
-                                    <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                    <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
-                                    <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
-                                    <input type="hidden" name="type" value="add" />
-                                    <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
+                                    </div>                             
+                                    <div class="label-text">
+                                        <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
+                                        <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
+                                        <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
+                                        <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
+                                        <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
+                                        <input type="hidden" name="type" value="add" />
+                                        <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
+                                    </div>  
                                 </div>      
                             </div>
                         </form>
@@ -176,7 +176,23 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
 
 
-
+                        <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
+                            <div class="portfolio-wrapper">                
+                                <div class="portfolio-thumb">
+                                    <img src="images/product1.jpg" alt="" />
+                                    <div class="hover">
+                                        <div class="hover-iner">
+                                            <a class="fancybox" href="images/product1_big.jpg"><img src="images/open-icon.png" alt="" /></a>
+                                            <span>Pizza</span>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="label-text">
+                                    <h3><a href="single-post.html">Vege Pizza</a></h3>
+                                    <span class="text-category">$16.00</span>
+                                </div>
+                            </div>          
+                        </div>
 
                     <!--      <div class="col-md-3 col-sm-6 mix portfolio-item ginger">       
                             <div class="portfolio-wrapper">                
@@ -218,39 +234,39 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </div>  -->                    
                     <div class="main-footer">
                         <div class="row">
-                            <div class="col-md-3">
-                               <div class="social-bottom">
-                                    <span>Siganos en :</span>
-                                    <ul>
-                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
-                                    </ul>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <h4 class="footer-title">Para obtener más información:</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="social-bottom">
-                                    <div class="more-info">
+                                    <div class="more-info">                                        
                                         <ul>
-                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>                                           
-                                        </ul>
+                                            <li><h4 class="footer-title">Más información</h4></li>
+                                        </ul>                                
                                     </div>
                                 </div>
                             </div> 
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <ul>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
+                                    <div class="more-info">                                  
+                                                                                      
+                                         <ul>
+                                            <li><img src="images/icon-phone.png"/>  (506)2431-46-48</li>                                                   
+                                        </ul>                                                 
+                                         <ul>                                                   
+                                            <li><img src="images/icon-mail.png"/>  150 metros al norte de la POPS Alajuela, Costa Rica</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>
+                            <div class="col-md-3">            
+                            </div> 
+                            <div class="col-md-3">
+                               <div class="social-bottom">                                   
+                                    <span>Siganos en </span>
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                    </ul>                                     
+                                </div>
+                            </div>                                                     
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>

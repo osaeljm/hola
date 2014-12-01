@@ -9,7 +9,8 @@
 Grill Template 
 http://www.templatemo.com/preview/templatemo_417_grill 
 -->
-    <head>		
+    <head>
+		
         <meta charset="utf-8">
         <title>HolaCupcakes</title>
         <meta name="description" content="">
@@ -42,7 +43,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <?php
                                     session_start();
                                     if(isset($_SESSION["usuario"])){
-                                         echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
+                                        echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
                                         echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
@@ -54,10 +55,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">
-                                   <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>
-                                    
-                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                   
+                                    <!-- <i class="fa fa-shopping-cart"></i>
+                                    (<a href="#">5 artículos</a>) en el carrito -->
                                 </div>
                             </div>
                         </div>
@@ -68,7 +67,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logoCupcake.png" title="HolaCupcakes" alt="HolaCupcakes" ></a>
+                                    <a href="index.html"><img src="images/logoCupcake.png" title="Holacupcakes" alt="Holacupcakes" ></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -82,12 +81,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -95,71 +88,72 @@ http://www.templatemo.com/preview/templatemo_417_grill
             </header>
 
 
-            <div id="heading3">
+          <div id="heading4">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                 <h2>¿Quiénes somos?</h2>
+                                 <h2>Crear tu cuenta Cupcake</h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="timeline-post">
+
+            <div id="product-post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="heading-section">
-                               
+                            <div class="heading-section">                                
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="row">
-                        <div class="col-md-6">
-                        	<p>¡Hola! Cupcakes es una pequeña empresa familiar conformada por Edalía Saborío Chavez, madre de familia y experta en el área de la preparación y distribución de alimentos; y Daniela Zúñiga Saborío, estudiante avanzada de la carrera de psicología y amante de la cocina, las manualidades, el diseño y la fotografía.</br></br>
-                            Un domingo de Setiembre del 2010, tía y sobrina se reunieron a discutir una forma en la cuál pudieran fusionar sus intereses y aficiones y convertirlos en una empresa familiar que les diera no solo ganancias económicas sino también entretenimiento y satisfacción.</br></br>
-                            Edalía desde hacía muchos años se había dedicado a diferentes negocios en el área de los alimentos, pero sobre todo se había enfocado en la elaboración de queques. Sin embargo, con la inspiración del boom de los cupcakes que Daniela pudo observar en un viaje a New York fue que nació la idea de los quequitos, y con esto en mente ambas quisieron retomar en Costa Rica una idea más novedosa y menos común que los queques regulares.</p></br></br>                         
-                        </div>
-                        <div class="col-md-6">                        	
-                            <p>Fue así que en menos de un mes de estar discutiendo ideas para el negocio nació ¡Hola! Cupcakes.</br></br>
-    						La idea inicial fue enfocada no sólo en la calidad del sabor de los quequitos, sino también en la calidad de la decoración y el diseño. Así se convirtió también en parte importante del mercadeo de ¡Hola! Cupcakes el tener fotografías de calidad de los quequitos, para que así la gente pudiese ver los detalles y diferentes temáticas trabajadas.</br></br>
-                            El contacto con los clientes por medio de las redes sociales se convirtió asímismo en parte importante del crecimiento del negocio y ahora con menos de seis meses de existencia ¡Hola! Cupcakes ha podido disfrutar de un éxito grande e incluso inesperado para sus fundadoras.</br></br>
-                            Así en el futuro ¡Hola! Cupcakes solo espera seguir en crecimiento, manteniendo siempre la originalidad, novedad y sobre todo la calidad en sus sabores y diseños.</p>
-                        </div>
-                    </div>              
-                                       
-                </div>
-            </div>
-            <div id="our-team">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading-section">
-                               <img src="images/nosotras1.jpg" alt="" >
+                    <div id="contact-us">
+                        <div class="container">
+                            <div class="row">
+                                <div class="product-item col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-8">  
+                                            <div class="message-form">
+
+                                                <?php
+                                                // Evitar los warnings the variables no definidas!!!
+                                                $err = isset($_GET['error']) ? $_GET['error'] : null ;
+                                                
+                                                if($err==1){
+                                                    echo "<p class='error-login'>Usuario o contraseña erróneos.</p>";
+                                                }
+                                                if($err==2){
+                                                    echo ".<p class='error-login'>Debe iniciar sesion para poder acceder el sitio.</p>";
+                                                }
+                                                if($err==3){
+                                                    echo "<p class='error-login'>Debe iniciar sesion antes de comprar</p>.";
+                                                }
+                                                ?>
+
+                                                <form  action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                    <div class="row">
+                                                        <div class="name col-md-4">
+                                                            <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
+                                                            <input type="password" name="passwd" placeholder="Contraseña" value=""/>
+                                                        </div>                                                 
+                                                    </div>                                                                                 
+                                                    <div class="send">
+                                                        <button name="enter" type="submit">Iniciar sesión</button>
+                                                    </div>
+                                                </form>   
+                                            </div>
+                                        </div>                                           
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
 
-            <div id="our-team">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading-section">
-                               <img src="images/under-heading.png" alt="" >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-
-                        
-           <footer>
+            <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
                     </div>  -->                    
@@ -209,7 +203,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/jquery.gmap3.min.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/main.js"></script>       
 
     </body>
 </html>

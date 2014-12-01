@@ -126,44 +126,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </li>
                   </ul>
                 </div>
-            </div>
-
-<!-- 
-            <div id="services">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="heading-section">                                
-                                <img src="images/under-heading.png" alt="" >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6"></div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <div class="icon">
-                                    <i class="fa fa-pencil"></i>
-                                </div>
-                                <h4>Hacer una orden</h4>
-                                <p>Ene esta sección se podra realizar la compra de los productos de su preferencia.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <div class="icon">
-                                    <i class="fa fa-bullhorn"></i>
-                                </div>
-                                <h4>Promociones</h4>
-                                <p>En esta sección se podra ver las promociones de cada mes.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6"></div>
-                        </div>
-                    </div>
-                </div> -->
-            <!--/div>-->
-           
+            </div>           
             
             <div id="latest-blog">
                 <div class="container">
@@ -184,10 +147,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="blog-content">
                                     <div class="content-show">
                                         <h4><a href="canastilla.html">Tes de canastilla</a></h4>
-                                        <span>29 Sep 2014</span>
+                                        <!-- <span>29 Sep 2014</span> -->
                                     </div>
                                     <div class="content-hide">
-                                        <p>Variados diseños para tes de canastilla.</p>
+                                        <!-- <p>Variados diseños para tes de canastilla.</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -200,10 +163,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="blog-content">
                                     <div class="content-show">
                                         <h4><a href="cumple.html">Cumpleaños</a></h4>
-                                        <span>23 Sep 2014</span>
+                                        <!-- <span>23 Sep 2014</span> -->
                                     </div>
                                     <div class="content-hide">
-                                        <p>Cumpleaños para hombre y mujer.</p>
+                                        <!-- <p>Cumpleaños para hombre y mujer.</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -216,10 +179,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="blog-content">
                                     <div class="content-show">
                                         <h4><a href="fiesta.html">Fiestas</a></h4>
-                                        <span>14 Sep 2014</span>
+                                        <!-- <span>14 Sep 2014</span> -->
                                     </div>
                                     <div class="content-hide">
-                                        <p>Variados diseños y temas.</p>
+                                        <!-- <p>Variados diseños y temas.</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -232,10 +195,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="blog-content">
                                     <div class="content-show">
                                         <h4><a href="mesas.html">Mesas de dulces</a></h4>
-                                        <span>25 Aug 2014</span>
+                                        <!-- <span>25 Aug 2014</span> -->
                                     </div>
                                     <div class="content-hide">
-                                        <p>Deliciosos cupcakes, queques y dulces, decorados para diferentes temas o eventos.</p>
+                                        <!-- <p>Deliciosos cupcakes, queques y dulces, decorados para diferentes temas o eventos.</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -248,10 +211,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="blog-content">
                                     <div class="content-show">
                                         <h4><a href="single-post.html">Queques</a></h4>
-                                        <span>17 Aug 2014</span>
+                                        <!-- <span>17 Aug 2014</span> -->
                                     </div>
                                     <div class="content-hide">
-                                        <p>Para diferentes ocaciones.</p>
+                                        <!-- <p>Para diferentes ocaciones.</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -264,10 +227,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="blog-content">
                                     <div class="content-show">
                                         <h4><a href="single-post.html">Cupcakes</a></h4>
-                                        <span>12 Aug 2014</span>
+                                        <!-- <span>12 Aug 2014</span> -->
                                     </div>
                                     <div class="content-hide">
-                                        <p>Variados tamaños, gustos y sabores.</p>
+                                        <!-- <p>Variados tamaños, gustos y sabores.</p> -->
                                     </div>
                                 </div>
                             </div>
@@ -276,39 +239,45 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
-
             <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
                     </div>  -->                    
                     <div class="main-footer">
                         <div class="row">
-                            <div class="col-md-3">
-                               <div class="social-bottom">
-                                    <span>Siganos en :</span>
-                                    <ul>
-                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
-                                    </ul>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <h4 class="footer-title">Para obtener más información:</h4>
+                                    <div class="more-info">                                        
+                                        <ul>
+                                            <li><h4 class="footer-title">Más información</h4></li>
+                                        </ul>                                
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <ul>
-                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
-                                            <li><i class="fa fa-envelope"></i><a>hola@holacupcakes.com</a></li>
+                                    <div class="more-info">                                  
+                                                                                      
+                                         <ul>
+                                            <li><img src="images/icon-phone.png"/>  (506)2431-46-48</li>                                                   
+                                        </ul>                                                 
+                                         <ul>                                                   
+                                            <li><img src="images/icon-mail.png"/>  150 metros al norte de la POPS Alajuela, Costa Rica</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
+                            <div class="col-md-3">            
+                            </div> 
+                            <div class="col-md-3">
+                               <div class="social-bottom">                                   
+                                    <span>Siganos en </span>
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                    </ul>                                     
+                                </div>
+                            </div>                                                     
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>
