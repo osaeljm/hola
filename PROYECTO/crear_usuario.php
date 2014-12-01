@@ -14,10 +14,6 @@ if(isset($_POST["username"]))  //&&isset($_POST["email"])&&isset($_POST["user"])
 
 
 
-
-
-
-
 function validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario){
 if($NombreUsuario == null){
     // $error = "Debe digitar su nombre completo.";
@@ -27,11 +23,11 @@ if($NombreUsuario > 100){
     // $error = "El nombre completo es muy extenso.";
     header('Location:registrarse.php?error=4');
 }
-if($correo_e == null){
+if($CorreoUsuario == null){
     // $error = "Debe digitar el correo electrónico.";
     header('Location:registrarse.php?error=5');
 }
-if(!isEmail($correo_e)){
+if(!isEmail($CorreoUsuario)){
     // $error = "Correo electrónico inválido.";
     header('Location:registrarse.php?error=6');
 }
@@ -43,14 +39,14 @@ if(strlen($LoginUsuario) > 15){
     // $error = "El nombre de usuario no debe ser mayor a 15 caracteres.";
     header('Location:registrarse.php?error=8');
 }
-if($LoginUsuario != null){
-    $sql = "select LoginUsuario from Usuario where LoginUsuario = '$LoginUsuario'";
-    $comprobar = mysql_query($sql);
-        if(mysql_num_rows($comprobar) > 0){
-            // $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
-            header('Location:registrarse.php?error=9');
-        }
-}
+// if($LoginUsuario != null){
+//     $sql = "select LoginUsuario from Usuario where LoginUsuario = '$LoginUsuario'";
+//     $comprobar = mysql_query($sql);
+//         if(mysql_num_rows($comprobar) > 0){
+//             // $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
+//             header('Location:registrarse.php?error=9');
+//         }
+// }
 if($ContrasenaUsuario == null){
     // $error = "Debe digitar su contraseña.";
     header('Location:registrarse.php?error=10');
@@ -60,7 +56,7 @@ if(strlen($ContrasenaUsuario) > 10){
     header('Location:registrarse.php?error=11');
 }
 
-
+// return true;
 } 
 
 function isEmail($correo_e){
@@ -68,34 +64,36 @@ return(preg_match("/^[-_.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:a
 ,$correo_e));
 }
 
-try {
+if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario)){
+    try {
 
-    $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
-    //Iniciar transacción
-    validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario);
-    $conn->beginTransaction();
+        $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
+        //Iniciar transacción
 
-    $IdPerfil = 1;
-    $sql = "call Insertar_Usuario(:proc_LoginUsuario,:proc_ContrasenaUsuario,:proc_IdPerfil,:proc_CorreoUsuario,:proc_NombreUsuario)";
-    $stmt = $conn->prepare($sql); 
-    $stmt->bindParam(":proc_LoginUsuario", $LoginUsuario, PDO::PARAM_STR);
-    $stmt->bindParam(":proc_ContrasenaUsuario", $ContrasenaUsuario, PDO::PARAM_STR);
-    $stmt->bindParam(":proc_IdPerfil", $IdPerfil, PDO::PARAM_INT);
-    $stmt->bindParam(":proc_CorreoUsuario", $CorreoUsuario, PDO::PARAM_STR);
-    $stmt->bindParam(":proc_NombreUsuario", $NombreUsuario, PDO::PARAM_STR);
-    $stmt->execute();
-    // $r1 = $stmt->fetch();      
-                                   
-    // $conn->rollBack();
-    // echo 'Error: Cantidad de productos menor a la del inventario.';
-                               echo $LoginUsuario.' '.$ContrasenaUsuario.' '.$IdPerfil.' '.$CorreoUsuario.' '.$NombreUsuario;                                          
-    //Finalizar transacción 
-    $conn->commit();                                                                                                      
-    header('Location:registrarse.php?error=2'); 
+        $conn->beginTransaction();
 
-} catch (PDOException $pe) {
-    $conn->rollBack();
-    die("Ocurrio un error: " . $pe->getMessage());    
+        $IdPerfil = 1;
+        $sql = "call Insertar_Usuario(:proc_LoginUsuario,:proc_ContrasenaUsuario,:proc_IdPerfil,:proc_CorreoUsuario,:proc_NombreUsuario)";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bindParam(":proc_LoginUsuario", $LoginUsuario, PDO::PARAM_STR);
+        $stmt->bindParam(":proc_ContrasenaUsuario", $ContrasenaUsuario, PDO::PARAM_STR);
+        $stmt->bindParam(":proc_IdPerfil", $IdPerfil, PDO::PARAM_INT);
+        $stmt->bindParam(":proc_CorreoUsuario", $CorreoUsuario, PDO::PARAM_STR);
+        $stmt->bindParam(":proc_NombreUsuario", $NombreUsuario, PDO::PARAM_STR);
+        $stmt->execute();
+        // $r1 = $stmt->fetch();      
+                                       
+        // $conn->rollBack();
+        // echo 'Error: Cantidad de productos menor a la del inventario.';
+                                   echo $LoginUsuario.' '.$ContrasenaUsuario.' '.$IdPerfil.' '.$CorreoUsuario.' '.$NombreUsuario;                                          
+        //Finalizar transacción 
+        $conn->commit();                                                                                                      
+        header('Location:registrarse.php?error=2'); 
+
+    } catch (PDOException $pe) {
+        $conn->rollBack();
+        die("Ocurrio un error: " . $pe->getMessage());    
+    }
 }
 ?>
                           

@@ -131,6 +131,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 if($err==3){
                                                     echo "<p class='error-login'>Debe iniciar sesion antes de comprar</p>.";
                                                 }
+                                                if($err==4){
+                                                    echo "<p>Usuario creado, por favor inicie sesión para realizar compras.</p>.";
+                                                }
                                                 ?>
 
                                                 <form  action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
