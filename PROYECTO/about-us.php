@@ -68,7 +68,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logoCupcake.png" title="HolaCupcakes" alt="HolaCupcakes" ></a>
+                                    <a href="index.php"><img src="images/logoCupcake.png" title="HolaCupcakes" alt="HolaCupcakes" ></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
