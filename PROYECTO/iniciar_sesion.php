@@ -47,7 +47,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
-                                        echo '<a href="#">Registrar</a>';
+                                        echo '<a href="registrarse.php">Registrar</a>';
                                         echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>
@@ -159,42 +159,39 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </div>  -->                    
                     <div class="main-footer">
                         <div class="row">
-                            <div class="col-md-3">
-                               <div class="social-bottom">
-                                    <span>Siganos en :</span>
-                                    <ul>
-                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="social-bottom">                                    
-                                    <div class="more-info">
-                                        <ul>
-                                            <li><h5>Para obtener más información:</h5></li>                                        
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
+                                    <div class="more-info">                                        
                                         <ul>
-                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>                                           
-                                        </ul>
+                                            <li><h4 class="footer-title">Más información</h4></li>
+                                        </ul>                                
                                     </div>
                                 </div>
                             </div> 
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <ul>
-                                            
+                                    <div class="more-info">                                  
+                                                                                      
+                                         <ul>
+                                            <li><img src="images/icon-phone.png"/>  (506)2431-46-48</li>                                                   
+                                        </ul>                                                 
+                                         <ul>                                                   
+                                            <li><img src="images/icon-mail.png"/>  150 metros al norte de la POPS Alajuela, Costa Rica</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                           
+                            </div>
+                            <div class="col-md-3">            
+                            </div> 
+                            <div class="col-md-3">
+                               <div class="social-bottom">                                   
+                                    <span>Siganos en </span>
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                    </ul>                                     
+                                </div>
+                            </div>                                                     
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>

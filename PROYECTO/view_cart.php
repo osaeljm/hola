@@ -49,8 +49,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
                                         echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
-                                    } else{
-                                        echo '<a href="#">Registrar</a>';
+                                    } else {
+                                        echo '<a href="registrarse.php">Registrar</a>';
                                         echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>
@@ -146,7 +146,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                    $obj = $results->fetch_object();
                                     echo '<tr >';
                                     echo '<td class="cart-itm">';
-                                    echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';
+                                    echo '<h3>'.$obj->NombreProducto.'</h3>';
                                     echo '<div class="p-price">Precio: '.$currency.$obj->PrecioProducto.'</div>';                                   
                                     echo '<div class="product-info">';                                 
                                     echo 'Cantidad: <select>

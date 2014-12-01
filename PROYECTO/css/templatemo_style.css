@@ -208,6 +208,7 @@ p {
   background-image: url(../images/slide1.jpg);
   height: 140px;
   background-repeat: no-repeat;
+   background-position: center;
 
 }
 
@@ -215,27 +216,33 @@ p {
   background-image: url(../images/slide2.jpg);
   height: 140px;
   background-repeat: no-repeat;
+   background-position: center;
 }
 #heading2 {
   background-image: url(../images/slide3.jpg);
   height: 140px;
   background-repeat: no-repeat;
+   background-position: center;
 }
 #heading3 {
   background-image: url(../images/slide4.jpg);
   height: 140px;
   background-repeat: no-repeat;
+   background-position: center;
 }
 #heading4 {
   background-color:#333333;
   border-bottom: 4px solid #29BEE7;
   height: 125px;
   background-repeat: no-repeat;
+   background-position: center;
+
 }
 #heading5 {
   background-image: url(../images/slide5.jpg);
   height: 140px;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 #heading h2 {

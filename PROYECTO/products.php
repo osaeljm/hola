@@ -50,7 +50,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
-                                        echo '<a href="#">Registrar</a>';
+                                        echo '<a href="registrarse.php">Registrar</a>';
                                         echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>

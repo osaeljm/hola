@@ -47,7 +47,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
-                                        echo '<a href="#">Registrar</a>';
+                                        echo '<a href="registrarse.php">Registrar</a>';
                                         echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>
@@ -93,7 +93,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                 <h2>Crear tu cuenta Cupcake</h2>
+                                 <h2>Crea tu cuenta Cupcake</h2>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="heading-section">                                
+                            <div class="heading-section"> 
+                            <h2>Ingrese sus datos</h2>                               
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
@@ -133,15 +134,20 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
                                                 ?>
 
-                                                <form  action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
+                                                <form  action="autenticacion/crear_usuario.php" method="post" class="send-message" onsubmit="return validaform()">
                                                     <div class="row">
-                                                        <div class="name col-md-4">
-                                                            <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
-                                                            <input type="password" name="passwd" placeholder="Contraseña" value=""/>
+
+                                                        <div class="name col-md-5">
+
+                                                            <br><input type="text" name="username" placeholder="Nombre completo" value=""/><br><br>
+                                                            <input type="text" name="email" id="correo" placeholder="Correo electrónico" value=""/><br><br>
+                                                            <input type="text" name="user" placeholder="Usuario" value=""/><br><br>                                                      
+                                                            <input type="password" name="password" placeholder="Contraseña" value=""/> 
+                                                           
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send">
-                                                        <button name="enter" type="submit">Iniciar sesión</button>
+                                                        <button name="enter" type="submit">Crear</button>
                                                     </div>
                                                 </form>   
                                             </div>
