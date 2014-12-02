@@ -103,7 +103,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                 <h2>Nuestros productos</h2>
+                                 <h2>Perfil</h2>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                         </div>
                     </div>
-                   <!--  <div class="row">
+                    <div class="row">
                         <div class="filters col-md-12 col-xs-12">
                             <ul id="filters" class="clearfix">
                                 <li><span class="filter" data-filter="all">All</span></li>
@@ -130,7 +130,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="row" id="Container">
                         <?php
@@ -173,8 +173,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 }               
                             }
                         ?>
-
-
 
                         <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
                             <div class="portfolio-wrapper">                
