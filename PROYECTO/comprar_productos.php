@@ -6,7 +6,7 @@ $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_U
 if(isset($_SESSION["usuario"])){
   
 } else{
-   header('Location:iniciar_sesion.php?error=3');
+   header('Location:iniciar_sesion.php?error=3&');
 }
 ?>
 <!DOCTYPE html>
