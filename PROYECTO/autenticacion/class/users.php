@@ -35,17 +35,18 @@ class Users{
 
 				$_SESSION["idusuario"] = $row["IdUsuario"];
 				$_SESSION["usuario"] = $row["NombreUsuario"];
+				$_SESSION["idperfil"] = $row["IdPerfil"];
 
 				// $cedula = $_SESSION["cedula"];
 				
 				switch($this->useropc){
 					
 					case 'Cliente':
-						header('Location: ../iniciar_sesion.php');
+						header('Location: ../products.php');
 						break;
 						
 					case 'Administrador':
-						header('Location: ../products.php');
+						header('Location: ../perfil.php');
 						break;					
 				}
 				

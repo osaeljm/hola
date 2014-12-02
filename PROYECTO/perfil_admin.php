@@ -4,8 +4,8 @@ include_once("autenticacion/class/config.php"); //include config file
 $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
 
 $idp=$_SESSION["idperfil"];
-if($idp==1){
-    header('Location:perfil_admin.php');
+if($idp!=1){
+    header('Location:perfil.php');
 }
 
 
@@ -110,7 +110,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                 <h2>Perfil</h2>
+                                 <h2>Perfil Administrador</h2>
                             </div>
                         </div>
                     </div>
@@ -129,8 +129,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="filters col-md-12 col-xs-12">
                             <ul id="filters" class="clearfix">
-                                <li><span><a href="perfil.php">Compras</a></span></li>
-                                <li><span><a href="perfil.php?c=1">Datos personales</a></span></li>                                  
+                                <li><span><a href="perfil_admin.php">Clientes</a></span></li>
+                                <li><span><a href="perfil_admin.php?c=1">Datos personales</a></span></li>
+                                <li><span><a href="perfil_admin.php?c=2">Productos</a></span></li>                                  
                             </ul>
                         </div>
                     </div>
@@ -186,17 +187,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                        </div>
 
-
                         <?php 
-                        } else { 
+                        } else if ($c==2) { 
                         ?>
 
                         
-
                          <div class="row" id="Container">
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL 
-                           $results = $mysqli->query("SELECT * FROM EncabezadoFactura ORDER BY FechaFactura ASC");
+                           $results = $mysqli->query("SELECT * FROM Producto ");
                             if ($results) 
                             { 
                                 ?>
@@ -211,10 +210,66 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="table-responsive">
                           <table class="table">
                             <tr>
-                                <th>#</th>
-                                <th>FECHA</th>
-                                <th>ESTADO</th>
-                                <th>TOTAL</th>
+                                <th>CODIGO</th>
+                                <th>NOMBRE</th>
+                                <th>CANTIDAD</th>
+                                <th>PRECIO</th>
+                                <th><a href="editar_producto.php?v=1"><button style="height:30px;" type="button" class="btn btn-success">Nuevo</button></a></th>
+                            </tr>
+                            <?php
+                             //output results from database  
+                             $i=0;                             
+                                while($obj2 = $results->fetch_object())
+                                { 
+                                    $i++;
+                                    $obj->CantidadProducto = 1;                                    
+                            ?> 
+                              <tr>                               
+                                <td><?php echo $obj2->CodigoProducto ?></td>
+                                <td><?php echo $obj2->NombreProducto ?></td>
+                                <td><?php echo $obj2->CantidadProducto ?></td>
+                                <td><?php echo '₡'.$obj2->PrecioProducto ?></td>
+                                <th><a href="editar_producto.php?v=2&i=<?php echo $obj2->IdProducto; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Modificar</button></a>
+                                <a href="editar_producto.php?v=3&i=<?php echo $obj2->IdProducto; ?>"><button style="height:30px;" type="button" class="btn btn-danger">Eliminar</button></a></th>
+                              </tr>
+                        <?php                                    
+                                }                              
+                            }
+                            if(empty($results)){
+                                echo 'No hay compras realizadas.';
+                            }
+                        ?>
+                        </table>
+                        </div>                  
+
+                       </div>
+                        <?php 
+                        } else { 
+                        ?>
+
+                        
+
+                         <div class="row" id="Container">
+                        <?php
+                        //current URL of the Page. cart_update.php redirects back to this URL 
+                           $results = $mysqli->query("SELECT * FROM Usuario ");
+                            if ($results) 
+                            { 
+                                ?>
+                               
+                        <style>
+                        @-moz-document url-prefix() {
+                          fieldset { display: table-cell; }
+                        }
+                        </style>
+
+                       
+                        <div class="table-responsive">
+                          <table class="table">
+                            <tr>
+                                <th>NOMBRE</th>
+                                <th>USUARIO</th>
+                                <th>CORREO ELECTRÓNICO</th>
                             </tr>
                             <?php
                              //output results from database  
@@ -224,12 +279,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     $i++;
                                     $obj->CantidadProducto = 1;                                    
                             ?> 
-                              <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $obj->FechaFactura ?></td>
-                                <td>-</td>
-                                <td><?php echo $obj->TotalFactura ?></td>
-                                <th><a href="detallefactura.php?v=<?php echo $obj->NumeroFactura; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Detalle</button></a></th>
+                              <tr>                               
+                                <td><?php echo $obj->NombreUsuario ?></td>
+                                <td><?php echo $obj->LoginUsuario ?></td>
+                                <td><?php echo $obj->CorreoUsuario ?></td>
                               </tr>
                         <?php                                    
                                 }

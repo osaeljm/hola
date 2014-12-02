@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `Perfil`(
 --
 INSERT INTO `Usuario` (`IdUsuario`, `LoginUsuario`, `ContrasenaUsuario`, `IdPerfil`, `CorreoUsuario`, `NombreUsuario`) VALUES
 (1, 'cesar', '123', 1, 'ejemplo@mail.com', 'C&eacute;sar Retana J'),
-(2, 'osael', '123', 1, 'ejemplo@mail.com', 'Osael Jim&eacute;nez M');
+(2, 'osael', '123', 2, 'ejemplo@mail.com', 'Osael Jim&eacute;nez M');
 
 
 INSERT INTO `Perfil` (`IdPerfil`, `NombrePerfil`) VALUES
@@ -248,6 +248,55 @@ DELIMITER ;
 
 -- ----------------------------------------------------------------------------------------------------------------
 --
+-- PROCEDIMIENTO MODIFICAR USUARIO
+--
+--
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Modificar_Usuario`
+(IN proc_IdUsuario INT,IN proc_LoginUsuario VARCHAR(15),IN proc_CorreoUsuario VARCHAR(50),IN proc_NombreUsuario VARCHAR(100))                                     
+BEGIN
+  UPDATE `Usuario` SET LoginUsuario = proc_LoginUsuario, CorreoUsuario = proc_CorreoUsuario, NombreUsuario = proc_NombreUsuario
+  WHERE IdUsuario = proc_IdUsuario;
+
+END //
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------
+--
+-- PROCEDIMIENTO MODIFICAR PRODUCTO
+--
+--
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Modificar_Producto`
+(IN proc_IdProducto INT(11),IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext)                                     
+BEGIN
+  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto, PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto
+  WHERE IdProducto = proc_IdProducto;
+
+END //
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------
+--
 -- PROCEDIMIENTO 
 --
 --
+
+
+-- SELECT NumeroDetalle,Cantidad,SubTotal,Producto_IdProducto,NombreProducto
+-- FROM FacturaDetalle,Producto
+-- WHERE drinks.id = drinks_id 
+-- GROUP BY drinks_id
+
+
+-- select t1.NumeroDetalle,t1.Cantidad,t1.SubTotal,t1.Producto_IdProducto,t2.NombreProducto
+-- from FacturaDetalle as t1 INNER JOIN Producto as t2
+-- on t1.Producto_IdProducto = t2.IdProducto and t1.EncabezadoFactura_NumeroEncabezadoFactura = $v;
+
+
+-- SELECT * FROM FacturaDetalle WHERE EncabezadoFactura_NumeroEncabezadoFactura = $v
+
+-- <?php $c = isset($_GET['c']) ? $_GET['c'] : null ;
+--                     if($c==1){ ?>

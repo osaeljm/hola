@@ -43,7 +43,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     session_start();
                                     if(isset($_SESSION["usuario"])){
                                         echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
-                                        echo '<a href="#"> Perfil</a>';
+                                        echo '<a href="perfil.php"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
                                         echo '<a href="registrarse.php">Registrar</a>';
@@ -92,7 +92,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-content">
-                                 <h2>Crea tu cuenta Cupcake</h2>
+                                 <h2>Perfil</h2>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-section"> 
-                            <h2>Ingrese sus datos</h2>                               
+                            <h2>Modificar producto</h2>                               
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
@@ -118,47 +118,16 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <div class="col-md-8">  
                                             <div class="message-form">
 
-                                                <?php
-                                                // Evitar los warnings the variables no definidas!!!
-                                                // $err = isset($_GET['error']) ? $_GET['error'] : null ;
-                                                
-                                                // if($err==1){
-                                                //     echo "<p class='error-login'>Error al crear usuario.</p>";
-                                                // }
-                                                // if($err==2){
-                                                //     echo ".<p class=''>Usuario creado correctamente, inicie sesión para realizar una compra.</p>";
-                                                // }
-                                                // if($err==3){
-                                                //     echo "<p class='error-login'>Debe digitar su nombre completo.</p>";
-                                                // }
-                                                // if($err==4){
-                                                //     echo "<p class='error-login'>El nombre completo es muy extenso.</p>";
-                                                // }
-                                                // if($err==5){
-                                                //     echo "<p class='error-login'>Debe digitar el correo electrónico.</p>";
-                                                // }
-                                                // if($err==6){
-                                                //     echo "<p class='error-login'>Correo electrónico inválido.</p>";
-                                                // }
-                                                // if($err==7){
-                                                //     echo "<p class='error-login'>Debe digitar su nombre completo.</p>";
-                                                // }
-                                                // if($err==8){
-                                                //     echo "<p class='error-login'>El nombre de usuario no debe ser mayor a 15 caracteres.</p>";
-                                                // }
-                                                // if($err==9){
-                                                //     echo "<p class='error-login'>Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.</p>";
-                                                // }
-                                                // if($err==10){
-                                                //     echo "<p class='error-login'>Debe digitar su contraseña.</p>";
-                                                // }
-                                                // if($err==11){
-                                                //     echo "<p class='error-login'>El nombre de usuario no debe ser mayor a 10 caracteres.</p>";
-                                                // }
+                                                <?php                                               
                                                 
                                                 include("autenticacion/class/config.php");
 
-                                                $NombreUsuario = $CorreoUsuario = $LoginUsuario = $ContrasenaUsuario = "";
+                                                $i = isset($_GET['i']) ? $_GET['i'] : null ;
+
+                                                $results = $mysqli->query("SELECT * FROM Producto WHERE IdProducto = $i");
+                                                $obj = $results->fetch_object();
+
+                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = "";
 
                                                 function test_input($data){
                                                    $data = trim($data);
@@ -168,41 +137,17 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
 
                                                 if($_SERVER["REQUEST_METHOD"] == "POST"){       
-                                                    $NombreUsuario = test_input($_POST["username"]);
-                                                    $CorreoUsuario = test_input($_POST["email"]);
-                                                    $LoginUsuario = test_input($_POST["user"]);
-                                                    $ContrasenaUsuario = test_input($_POST["password"]);   
+                                                    $CodigoProducto = test_input($_POST["codigo"]);
+                                                    $NombreProducto = test_input($_POST["nombre"]);
+                                                    $CantidadProducto = test_input($_POST["cantidad"]);
+                                                    $PrecioProducto = test_input($_POST["precio"]); 
+                                                    $DescripcionProducto = test_input($_POST["descripcion"]);      
                                                 }
 
-                                                function validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario,&$error){
-                                                if($NombreUsuario == null){
-                                                    $error = "Debe digitar su nombre completo.";
+                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,&$error){
+                                                if($CodigoProducto == null){
+                                                    $error = "Debe digitar el código del producto.";
                                                     // header('Location:registrarse.php?error=3');
-                                                    return false;
-                                                }
-                                                if($NombreUsuario > 100){
-                                                    $error = "El nombre completo es muy extenso.";
-                                                    // header('Location:registrarse.php?error=4');
-                                                    return false;
-                                                }
-                                                if($CorreoUsuario == null){
-                                                    $error = "Debe digitar el correo electrónico.";
-                                                    // header('Location:registrarse.php?error=5');
-                                                    return false;
-                                                }
-                                                if(!isEmail($CorreoUsuario)){
-                                                    $error = "Correo electrónico inválido.";
-                                                    // header('Location:registrarse.php?error=6');
-                                                    return false;
-                                                }
-                                                if($LoginUsuario == null){
-                                                    $error = "Debe digitar su usuario.";
-                                                    // header('Location:registrarse.php?error=7');
-                                                    return false;
-                                                }
-                                                if(strlen($LoginUsuario) > 15){
-                                                    $error = "El nombre de usuario no debe ser mayor a 15 caracteres.";
-                                                    // header('Location:registrarse.php?error=8');
                                                     return false;
                                                 }
                                                 // if($LoginUsuario != null){
@@ -213,24 +158,36 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 //             header('Location:registrarse.php?error=9');
                                                 //         }
                                                 // }
-                                                if($ContrasenaUsuario == null){
-                                                    $error = "Debe digitar su contraseña.";
-                                                    // header('Location:registrarse.php?error=10');
+                                                if($NombreProducto == null){
+                                                    $error = "Debe digitar su nombre completo.";
+                                                    // header('Location:registrarse.php?error=3');
                                                     return false;
                                                 }
-                                                if(strlen($ContrasenaUsuario) > 10){
-                                                    $error = "El nombre de usuario no debe ser mayor a 10 caracteres.";
-                                                    // header('Location:registrarse.php?error=11');
+                                                if($NombreProducto > 45){
+                                                    $error = "El nombre del producto es muy extenso.";
+                                                    // header('Location:registrarse.php?error=4');
+                                                    return false;
+                                                }
+                                                if($CantidadProducto == null){
+                                                    $error = "Debe digitar la cantidad del producto.";
+                                                    // header('Location:registrarse.php?error=5');
+                                                    return false;
+                                                }
+                                                if($PrecioProducto == null){
+                                                    $error = "Debe digitar el precio del producto.";
+                                                    // header('Location:registrarse.php?error=7');
+                                                    return false;
+                                                }
+                                                if($DescripcionProducto == null){
+                                                    $error = "Debe digitar la descripción del producto.";
+                                                    // header('Location:registrarse.php?error=7');
                                                     return false;
                                                 }
                                                 $error = "";
                                                 return true;
                                                 } 
 
-                                                function isEmail($correo_e){
-                                                return(preg_match("/^[-_.[:alnum:]]+@((([[:alnum:]]|[[:alnum:]][[:alnum:]-]*[[:alnum:]])\.)+(ad|ae|aero|af|ag|ai|al|am|an|ao|aq|ar|arpa|as|at|au|aw|az|ba|bb|bd|be|bf|bg|bh|bi|biz|bj|bm|bn|bo|br|bs|bt|bv|bw|by|bz|ca|cc|cd|cf|cg|ch|ci|ck|cl|cm|cn|co|com|coop|cr|cs|cu|cv|cx|cy|cz|de|dj|dk|dm|do|dz|ec|edu|ee|eg|eh|er|es|et|eu|fi|fj|fk|fm|fo|fr|ga|gb|gd|ge|gf|gh|gi|gl|gm|gn|gov|gp|gq|gr|gs|gt|gu|gw|gy|hk|hm|hn|hr|ht|hu|id|ie|il|in|info|int|io|iq|ir|is|it|jm|jo|jp|ke|kg|kh|ki|km|kn|kp|kr|kw|ky|kz|la|lb|lc|li|lk|lr|ls|lt|lu|lv|ly|ma|mc|md|mg|mh|mil|mk|ml|mm|mn|mo|mp|mq|mr|ms|mt|mu|museum|mv|mw|mx|my|mz|na|name|nc|ne|net|nf|ng|ni|nl|no|np|nr|nt|nu|nz|om|org|pa|pe|pf|pg|ph|pk|pl|pm|pn|pr|pro|ps|pt|pw|py|qa|re|ro|ru|rw|sa|sb|sc|sd|se|sg|sh|si|sj|sk|sl|sm|sn|so|sr|st|su|sv|sy|sz|tc|td|tf|tg|th|tj|tk|tm|tn|to|tp|tr|tt|tv|tw|tz|ua|ug|uk|um|us|uy|uz|va|vc|ve|vg|vi|vn|vu|wf|ws|ye|yt|yu|za|zm|zw)$|(([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.){3}([0-9][0-9]?|[0-1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5]))$/i"
-                                                ,$correo_e));
-                                                }
+                                                
 
                                                 // function seguridad_x($texto){
                                                 //     $texto = stripslashes($texto);
@@ -246,32 +203,32 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 if ($_POST){
                                                     $error_encontrado="";
-                                                    seguridad_x($NombreUsuario);
-                                                    seguridad_x($CorreoUsuario);
-                                                    seguridad_x($LoginUsuario);
-                                                    seguridad_x($ContrasenaUsuario);
-                                                if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario, $error_encontrado)){
+                                                    // seguridad_x($NombreUsuario);
+                                                    // seguridad_x($CorreoUsuario);
+                                                    // seguridad_x($LoginUsuario);
+                                                    // seguridad_x($ContrasenaUsuario);
+                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$error_encontrado)){
                                                     try {
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
                                                         //Iniciar transacción
 
                                                         $conn->beginTransaction();
-
-                                                        $IdPerfil = 1;
-                                                        $sql = "call Insertar_Usuario(:proc_LoginUsuario,:proc_ContrasenaUsuario,:proc_IdPerfil,:proc_CorreoUsuario,:proc_NombreUsuario)";
-                                                        $stmt = $conn->prepare($sql); 
-                                                        $stmt->bindParam(":proc_LoginUsuario", $LoginUsuario, PDO::PARAM_STR);
-                                                        $stmt->bindParam(":proc_ContrasenaUsuario", $ContrasenaUsuario, PDO::PARAM_STR);
-                                                        $stmt->bindParam(":proc_IdPerfil", $IdPerfil, PDO::PARAM_INT);
-                                                        $stmt->bindParam(":proc_CorreoUsuario", $CorreoUsuario, PDO::PARAM_STR);
-                                                        $stmt->bindParam(":proc_NombreUsuario", $NombreUsuario, PDO::PARAM_STR);
-                                                        $stmt->execute();   
+                                                      
+                                                        $sql = "call Modificar_Producto(:proc_IdProducto,:proc_CodigoProducto,:proc_NombreProducto,:proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto)";
+                                                        $stmt = $conn->prepare($sql);
+                                                        $stmt->bindParam(":proc_IdProducto", $i, PDO::PARAM_INT);
+                                                        $stmt->bindParam(":proc_CodigoProducto", $CodigoProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_NombreProducto", $NombreProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_CantidadProducto", $CantidadProducto, PDO::PARAM_INT);
+                                                        $stmt->bindParam(":proc_PrecioProducto", $PrecioProducto, PDO::PARAM_INT);
+                                                        $stmt->bindParam(":proc_DescripcionProducto", $DescripcionProducto, PDO::PARAM_STR);
+                                                        $stmt->execute(); 
 
                                                         //Finalizar transacción 
                                                         $conn->commit();                                                                                                      
                                                         // header('Location:iniciar_sesion.php?error=4'); 
-                                                        $error_encontrado2 = 'Usuario creado, debe iniciar sesión para realizar compras.';
+                                                        $error_encontrado2 = 'Producto modificado.';
 
                                                     } catch (PDOException $pe) {
                                                         $conn->rollBack();
@@ -286,29 +243,35 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 if (isset($error_encontrado2)) {
                                                 echo '<p>'.$error_encontrado2.'</p>'; 
+                                                echo '<div class="send">';
+                                                      echo ' <button name="enter" type="submit"><a href="perfil_admin.php?c=2">Volver</a></button>';
+                                                echo '</div>';
                                                 } else {   
 
                                                 ?>
 
-                                                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
+                                                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'?v='.$_GET["v"].'&i='.$_GET["i"].'');?>" method="post" class="send-message">
                                                     <div class="row">
 
                                                         <div class="name col-md-5">
 
-                                                            <br><input type="text" name="username" placeholder="Nombre completo" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>"/><br><br>
-                                                            <input type="text" name="email" id="correo" placeholder="Correo electrónico" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/><br><br>
-                                                            <input type="text" name="user" placeholder="Usuario" value=""/><br><br>                                                      
-                                                            <input type="password" name="password" placeholder="Contraseña" value=""/> 
+                                                            <br>
+                                                            Código: <input type="text" name="codigo" placeholder="Código" value="<?php if (isset($_POST['codigo'])) {echo $_POST['codigo'];}else{echo $obj->CodigoProducto;} ?>"/><br><br>
+                                                            Nombre: <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];}else{echo $obj->NombreProducto;} ?>"/><br><br>
+                                                            Cantidad: <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];}else{echo $obj->CantidadProducto;} ?>"/><br><br> 
+                                                            Precio: <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];}else{echo $obj->PrecioProducto;} ?>"/><br>
+                                                            Descripción: <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
+                                                       
                                                            
                                                         </div>                                                 
                                                     </div>                                                                                 
-                                                    <div class="send">
-                                                        <button name="enter" type="submit">Crear</button>
+                                                    <div class="send2">
+                                                        <button name="enter" type="submit">Modificar</button>
                                                     </div>
                                                 </form> 
 
                                                 <?php
-}
+                                                }                                               
                                                 ?>  
                                             </div>
                                         </div>                                           

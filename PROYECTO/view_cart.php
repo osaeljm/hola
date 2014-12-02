@@ -47,7 +47,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                      <?php
                                     if(isset($_SESSION["usuario"])){
                                         echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
-                                        echo '<a href="#"> Perfil</a>';
+                                        echo '<a href="perfil.php"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else {
                                         echo '<a href="registrarse.php">Registrar</a>';
@@ -124,7 +124,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
-
             <div id="products-post">
                 <div class="container">            
                     <div class="row" id="Container"> 
@@ -192,7 +191,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 
                             }else{
                                 echo '<div class="heading-section">';
-                                echo '<h2>El carrito de compras está vacío</h2>';
+                                $e = isset($_GET['e']) ? $_GET['e'] : null ;
+                                if($e==1){
+                                    echo "<h3 style='color:#E32852;'>¡Gracias por su compra!</h3>";
+                                } else {
+                                    echo '<h2>El carrito de compras está vacío</h2>';
+                                }                              
                                 echo '<img src="images/under-heading.png" alt="" >';
                                 echo '</div>';
                             }

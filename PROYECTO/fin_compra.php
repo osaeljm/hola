@@ -92,7 +92,7 @@ try {
         $conn->commit();                                                                                                      
     }       
     unset($_SESSION['products']);
-    header('Location:view_cart.php');
+    header('Location:view_cart.php?e=1');
    
 } catch (PDOException $pe) {
     $conn->rollBack();

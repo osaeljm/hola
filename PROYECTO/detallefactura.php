@@ -2,13 +2,6 @@
 session_start();
 include_once("autenticacion/class/config.php"); //include config file
 $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
-
-$idp=$_SESSION["idperfil"];
-if($idp==1){
-    header('Location:perfil_admin.php');
-}
-
-
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -105,7 +98,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </header>
             
-            <div id="heading4">
+            <div id="heading">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -129,75 +122,20 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="filters col-md-12 col-xs-12">
                             <ul id="filters" class="clearfix">
-                                <li><span><a href="perfil.php">Compras</a></span></li>
-                                <li><span><a href="perfil.php?c=1">Datos personales</a></span></li>                                  
+                                <li><span>Compras</span></li>
+                                <li><span>Datos personales</span></li>                                
                             </ul>
                         </div>
                     </div>
 
-
-
-
-                    <?php $c = isset($_GET['c']) ? $_GET['c'] : null ;
-                    if($c==1){ ?>
-
                     <div class="row" id="Container">
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL 
-                            $id = $_SESSION['idusuario'];
-                           $results = $mysqli->query("SELECT * FROM Usuario WHERE IdUsuario = $id");
-                           $obj1 = $results->fetch_object();
-                        ?>
-                               
-                            <div class="row">
-                                <div class="col-md-12">
-                                 <div class="container">
-                                    <table style="">
-                                    <tr>
-                                        <td><h5>Nombre completo: </h5></td>
-                                        <td><h6> <?php echo $obj1->NombreUsuario ?></h6></td>
-                                    </tr>
-                                    <tr>
-                                        <td><h5>Tipo usuario: </h5></td>
-                                        <td><h6> <?php echo $obj1->IdPerfil ?></h6></td>
-                                    </tr>
-                                    <tr>
-                                        <td><h5>Usuario: </h5></td>
-                                        <td><h6> <?php echo $obj1->LoginUsuario ?></h6></td>
-                                    </tr>
-                                    <tr> 
-                                        <td><h5>Correo electrónico: </h5></td>
-                                        <td><h6> <?php echo $obj1->CorreoUsuario ?></h6></td>
-                                    </tr> 
-                                    </table>                                   
-                                     <div class="btn-carrito">
-                                        <div class="row">   
-                                            <div class="col-md-12">
-                                                <ul>
-                                                    <li><a href="modificar_usuario.php">Modificar</a></li>                                    
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div> 
-                                </div>                        
-                            </div>                     
-                                        
-
-                       </div>
-
-
-                        <?php 
-                        } else { 
-                        ?>
-
-                        
-
-                         <div class="row" id="Container">
-                        <?php
-                        //current URL of the Page. cart_update.php redirects back to this URL 
-                           $results = $mysqli->query("SELECT * FROM EncabezadoFactura ORDER BY FechaFactura ASC");
-                            if ($results) 
+                        $v = isset($_GET['v']) ? $_GET['v'] : null ;
+                           $results = $mysqli->query("select t1.EncabezadoFactura_NumeroEncabezadoFactura,t1.NumeroDetalle,t1.Cantidad,t1.SubTotal,t1.Producto_IdProducto,t2.NombreProducto
+                                            from FacturaDetalle as t1 INNER JOIN Producto as t2
+                                            on t1.Producto_IdProducto = t2.IdProducto and t1.EncabezadoFactura_NumeroEncabezadoFactura = $v");
+                           if ($results) 
                             { 
                                 ?>
                                
@@ -211,10 +149,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="table-responsive">
                           <table class="table">
                             <tr>
-                                <th>#</th>
-                                <th>FECHA</th>
-                                <th>ESTADO</th>
-                                <th>TOTAL</th>
+                                <th># FACTURA</th>
+                                <th>NOMBRE PRODUCTO</th>
+                                <th>CANTIDAD</th>
+                                <th>PRECIO</th>
                             </tr>
                             <?php
                              //output results from database  
@@ -222,40 +160,34 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 while($obj = $results->fetch_object())
                                 { 
                                     $i++;
-                                    $obj->CantidadProducto = 1;                                    
+                                    $obj->CantidadProducto = 1;
+                                                                    
                             ?> 
                               <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $obj->FechaFactura ?></td>
-                                <td>-</td>
-                                <td><?php echo $obj->TotalFactura ?></td>
-                                <th><a href="detallefactura.php?v=<?php echo $obj->NumeroFactura; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Detalle</button></a></th>
+                                <td><?php echo $obj->EncabezadoFactura_NumeroEncabezadoFactura; ?></td>
+                                <td><?php echo $obj->NombreProducto;  ?></td>
+                                <td><?php echo $obj->Cantidad; ?></td>
+                                <td><?php echo $obj->SubTotal; ?></td>                                
                               </tr>
                         <?php                                    
                                 }
 
                             }
-                            if(empty($results)){
-                                echo 'No hay compras realizadas.';
-                            }
+                            
                         ?>
                         </table>
-                        </div>                  
-
+                        </div>
+                
                        </div>
-                       <?php 
-                       } 
-                       ?>
-
-                   <!--  <div class="btn-carrito">
+                    <div class="btn-carrito">
                         <div class="row">   
                             <div class="col-md-12">
                                 <ul>
-                                    <li><a href="view_cart.php">Ver carrito<i class="fa fa-shopping-cart"></i></a></li>                                    
+                                    <li><a href="perfil.php">Volver</a></li>                                    
                                 </ul>
                             </div>
                         </div>
-                    </div>  -->    
+                    </div>     
                 </div>
             </div>
 
