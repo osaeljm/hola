@@ -185,9 +185,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 echo '</span>';
                                 echo '</form>';
 
-                                echo '<span class="check-out-txt"><a href="comprar_productos.php"> Comprar </a></span>';
-                                echo '<span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url='.$current_url.'?>"> Vaciar el carrito</a></span>';
-
+                                echo '<div class="send2">';
+                                echo '<a href="comprar_productos.php"><button ><span class="check-out-txt">Comprar</span></button></a>';
+                                echo '</div> <br>';
+                                echo '<div class="send3">';
+                                echo '<a href="cart_update.php?emptycart=1&return_url='.$current_url.'?>"><button><span class="empty-cart"> Vaciar el carrito</span></button></a>';
+                                echo '</div>';
+                                 
                                 
                             }else{
                                 echo '<div class="heading-section">';

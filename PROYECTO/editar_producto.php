@@ -142,13 +142,42 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                    return $data;
                                                 }
 
+                                                function subirDocumento(array $_files,&$newname = ""){                                                    $fecha = date("Y-m-d");
+                                                    $rd2 = mt_rand(1000,9999)."_".$fecha; 
+                                                    //$rd2 =  basename($_files['name'])."_".date("Y-m-d").date("H:i:s"); 
+                                                    if((!empty($_files)) && ($_files['error'] == 0)) {
+                                                  
+                                                        $filename = basename($_files['name']);
+
+                                                        $ext = substr($filename, strrpos($filename, '.') + 1);
+                                                  
+                                                        if (($ext != "exe") && ($_files["type"] != "application/x-msdownload"))  {
+                                                    
+                                                         
+                                                            $newname="images/".$rd2.".".$ext;      
+                                                          //Check if the file with the same name is already exists on the server
+                                                     
+                                                            //Attempt to move the uploaded file to it's new place
+                                                            if ((move_uploaded_file($_files['tmp_name'],$newname))) {
+                                                                
+                                                                return $rd2.".".$ext;
+                                                            
+                                                            }
+                                                            
+                                                        } 
+                                                              
+                                                    } 
+                                                    
+                                                }
+
                                                 if($_SERVER["REQUEST_METHOD"] == "POST"){       
                                                     $CodigoProducto = test_input($_POST["codigo"]);
                                                     $NombreProducto = test_input($_POST["nombre"]);
                                                     $CantidadProducto = test_input($_POST["cantidad"]);
                                                     $PrecioProducto = test_input($_POST["precio"]); 
                                                     $DescripcionProducto = test_input($_POST["descripcion"]);
-                                                    $ImagenProducto = test_input($_POST["imagen"]);      
+                                                    // $ImagenProducto = test_input($_POST["imagen"]); 
+                                                     $ImagenProducto = subirDocumento($_FILES["imagen"]);     
                                                 }
 
                                                 function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto, $ImagenProducto,&$error){
@@ -195,7 +224,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 } 
 
                                                 
-
                                                 // function seguridad_x($texto){
                                                 //     $texto = stripslashes($texto);
                                                 //     $texto = addslashes($texto);
@@ -220,6 +248,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
                                                         //Iniciar transacción
+
 
                                                         $conn->beginTransaction();
                                                       
@@ -258,8 +287,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 ?>
 
-                                                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'?v='.$_GET["v"].'&i='.$_GET["i"].'');?>" 
-                                                    method="post" class="send-message">
+                                                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'?v='.$_GET["v"].'');?> " 
+                                                    method="post" class="send-message"  enctype="multipart/form-data">
                                                     <div class="row">
 
                                                         <div class="name col-md-5">
@@ -270,8 +299,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                             <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];} ?>"/><br><br> 
                                                             <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];} ?>"/><br>
                                                             <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];} ?></textarea><br><br> 
-                                                            <input type="text" name="imagen" placeholder="Imagen" value="<?php if (isset($_POST['imagen'])) {echo $_POST['imagen'];} ?>"/><br>
-                                                           
+                                                            <!-- <input type="text" name="imagen" placeholder="Imagen" value="<?php //if (isset($_POST['imagen'])) {echo $_POST['imagen'];} ?>"/><br> -->
+                                                           <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
+                                                            <input name="imagen" type="file" class="rightContrasena" value=""/></label><br>
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send2">
@@ -292,7 +322,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 $results = $mysqli->query("SELECT * FROM Producto WHERE IdProducto = $i");
                                                 $obj = $results->fetch_object();
 
-                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = "";
+                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = $ImagenProducto = "";
 
                                                 function test_input($data){
                                                    $data = trim($data);
@@ -301,15 +331,45 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                    return $data;
                                                 }
 
+                                                 function subirDocumento(array $_files,&$newname = ""){                                                    $fecha = date("Y-m-d");
+                                                    $rd2 = mt_rand(1000,9999)."_".$fecha; 
+                                                    //$rd2 =  basename($_files['name'])."_".date("Y-m-d").date("H:i:s"); 
+                                                    if((!empty($_files)) && ($_files['error'] == 0)) {
+                                                  
+                                                        $filename = basename($_files['name']);
+
+                                                        $ext = substr($filename, strrpos($filename, '.') + 1);
+                                                  
+                                                        if (($ext != "exe") && ($_files["type"] != "application/x-msdownload"))  {
+                                                    
+                                                         
+                                                            $newname="images/".$rd2.".".$ext;      
+                                                          //Check if the file with the same name is already exists on the server
+                                                     
+                                                            //Attempt to move the uploaded file to it's new place
+                                                            if ((move_uploaded_file($_files['tmp_name'],$newname))) {
+                                                                
+                                                                return $rd2.".".$ext;
+                                                            
+                                                            }
+                                                            
+                                                        } 
+                                                              
+                                                    } 
+                                                    
+                                                }
+
                                                 if($_SERVER["REQUEST_METHOD"] == "POST"){       
                                                     $CodigoProducto = test_input($_POST["codigo"]);
                                                     $NombreProducto = test_input($_POST["nombre"]);
                                                     $CantidadProducto = test_input($_POST["cantidad"]);
                                                     $PrecioProducto = test_input($_POST["precio"]); 
-                                                    $DescripcionProducto = test_input($_POST["descripcion"]);      
+                                                    $DescripcionProducto = test_input($_POST["descripcion"]);   
+                                                    // $ImagenProducto = test_input($_POST["imagen"]); 
+                                                     $ImagenProducto = subirDocumento($_FILES["imagen"]); 
                                                 }
 
-                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,&$error){
+                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,&$error){
                                                 if($CodigoProducto == null){
                                                     $error = "Debe digitar el código del producto.";
                                                     // header('Location:registrarse.php?error=3');
@@ -369,7 +429,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     // seguridad_x($CorreoUsuario);
                                                     // seguridad_x($LoginUsuario);
                                                     // seguridad_x($ContrasenaUsuario);
-                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$error_encontrado)){
+                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,$error_encontrado)){
                                                     try {
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
@@ -377,7 +437,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                         $conn->beginTransaction();
                                                       
-                                                        $sql = "call Modificar_Producto(:proc_IdProducto,:proc_CodigoProducto,:proc_NombreProducto,:proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto)";
+                                                        $sql = "call Modificar_Producto(:proc_IdProducto,:proc_CodigoProducto,:proc_NombreProducto,
+                                                            :proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto,:proc_ImagenProducto)";
                                                         $stmt = $conn->prepare($sql);
                                                         $stmt->bindParam(":proc_IdProducto", $i, PDO::PARAM_INT);
                                                         $stmt->bindParam(":proc_CodigoProducto", $CodigoProducto, PDO::PARAM_STR);
@@ -385,6 +446,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $stmt->bindParam(":proc_CantidadProducto", $CantidadProducto, PDO::PARAM_INT);
                                                         $stmt->bindParam(":proc_PrecioProducto", $PrecioProducto, PDO::PARAM_INT);
                                                         $stmt->bindParam(":proc_DescripcionProducto", $DescripcionProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_ImagenProducto", $ImagenProducto, PDO::PARAM_STR);
                                                         $stmt->execute(); 
 
                                                         //Finalizar transacción 
@@ -418,13 +480,14 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         <div class="name col-md-5">
 
                                                             <br>
-                                                            Código: <input type="text" name="codigo" placeholder="Código" value="<?php if (isset($_POST['codigo'])) {echo $_POST['codigo'];}else{echo $obj->CodigoProducto;} ?>"/><br><br>
-                                                            Nombre: <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];}else{echo $obj->NombreProducto;} ?>"/><br><br>
-                                                            Cantidad: <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];}else{echo $obj->CantidadProducto;} ?>"/><br><br> 
-                                                            Precio: <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];}else{echo $obj->PrecioProducto;} ?>"/><br>
-                                                            Descripción: <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
-                                                       
-                                                           
+                                                            <label>Código:</label> <input type="text" name="codigo" placeholder="Código" value="<?php if (isset($_POST['codigo'])) {echo $_POST['codigo'];}else{echo $obj->CodigoProducto;} ?>"/><br><br>
+                                                            <label>Nombre:</label> <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];}else{echo $obj->NombreProducto;} ?>"/><br><br>
+                                                            <label>Cantidad:</label> <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];}else{echo $obj->CantidadProducto;} ?>"/><br><br> 
+                                                            <label>Precio:</label> <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];}else{echo $obj->PrecioProducto;} ?>"/><br>
+                                                            <label>Descripción:</label> <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
+                                                             <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
+                                                            <input name="imagen" type="file" class="rightContrasena" value="<?php if (isset($_POST['imagen'])) {echo $_POST['imagen'];}else{echo $obj->ImagenProducto;} ?>"/></label><br>
+                                                           <a href="<?php echo basename("/images/")."/". $obj->ImagenProducto; ?>"> Descargar <img src="<?php echo basename("/images/"). $obj->ImagenProducto; ?>" width="20" height="20" alt="Descargar" /></a>
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send2">
@@ -462,17 +525,17 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $conn->rollBack();
                                                         die("Ocurrio un error: " . $pe->getMessage());    
                                                     }
-?>
+                                                    ?>
 
                                                      <div class="btn-carrito">
-                        <div class="row">   
-                            <div class="col-md-12">
-                                <ul>
-                                    <li><a href="perfil_admin.php?c=2">Volver</a></li>                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                                                        <div class="row">   
+                                                            <div class="col-md-12">
+                                                                <ul>
+                                                                    <li><a href="perfil_admin.php?c=2">Volver</a></li>                                    
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                <?php 
                                                 }
 

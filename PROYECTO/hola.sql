@@ -270,9 +270,10 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `hola`.`Modificar_Producto`
-(IN proc_IdProducto INT(11),IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext)                                     
+(IN proc_IdProducto INT(11),IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),
+  IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext)                                     
 BEGIN
-  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto, PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto
+  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto, PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto ,ImagenProducto = proc_ImagenProducto
   WHERE IdProducto = proc_IdProducto;
 
 END //
