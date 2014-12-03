@@ -248,7 +248,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 } else {   
 
                                                 ?>
-
+<div class="btn-carrito">
                                                 <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
                                                     <div class="row">
 
@@ -264,7 +264,16 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         <button name="enter" type="submit">Modificar</button>
                                                     </div>
                                                 </form> 
-
+                                                
+                                                
+                                                    <div class="row">   
+                                                        <div class="col-md-12">
+                                                            <ul>
+                                                                <li><a href="perfil.php">Volver</a></li>                                    
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div> 
                                                 <?php
 }
                                                 ?>  

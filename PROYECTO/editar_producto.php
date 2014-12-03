@@ -105,7 +105,16 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-section"> 
-                            <h2>Modificar producto</h2>                               
+                            <?php
+                            $v = isset($_GET['v']) ? $_GET['v'] : null ;
+                            if($v==1){
+                                echo '<h2>Insertar producto</h2>'; 
+                            } else if ($v==2){
+                                echo '<h2>Modificar producto</h2>';
+                            } else if ($v==3){
+                                echo '<h2>Eliminar producto</h2>';
+                            }
+                            ?>                             
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
@@ -118,7 +127,163 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <div class="col-md-8">  
                                             <div class="message-form">
 
-                                                <?php                                               
+                                                <?php 
+                                                $v = isset($_GET['v']) ? $_GET['v'] : null ;
+                                                if($v==1){                                            
+                                                
+                                                include("autenticacion/class/config.php");
+
+                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = $ImagenProducto = "";
+
+                                                function test_input($data){
+                                                   $data = trim($data);
+                                                   $data = stripslashes($data);
+                                                   $data = htmlspecialchars($data);
+                                                   return $data;
+                                                }
+
+                                                if($_SERVER["REQUEST_METHOD"] == "POST"){       
+                                                    $CodigoProducto = test_input($_POST["codigo"]);
+                                                    $NombreProducto = test_input($_POST["nombre"]);
+                                                    $CantidadProducto = test_input($_POST["cantidad"]);
+                                                    $PrecioProducto = test_input($_POST["precio"]); 
+                                                    $DescripcionProducto = test_input($_POST["descripcion"]);
+                                                    $ImagenProducto = test_input($_POST["imagen"]);      
+                                                }
+
+                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto, $ImagenProducto,&$error){
+                                                if($CodigoProducto == null){
+                                                    $error = "Debe digitar el código del producto.";
+                                                    // header('Location:registrarse.php?error=3');
+                                                    return false;
+                                                }
+                                                // if($LoginUsuario != null){
+                                                //     $sql = "select LoginUsuario from Usuario where LoginUsuario = '$LoginUsuario'";
+                                                //     $comprobar = mysql_query($sql);
+                                                //         if(mysql_num_rows($comprobar) > 0){
+                                                //             // $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
+                                                //             header('Location:registrarse.php?error=9');
+                                                //         }
+                                                // }
+                                                if($NombreProducto == null){
+                                                    $error = "Debe digitar su nombre completo.";
+                                                    // header('Location:registrarse.php?error=3');
+                                                    return false;
+                                                }
+                                                if($NombreProducto > 45){
+                                                    $error = "El nombre del producto es muy extenso.";
+                                                    // header('Location:registrarse.php?error=4');
+                                                    return false;
+                                                }
+                                                if($CantidadProducto == null){
+                                                    $error = "Debe digitar la cantidad del producto.";
+                                                    // header('Location:registrarse.php?error=5');
+                                                    return false;
+                                                }
+                                                if($PrecioProducto == null){
+                                                    $error = "Debe digitar el precio del producto.";
+                                                    // header('Location:registrarse.php?error=7');
+                                                    return false;
+                                                }
+                                                if($DescripcionProducto == null){
+                                                    $error = "Debe digitar la descripción del producto.";
+                                                    // header('Location:registrarse.php?error=7');
+                                                    return false;
+                                                }
+                                                $error = "";
+                                                return true;
+                                                } 
+
+                                                
+
+                                                // function seguridad_x($texto){
+                                                //     $texto = stripslashes($texto);
+                                                //     $texto = addslashes($texto);
+                                                //     $texto = ereg_replace(";","",$texto);
+                                                //     $texto = ereg_replace("<","",$texto);
+                                                //     $texto = ereg_replace(">","",$texto);
+                                                //     $texto = ereg_replace("/","",$texto);
+                                                //     $texto = ereg_replace(':',"",$texto);
+                                                //     return $texto;
+                                                // }
+
+
+                                                if ($_POST){
+                                                    $error_encontrado="";
+                                                    // seguridad_x($NombreUsuario);
+                                                    // seguridad_x($CorreoUsuario);
+                                                    // seguridad_x($LoginUsuario);
+                                                    // seguridad_x($ContrasenaUsuario);
+                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,
+                                                            $DescripcionProducto,$ImagenProducto,$error_encontrado)){
+                                                    try {
+
+                                                        $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
+                                                        //Iniciar transacción
+
+                                                        $conn->beginTransaction();
+                                                      
+                                                        $sql = "call  Insertar_Producto(:proc_CodigoProducto,:proc_NombreProducto,:proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto,:proc_ImagenProducto)";
+                                                        $stmt = $conn->prepare($sql);
+                                                        $stmt->bindParam(":proc_CodigoProducto", $CodigoProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_NombreProducto", $NombreProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_CantidadProducto", $CantidadProducto, PDO::PARAM_INT);
+                                                        $stmt->bindParam(":proc_PrecioProducto", $PrecioProducto, PDO::PARAM_INT);
+                                                        $stmt->bindParam(":proc_DescripcionProducto", $DescripcionProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_ImagenProducto", $ImagenProducto, PDO::PARAM_STR);
+                                                        $stmt->execute(); 
+
+                                                        //Finalizar transacción 
+                                                        $conn->commit();                                                                                                      
+                                                        // header('Location:iniciar_sesion.php?error=4'); 
+                                                        $error_encontrado2 = 'Producto agregado.';
+
+                                                    } catch (PDOException $pe) {
+                                                        $conn->rollBack();
+                                                        die("Ocurrio un error: " . $pe->getMessage());    
+                                                    }
+                                                }
+                                                }
+
+                                                if (isset($error_encontrado)) {
+                                                echo '<p class="error-login">'.$error_encontrado.'</p>';
+                                                }
+
+                                                if (isset($error_encontrado2)) {
+                                                echo '<p>'.$error_encontrado2.'</p>'; 
+                                                echo '<div class="send">';
+                                                      echo ' <button name="enter" type="submit"><a href="perfil_admin.php?c=2">Volver</a></button>';
+                                                echo '</div>';
+                                                } else {   
+
+                                                ?>
+
+                                                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"].'?v='.$_GET["v"].'&i='.$_GET["i"].'');?>" 
+                                                    method="post" class="send-message">
+                                                    <div class="row">
+
+                                                        <div class="name col-md-5">
+
+                                                            <br>
+                                                            <input type="text" name="codigo" placeholder="Código" value="<?php if (isset($_POST['codigo'])) {echo $_POST['codigo'];} ?>"/><br><br>
+                                                            <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];} ?>"/><br><br>
+                                                            <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];} ?>"/><br><br> 
+                                                            <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];} ?>"/><br>
+                                                            <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];} ?></textarea><br><br> 
+                                                            <input type="text" name="imagen" placeholder="Imagen" value="<?php if (isset($_POST['imagen'])) {echo $_POST['imagen'];} ?>"/><br>
+                                                           
+                                                        </div>                                                 
+                                                    </div>                                                                                 
+                                                    <div class="send2">
+                                                        <button name="enter" type="submit">Agregar</button>
+                                                        <button name="enter" type="submit"><a href="perfil_admin.php?c=2">Volver</a></button>
+                                                    </div>
+                                                </form> 
+
+                                                <?php
+                                                }                                               
+                                                
+                                            } else if($v==2){
                                                 
                                                 include("autenticacion/class/config.php");
 
@@ -185,9 +350,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
                                                 $error = "";
                                                 return true;
-                                                } 
-
-                                                
+                                                }                                                 
 
                                                 // function seguridad_x($texto){
                                                 //     $texto = stripslashes($texto);
@@ -199,7 +362,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 //     $texto = ereg_replace(':',"",$texto);
                                                 //     return $texto;
                                                 // }
-
 
                                                 if ($_POST){
                                                     $error_encontrado="";
@@ -267,12 +429,56 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     </div>                                                                                 
                                                     <div class="send2">
                                                         <button name="enter" type="submit">Modificar</button>
+                                                        <button name="enter" type="submit"><a href="perfil_admin.php?c=2">Volver</a></button>
                                                     </div>
                                                 </form> 
 
                                                 <?php
-                                                }                                               
-                                                ?>  
+                                                }
+
+                                        } else if($v==3){
+                                            include("autenticacion/class/config.php");
+                                                $i = isset($_GET['i']) ? $_GET['i'] : null ;                                               
+
+                                                                                     
+                                                    try {
+                                                        $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
+                                                        //Iniciar transacción
+
+                                                        $conn->beginTransaction();
+                                                      
+                                                        $sql = "call Eliminar_Producto(:proc_IdProducto)";
+                                                        $stmt = $conn->prepare($sql);
+                                                        $stmt->bindParam(":proc_IdProducto", $i, PDO::PARAM_INT);
+                                                        $stmt->execute(); 
+
+                                                        //Finalizar transacción 
+                                                        $conn->commit(); 
+                                                         header('Location:perfil_admin.php?c=2');                                                                                                     
+                                                        // header('Location:iniciar_sesion.php?error=4'); 
+                                                        $error_encontrado2 = 'Producto eliminado.';
+
+                                                    } catch (PDOException $pe) {
+                                                        $conn->rollBack();
+                                                        die("Ocurrio un error: " . $pe->getMessage());    
+                                                    }
+?>
+
+                                                     <div class="btn-carrito">
+                        <div class="row">   
+                            <div class="col-md-12">
+                                <ul>
+                                    <li><a href="perfil_admin.php?c=2">Volver</a></li>                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                                               <?php 
+                                                }
+
+                                                                                                                                         
+                                                ?>
+
                                             </div>
                                         </div>                                           
                                     </div>

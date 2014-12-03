@@ -195,7 +195,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                          <div class="row" id="Container">
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL 
-                           $results = $mysqli->query("SELECT * FROM Producto ");
+                           $results = $mysqli->query("SELECT * FROM Producto LIMIT 20");
                             if ($results) 
                             { 
                                 ?>

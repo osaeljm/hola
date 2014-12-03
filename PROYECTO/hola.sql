@@ -280,6 +280,38 @@ DELIMITER ;
 
 -- ----------------------------------------------------------------------------------------------------------------
 --
+-- PROCEDIMIENTO INSERTAR PRODUCTO
+--
+--
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Insertar_Producto`
+(IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11),
+ IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext)                                     
+BEGIN
+  INSERT INTO `Producto` (`CodigoProducto`,`NombreProducto`,`CantidadProducto`,`PrecioProducto`,`DescripcionProducto`,`ImagenProducto`)
+  VALUES (proc_CodigoProducto,proc_NombreProducto, proc_CantidadProducto,proc_PrecioProducto,proc_DescripcionProducto,proc_ImagenProducto);
+
+END //
+DELIMITER ;
+
+-- ----------------------------------------------------------------------------------------------------------------
+--
+-- PROCEDIMIENTO ELIMINAR PRODUCTO
+--
+--
+
+DELIMITER //
+CREATE PROCEDURE `hola`.`Eliminar_Producto`
+(IN proc_IdProducto INT(11))                                     
+BEGIN
+  DELETE FROM `Producto`
+  WHERE IdProducto=proc_IdProducto;
+
+END //
+DELIMITER ;
+-- ----------------------------------------------------------------------------------------------------------------
+--
 -- PROCEDIMIENTO 
 --
 --
