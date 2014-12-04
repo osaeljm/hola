@@ -158,7 +158,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         </div>                                                    
                                     </div>                             
                                     <div class="label-text">
-                                        <h3><a href="single-post.html"><?php echo $obj->NombreProducto ?></a></h3>
+                                        <h3><a href="detalleproducto.php?i=<?php echo $obj->IdProducto ?>"><?php echo $obj->NombreProducto ?></a></h3>
                                         <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
                                         <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
                                         <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />

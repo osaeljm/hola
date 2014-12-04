@@ -368,7 +368,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $PrecioProducto = test_input($_POST["precio"]); 
                                                     $DescripcionProducto = test_input($_POST["descripcion"]);   
                                                     $ImagenProducto = test_input($_POST["imagen"]); 
-                                                     // $ImagenProducto = subirDocumento($_FILES["imagen"]);  
+                                                     // $ImagenProducto = subirDocumento($_FILES["imagen"]);   
                                                 }
 
                                                 function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,&$error){
