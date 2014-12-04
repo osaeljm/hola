@@ -42,7 +42,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     session_start();
                                     if(isset($_SESSION["usuario"])){
                                         echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
-                                        echo '<a href="#"> Perfil</a>';
+                                        echo '<a href="perfil.php"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
                                         echo '<a href="registrarse.php">Registrar</a>';

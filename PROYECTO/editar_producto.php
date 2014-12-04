@@ -142,7 +142,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                    return $data;
                                                 }
 
-                                                function subirDocumento(array $_files,&$newname = ""){                                                    $fecha = date("Y-m-d");
+                                                function subirDocumento(array $_files,&$newname = ""){
+                                                    $fecha = date("Y-m-d");
                                                     $rd2 = mt_rand(1000,9999)."_".$fecha; 
                                                     //$rd2 =  basename($_files['name'])."_".date("Y-m-d").date("H:i:s"); 
                                                     if((!empty($_files)) && ($_files['error'] == 0)) {
@@ -331,7 +332,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                    return $data;
                                                 }
 
-                                                 function subirDocumento(array $_files,&$newname = ""){                                                    $fecha = date("Y-m-d");
+                                                 function subirDocumento(array $_files,&$newname = ""){
+                                                    $fecha = date("Y-m-d");
                                                     $rd2 = mt_rand(1000,9999)."_".$fecha; 
                                                     //$rd2 =  basename($_files['name'])."_".date("Y-m-d").date("H:i:s"); 
                                                     if((!empty($_files)) && ($_files['error'] == 0)) {
@@ -365,8 +367,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $CantidadProducto = test_input($_POST["cantidad"]);
                                                     $PrecioProducto = test_input($_POST["precio"]); 
                                                     $DescripcionProducto = test_input($_POST["descripcion"]);   
-                                                    // $ImagenProducto = test_input($_POST["imagen"]); 
-                                                     $ImagenProducto = subirDocumento($_FILES["imagen"]); 
+                                                    $ImagenProducto = test_input($_POST["imagen"]); 
+                                                     // $ImagenProducto = subirDocumento($_FILES["imagen"]);  
                                                 }
 
                                                 function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,&$error){
@@ -422,6 +424,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 //     $texto = ereg_replace(':',"",$texto);
                                                 //     return $texto;
                                                 // }
+                                                if(empty($ImagenProducto)){
+                                                    $ImagenProducto = $obj->ImagenProducto;
+                                                }
 
                                                 if ($_POST){
                                                     $error_encontrado="";
@@ -486,8 +491,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                             <label>Precio:</label> <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];}else{echo $obj->PrecioProducto;} ?>"/><br>
                                                             <label>Descripción:</label> <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
                                                              <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
-                                                            <input name="imagen" type="file" class="rightContrasena" value="<?php if (isset($_POST['imagen'])) {echo $_POST['imagen'];}else{echo $obj->ImagenProducto;} ?>"/></label><br>
-                                                           <a href="<?php echo basename("/images/")."/". $obj->ImagenProducto; ?>"> Descargar <img src="<?php echo basename("/images/"). $obj->ImagenProducto; ?>" width="20" height="20" alt="Descargar" /></a>
+                                                            <input name="imagen" type="file" class="rightContrasena" value=""/></label><br>
+                                                           
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send2">
@@ -528,14 +533,14 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     ?>
 
                                                      <div class="btn-carrito">
-                                                        <div class="row">   
-                                                            <div class="col-md-12">
-                                                                <ul>
-                                                                    <li><a href="perfil_admin.php?c=2">Volver</a></li>                                    
-                                                                </ul>
-                                                            </div>
+                                                    <div class="row">   
+                                                        <div class="col-md-12">
+                                                            <ul>
+                                                                <li><a href="perfil_admin.php?c=2">Volver</a></li>                                    
+                                                            </ul>
                                                         </div>
                                                     </div>
+                                                </div>
                                                <?php 
                                                 }
 
