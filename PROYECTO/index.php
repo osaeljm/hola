@@ -74,7 +74,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="main-menu">
                                     <ul>
                                         <li><a href="index.php">Inicio</a></li>
-                                        <li><a href="about-us.php">Nosotros</a></li>
+                                        <li><a href="https://localhost:81/hola/PROYECTO/about-us.php">Nosotros</a></li>
                                         <li><a href="products.php">Productos</a></li>
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
@@ -239,6 +239,97 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
+            <div id="testimonails">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                                <h2>Noticias</h2>
+                                <img src="images/under-heading.png" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="testimonails-slider">
+                              <ul class="slides">
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>Rebeca Alba vende cupcakes en apoyo a la lucha contra el cáncer.
+                                         <a target="_blank" href="http://www.sdpnoticias.com/estilo-de-vida/2014/12/03/rebecca-de-alba-vende-cupcakes-en-apoyo-a-la-lucha-contra-el-cancer">Ver más</a></p>
+                                        <!-- <h6>Jennifer - <a href="#">Chief Designer</a></h6> -->
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>Los cupcakes le dan una ventaja a los niños de Durban en Sudáfrica. 
+                                        <a target="_blank" href="http://www.iol.co.za/news/south-africa/kwazulu-natal/cupcakes-give-children-a-leg-up-1.1790283#.VH-ZGDHF_2c">
+                                        Ver más</a></p>
+                                    </div> 
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>La tienda de cupcakes SweetArt en St. Louis, USA, se ha convertido en un centro de conversación en busca de respuestas y consuelo alrededor de la muerte del joven Michael Brown.
+                                        <a target="_blank" href="http://www.msnbc.com/msnbc/race-and-class-side-cupcakes-ferguson">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>Cómo los cupcakes de $6 de la empresa Whole Foods ayuda a los pobres del área urbana de Detroit.
+                                        <a target="_blank" href="http://grist.org/food/how-do-whole-foods-6-cupcakes-help-detroits-urban-poor/">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>La empresa Turlock en USA, vende cupcakes para ayudar a niños necesitados en navidad.
+                                            <a target="_blank" href="http://www.turlockjournal.com/archives/27937/">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>Los niños de cuarto grado de la escuela elemental de Towanda en Pensilvannia crean planes de negocio y cupcakes.
+                                            <a href=""></a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>17 formas de cómo los cupcakes podrían integrarse en la vida diaria para hacer del mundo un mejor lugar.
+                                            <a target="_blank" href="http://www.bustle.com/articles/48381-17-ways-cupcakes-should-be-integrated-into-daily-life-to-make-the-world-a-better-place">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>Los equipos de la conferencia South Eastern de football en USA continúa amando los cupcakes.
+                                            <a target="_blank" href="http://www.orlandosentinel.com/sports/college/college-gridiron-365/os-10-things-we-learned-this-college-football-weekend-20141123-post.html">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>Una mujer de Chelmsford USA gana medalla de oro en la mayor competencia mundial de queques.
+                                            <a target="_blank" href="http://www.chelmsfordweeklynews.co.uk/news/11609823.Golden_cupcakes/">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="testimonails-content">
+                                        <p>La universidad Brigham Young en Utah recoge dinero para el banco de comida con un mural gigante de cupcakes.
+                                            <a target="_blank" href="http://www.heraldextra.com/news/local/byu-raises-money-for-food-bank-with-giant-cupcake-mural/article_6d1bebd5-9554-56b8-ae2d-0dfb1ab2ea56.html">Ver más</a>
+                                        </p>
+                                    </div>
+                                </li>                               
+                              </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
@@ -272,7 +363,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div> 
                             <div class="col-md-3">
                                <div class="social-bottom">                                   
-                                    <span>Siganos en </span>
+                                    <span>Síguenos en </span>
                                     <ul>
                                         <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     

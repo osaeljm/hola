@@ -322,7 +322,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div> 
                             <div class="col-md-3">
                                <div class="social-bottom">                                   
-                                    <span>Siganos en </span>
+                                    <span>Síguenos en </span>
                                     <ul>
                                         <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     

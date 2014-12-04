@@ -161,7 +161,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <h3><a href="detalleproducto.php?i=<?php echo $obj->IdProducto ?>"><?php echo $obj->NombreProducto ?></a></h3>
                                         <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
                                         <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                        <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CantidadProducto?>" />
+                                        <input type="hidden" name="CantidadProducto" value="<?php echo $obj->CantidadProducto?>" />
                                         <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
                                         <input type="hidden" name="type" value="add" />
                                         <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
@@ -262,7 +262,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div> 
                             <div class="col-md-3">
                                <div class="social-bottom">                                   
-                                    <span>Siganos en </span>
+                                    <span>Síguenos en </span>
                                     <ul>
                                         <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     

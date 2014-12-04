@@ -31,7 +31,24 @@ http://www.templatemo.com/preview/templatemo_417_grill
   border-color: #D8AC69;
 }
 span a {
-   color:#8AD7E3;
+   color:#29BEE7;
+}
+
+.tabla_cart{
+  border-top: 1px solid black;
+  border-color: #D8AC69;
+  color:#000;
+
+}
+.tabla_cart tr{
+  border-top: 1px solid black;
+  border-color: #D8AC69;
+  color:#000; 
+ } 
+.tabla_cart td{
+  border-bottom: 1px solid black;
+  color:#000;
+  border-color: #D8AC69;
 }
 
 
@@ -840,7 +857,7 @@ textarea {
   color: #444;
 }
 .send3 button {
-  width: 200px;
+  width: 160px;
   color: #fff;
   cursor: pointer;
   height: 35px;
@@ -1200,6 +1217,17 @@ textarea {
   font-style: italic;
 }
 
+.testimonails-content a {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 30px;
+  font-style: italic;
+  color: #000
+}
+.testimonails-content a:hover {
+  color: #29BEE7;
+}
 /*-- End Testimonails --*/
 
 
