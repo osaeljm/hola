@@ -72,22 +72,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="main-menu">
-                                    <ul>
+                                    <ul>                                     
                                         <li><a href="index.php">Inicio</a></li>
-                                        <li><a href="https://localhost:81/hola/PROYECTO/about-us.php">Nosotros</a></li>
-                                        <li><a href="products.php">Productos</a></li>
+                                        <li><a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/about-us.php">Nosotros</a></li>
+                                        <li><a href="https://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/products.php">Productos</a></li>
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -146,7 +139,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                                 <div class="blog-content">
                                     <div class="content-show">
-                                        <h4><a href="canastilla.html">Tes de canastilla</a></h4>
+                                        <h4><a href="products.php">Tes de canastilla</a></h4>
                                         <!-- <span>29 Sep 2014</span> -->
                                     </div>
                                     <div class="content-hide">
@@ -162,7 +155,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                                 <div class="blog-content">
                                     <div class="content-show">
-                                        <h4><a href="cumple.html">Cumpleaños</a></h4>
+                                        <h4><a href="products.php">Cumpleaños</a></h4>
                                         <!-- <span>23 Sep 2014</span> -->
                                     </div>
                                     <div class="content-hide">
@@ -178,7 +171,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                                 <div class="blog-content">
                                     <div class="content-show">
-                                        <h4><a href="fiesta.html">Fiestas</a></h4>
+                                        <h4><a href="products.php">Fiestas</a></h4>
                                         <!-- <span>14 Sep 2014</span> -->
                                     </div>
                                     <div class="content-hide">
@@ -194,7 +187,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                                 <div class="blog-content">
                                     <div class="content-show">
-                                        <h4><a href="mesas.html">Mesas de dulces</a></h4>
+                                        <h4><a href="products.php">Mesas de dulces</a></h4>
                                         <!-- <span>25 Aug 2014</span> -->
                                     </div>
                                     <div class="content-hide">
@@ -210,7 +203,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                                 <div class="blog-content">
                                     <div class="content-show">
-                                        <h4><a href="single-post.html">Queques</a></h4>
+                                        <h4><a href="products.php">Queques</a></h4>
                                         <!-- <span>17 Aug 2014</span> -->
                                     </div>
                                     <div class="content-hide">
@@ -226,7 +219,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                                 <div class="blog-content">
                                     <div class="content-show">
-                                        <h4><a href="single-post.html">Cupcakes</a></h4>
+                                        <h4><a href="products.php">Cupcakes</a></h4>
                                         <!-- <span>12 Aug 2014</span> -->
                                     </div>
                                     <div class="content-hide">
@@ -235,15 +228,19 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>
                             </div>
                         </div>
+
+
+            
                     </div>
                 </div>
             </div>
-
-            <div id="testimonails">
+           <div id="testimonails">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-section">
+                            <img src="images/under-heading.png" alt="" ><br><br>
+                             <iframe width="60%" height="380px" src="//www.youtube.com/embed/n8cYJj2xoHg" frameborder="0" allowfullscreen></iframe>
                                 <h2>Noticias</h2>
                                 <img src="images/under-heading.png" alt="" >
                             </div>

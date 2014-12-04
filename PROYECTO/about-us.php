@@ -80,20 +80,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>
             </header>
-
 
             <div id="heading3">
                 <div class="container">
@@ -112,7 +103,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading-section">
-                               
+                                <h2>Historia</h2>
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>

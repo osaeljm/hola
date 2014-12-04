@@ -6,7 +6,7 @@ $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_U
 if(isset($_SESSION["usuario"])){
   
 } else{
-   header('Location:iniciar_sesion.php?error=3&');
+   header('Location:iniciar_sesion.php?error=3');
 }
 ?>
 <!DOCTYPE html>
@@ -156,42 +156,45 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
-
-
-
-
             <footer>
                 <div class="container">
                     <!-- <div class="top-footer">                     
                     </div>  -->                    
                     <div class="main-footer">
                         <div class="row">
-                            <div class="col-md-3">
-                               <div class="social-bottom">
-                                    <span>Siganos en :</span>
-                                    <ul>
-                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
-                                    </ul>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <h4 class="footer-title">Para obtener más información:</h4>
+                                    <div class="more-info">                                        
+                                        <ul>
+                                            <li><h4 class="footer-title">Más información</h4></li>
+                                        </ul>                                
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                             <div class="col-md-3">
                                 <div class="social-bottom">
-                                    <div class="more-info">
-                                        <ul>
-                                            <li><i class="fa fa-phone"></i>(506)2431-46-48</li>
-                                            <li><i class="fa fa-globe"></i>150 metros al norte de la POPS Alajuela, Costa Rica</li>
-                                            <li><i class="fa fa-envelope"></i><a>hola@holacupcakes.com</a></li>
+                                    <div class="more-info">                                  
+                                                                                      
+                                         <ul>
+                                            <li><img src="images/icon-phone.png"/>  (506)2431-46-48</li>                                                   
+                                        </ul>                                                 
+                                         <ul>                                                   
+                                            <li><img src="images/icon-mail.png"/>  150 metros al norte de la POPS Alajuela, Costa Rica</li>
                                         </ul>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
+                            <div class="col-md-3">            
+                            </div> 
+                            <div class="col-md-3">
+                               <div class="social-bottom">                                   
+                                    <span>Síguenos en </span>
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                    </ul>                                     
+                                </div>
+                            </div>                                                     
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
                     </div>
@@ -199,80 +202,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </div>  -->                   
                 </div>
             </footer>
-
     
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
-        <script src="js/vendor/jquery.gmap3.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/validacard.js"></script>
+            <script src="js/vendor/jquery-1.11.0.min.js"></script>
+            <script src="js/vendor/jquery.gmap3.min.js"></script>
+            <script src="js/plugins.js"></script>
+            <script src="js/main.js"></script>
+            <script src="js/validacard.js"></script>
 
     </body>
 </html>
-
-
-
- <?php
-
-                            //  if(isset($_SESSION["products"]))
-                            // {
-                            //     $total = 0;
-                            //     echo '<form method="post" action="PAYMENT-GATEWAY">';
-                            //     echo '<table >'; //class="table" id="table"
-                                
-                            //     $cart_items = 0;
-                               
-                            //     foreach ($_SESSION["products"] as $cart_itm)
-                            //     {
-                            //        $product_code = $cart_itm["code"];
-                            //        $results = $mysqli->query("SELECT NombreProducto,CantidadProducto,DescripcionProducto,PrecioProducto FROM Producto WHERE CodigoProducto='$product_code' LIMIT 1");
-                            //        $obj = $results->fetch_object();
-                            //         echo '<tr >';
-                            //         echo '<td class="cart-itm">';
-                            //         echo '<h3>'.$obj->NombreProducto.' (Code: '.$product_code.')</h3> ';
-                            //         echo '<div class="p-price">Precio: '.$currency.$obj->PrecioProducto.'</div>';                                   
-                            //         echo '<div class="product-info">';                                 
-                            //         echo 'Cantidad: <select>
-                            //               <option value="1"selected>1</option>
-                            //               <option value="2">2</option>
-                            //               <option value="3">3</option>
-                            //               <option value="4">4</option>
-                            //               <option value="5">5</option>
-                            //               <option value="6">6</option>
-                            //               <option value="7">7</option>
-                            //               <option value="8">8</option>
-                            //               <option value="9">9</option>
-                            //               <option value="10">10</option>
-                            //             </select>';
-                            //         echo '<div>'.$obj->DescripcionProducto.'</div>';
-                            //         echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">Eliminar del carrito</a></span>';
-                            //         echo '</div>';
-                            //         echo '</td>';
-                            //         echo '</tr >';
-                            //         $subtotal = ($cart_itm["price"]*1); //$cart_itm["qty"]
-                            //         $total = ($total + $subtotal);
-
-                            //         echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';
-                            //         echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
-                            //         echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->DescripcionProducto.'" />';
-                            //         echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
-                            //         $cart_items ++;
-                                     
-                            //     }
-                            //     echo $cart_items ;
-                            //     $_SESSION["cart_items"] = $cart_items;
-
-                            //     echo '</table>';
-                            //     echo '<span class="check-out-txt">';
-                            //     echo '<strong>Total : '.$currency.$total.'</strong>  ';
-                            //     echo '</span>';
-                            //     echo '</form>';
-                                
-                            // }else{
-                            //     echo 'Your Cart is empty';
-                            // }
-                            // echo '<span class="check-out-txt"><a href="products.php">Productos - Inicio</a></span>';
-                            // echo '<span class="check-out-txt"><a href="#">COMPRAR</a></span>';
-
-
-                        ?>

@@ -58,23 +58,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">                                    
-                                    <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>
-                                    
-                                    <?php 
-                                    //   echo '(<a href="#">';
-                                                                               
-                                    //     if(!empty(filter_var($_SESSION["cart_items"],FILTER_SANITIZE_NUMBER_INT))){
-                                    //         if($_SESSION["cart_items"] != 'Array'){                                           
-                                    //             echo ''.$_SESSION["cart_items"].' artículos';
-                                    //         } else {
-                                    //             echo '0 artículos'; 
-                                    //         }
-                                    //     } else {
-                                    //         echo '0 artículos'; 
-                                    //     }
-                                    
-                                    // echo '</a>)';
-                                     ?>
+                                    <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>                                    
                                 </div>
                             </div>
                         </div>
@@ -97,15 +81,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>
@@ -223,54 +199,58 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         ?>
                                     </div>
 
-                                    <div class="col-md-3 col-md-offset-1">
-                                        <div class="side-bar">
-                                            <div class="news-letters">
-                                                <h4>Archives</h4>
-                                                <div class="archives-list">
-                                                    <ul>
-                                                        <li><a href="#"><i class="fa fa-angle-right"></i>July (12)</a></li>
-                                                        <li><a href="#"><i class="fa fa-angle-right"></i>August (18)</a></li>                                                           
-                                                </div>        
-                                            </div>
-                                            <div class="recent-post">
-                                                <h4>Recent Posts</h4>
-                                                <div class="posts">
-                                                    <div class="recent-post">
-                                                        <div class="recent-post-thumb">
-                                                            <img src="images/recent-post1.jpg" alt="">
-                                                        </div>
-                                                        <div class="recent-post-info">
-                                                            <h6><a href="#">Vestibulum molestie odio sit amet</a></h6>
-                                                            <span>24 Sep 2084</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="recent-post">
-                                                        <div class="recent-post-thumb">
-                                                            <img src="images/recent-post2.jpg" alt="">
-                                                        </div>
-                                                        <div class="recent-post-info">
-                                                            <h6><a href="#">Vivamus mattis quam eget urna tincidunt</a></h6>
-                                                            <span>22 Sep 2084</span>
-                                                        </div>
-                                                    </div>                                                        
-                                                </div> 
-                                            </div>
-                                            <div class="advertisement">
-                                                <h4>Flickr news</h4>
-                                                <div class="flickr-images">
-                                                    <div class="row">
-                                                        <div class="col-md-4 col-sm-2 col-xs-3">
-                                                            <img src="images/flickr-image1.jpg" alt="">
-                                                        </div>
-                                                        <div class="col-md-4 col-sm-2 col-xs-3">
-                                                            <img src="images/flickr-image2.jpg" alt="">
-                                                        </div> 
-                                                    </div>
+                                      <div class="col-md-3 col-md-offset-1">
+                                            <div class="side-bar">
+                                                <div class="news-letters">
+                                                    <h4>HolaCupCakes | Fiestas</h4>
+                                                    <div class="archives-list">                                                        
+                                                        <iframe width="100%" height="auto" src="//www.youtube.com/embed/n8cYJj2xoHg" frameborder="0" allowfullscreen></iframe>
+                                                    </div>        
                                                 </div>
-                                            </div>    
+                                                <div class="recent-post">
+                                                    <h4>Noticias</h4>
+                                                    <div class="testimonails-slider">
+                                                        <ul class="slides">
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>La tienda de cupcakes SweetArt en St. Louis, USA, se ha convertido en un centro de conversación en busca de respuestas y consuelo alrededor de la muerte del joven Michael Brown.
+                                                                    <a target="_blank" href="http://www.msnbc.com/msnbc/race-and-class-side-cupcakes-ferguson">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>Cómo los cupcakes de $6 de la empresa Whole Foods ayuda a los pobres del área urbana de Detroit.
+                                                                    <a target="_blank" href="http://grist.org/food/how-do-whole-foods-6-cupcakes-help-detroits-urban-poor/">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>La empresa Turlock en USA, vende cupcakes para ayudar a niños necesitados en navidad.
+                                                                        <a target="_blank" href="http://www.turlockjournal.com/archives/27937/">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>Los niños de cuarto grado de la escuela elemental de Towanda en Pensilvannia crean planes de negocio y cupcakes.
+                                                                        <a href=""></a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>17 formas de cómo los cupcakes podrían integrarse en la vida diaria para hacer del mundo un mejor lugar.
+                                                                        <a target="_blank" href="http://www.bustle.com/articles/48381-17-ways-cupcakes-should-be-integrated-into-daily-life-to-make-the-world-a-better-place">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>                             
+                                                        </ul>
+                                                    </div>
+                                                </div>                                                   
+                                            </div>
                                         </div>
-                                    </div>
 
                                 </div>
                             </div>

@@ -110,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `Producto` (
   `DescripcionProducto` tinytext NOT NULL, 
   `ImagenProducto` tinytext NOT NULL, 
   `PrecioProducto` int(11) NOT NULL,
+  `CategoriaProducto` varchar(45) NOT NULL,
   PRIMARY KEY (`IdProducto`)
 ) AUTO_INCREMENT=1 ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
@@ -119,20 +120,20 @@ CREATE TABLE IF NOT EXISTS `Producto` (
 --
 --
 
-INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`) VALUES
-(1, 'abc001', 'Queque de cubos', 30, 'Hermoso queque para te de canastilla, para hombre con su nombre deletreado en cubos con decoraci&oacute;n de patos.', 'canastillacubos.jpg', 16000),
-(2, 'abc002', 'Bol de dulces', 30, 'Deliciosa variedad de dulces en diferentes formas de bol, cada tipo de dulce se puede elegir a combinaci&oacute;n y preferencia.', 'canastilla3.jpg', 2400),
-(3, 'abc003', '50 a&ntilde;os', 30, 'Hermoso queque para cumplea&ntilde;os de 50 a&ntilde;os, para hombre con su actividad favorita.', 'cumple2.jpg', 20000),
-(4, 'abc004', 'Cumplea&ntilde;os infantil', 30, 'Hermoso queque para cumplea&ntilde;os infantil, para hombre o mujer.', 'cumple3.jpg', 24000),
-(5, 'abc005', 'Fiesta Hawaiana', 30, 'Falta...', 'fiesta2.jpg', 15000),
-(6, 'abc006', 'Fiesta para mujer', 30, 'Hermoso queque con el tema preferido para esa mujer especial.', 'fiesta.jpg', 20000),
-(7, 'abc007', 'Mesa de dulces para cumplea&ntilde;os de ni&ntilde;a', 30, 'Hermosa mesa de dulces para cumplea&ntilde;os de ni&ntilde;a, color y tema del queque a gusto.', 'mesadulce2.jpg', 25000),
-(8, 'abc008', 'Mesa de dulces para eventos', 30, 'Hermosa mesa de dulces para diferentes eventos.', 'mesadulce3.jpg', 30000),
-(9, 'abc009', 'Queque de mar', 30, 'Hermoso queque con tema de mar.', 'queque.jpg', 10000),
-(10, 'abc010', 'Queque Simpson', 30, 'Delicioso queque con tema de los Simpson adornado con cupcakes.', 'queque3.jpg', 10000),
-(11, 'abc011', 'Cupcake sencillo', 30, 'Deliciosos cupcakes de diferentes sabores.', 'cupcake2.jpg', 5000),
-(12, 'abc012', 'Cupcake decorado', 30, 'Delicioso y hermoso cupcakes con decoraci&oacute;n personalizada.', 'cupcake3.jpg', 10000),
-(13, 'abc013', 'Cupcakes navide&ntilde;os', 30, 'Hermosos y deliciosos cupcakes con el tema navide&ntilde;o.', 'cupcakenavideño.jpg', 20000);
+INSERT INTO `Producto` (`IdProducto`, `CodigoProducto`, `NombreProducto`, `CantidadProducto`, `DescripcionProducto`, `ImagenProducto`, `PrecioProducto`, `CategoriaProducto`) VALUES
+(1, 'abc001', 'Queque de cubos', 30, 'Hermoso queque para te de canastilla, para hombre con su nombre deletreado en cubos con decoraci&oacute;n de patos.', 'canastillacubos.jpg', 16000, 'tes'),
+(2, 'abc002', 'Bol de dulces', 30, 'Deliciosa variedad de dulces en diferentes formas de bol, cada tipo de dulce se puede elegir a combinaci&oacute;n y preferencia.', 'canastilla3.jpg', 2400, 'tes'),
+(3, 'abc003', '50 a&ntilde;os', 30, 'Hermoso queque para cumplea&ntilde;os de 50 a&ntilde;os, para hombre con su actividad favorita.', 'cumple2.jpg', 20000, 'cumple'),
+(4, 'abc004', 'Cumplea&ntilde;os infantil', 30, 'Hermoso queque para cumplea&ntilde;os infantil, para hombre o mujer.', 'cumple3.jpg', 24000, 'cumple'),
+(5, 'abc005', 'Fiesta Hawaiana', 30, 'Falta...', 'fiesta2.jpg', 15000, 'fiesta'),
+(6, 'abc006', 'Fiesta para mujer', 30, 'Hermoso queque con el tema preferido para esa mujer especial.', 'fiesta.jpg', 20000, 'fiesta'),
+(7, 'abc007', 'Mesa de dulces para cumpleaÃ±os de niÃ±a', 30, 'Hermosa mesa de dulces para cumplea&ntilde;os de ni&ntilde;a, color y tema del queque a gusto.', 'mesadulce2.jpg', 25000, 'mesa'),
+(8, 'abc008', 'Mesa de dulces para eventos', 30, 'Hermosa mesa de dulces para diferentes eventos.', 'mesadulce3.jpg', 30000, 'mesa'),
+(9, 'abc009', 'Queque de mar', 30, 'Hermoso queque con tema de mar.', 'queque.jpg', 10000, 'queque'),
+(10, 'abc010', 'Queque Simpson', 30, 'Delicioso queque con tema de los Simpson adornado con cupcakes.', 'queque3.jpg', 10000, 'queque'),
+(11, 'abc011', 'Cupcake sencillo', 30, 'Deliciosos cupcakes de diferentes sabores.', 'cupcake2.jpg', 5000, 'cupcake'),
+(12, 'abc012', 'Cupcake decorado', 30, 'Delicioso y hermoso cupcakes con decoraci&oacute;n personalizada.', 'cupcake3.jpg', 10000, 'cupcake'),
+(13, 'abc013', 'Cupcakes navide&ntilde;os', 30, 'Hermosos y deliciosos cupcakes con el tema navide&ntilde;o.', 'cupcakenavideno.jpg', 20000, 'cupcake');
 -- ----------------------------------------------------------------------------------------------------------------
 --
 -- PROCEDIMIENTOS ALMACENADOS PARA COMPRAR PRODUCTOS
@@ -271,9 +272,11 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `hola`.`Modificar_Producto`
 (IN proc_IdProducto INT(11),IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),
-  IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext)                                     
+  IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext,
+  IN proc_ImagenProducto tinytext,IN proc_CategoriaProducto VARCHAR(45))                                     
 BEGIN
-  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto, PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto ,ImagenProducto = proc_ImagenProducto
+  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto, 
+  PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto ,ImagenProducto = proc_ImagenProducto, CategoriaProducto = proc_CategoriaProducto
   WHERE IdProducto = proc_IdProducto;
 
 END //
@@ -288,10 +291,11 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `hola`.`Insertar_Producto`
 (IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11),
- IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext)                                     
+ IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext,
+ IN proc_CategoriaProducto VARCHAR(45))                                     
 BEGIN
-  INSERT INTO `Producto` (`CodigoProducto`,`NombreProducto`,`CantidadProducto`,`PrecioProducto`,`DescripcionProducto`,`ImagenProducto`)
-  VALUES (proc_CodigoProducto,proc_NombreProducto, proc_CantidadProducto,proc_PrecioProducto,proc_DescripcionProducto,proc_ImagenProducto);
+  INSERT INTO `Producto` (`CodigoProducto`,`NombreProducto`,`CantidadProducto`,`PrecioProducto`,`DescripcionProducto`,`ImagenProducto`,`CategoriaProducto`)
+  VALUES (proc_CodigoProducto,proc_NombreProducto, proc_CantidadProducto,proc_PrecioProducto,proc_DescripcionProducto,proc_ImagenProducto,proc_CategoriaProducto);
 
 END //
 DELIMITER ;

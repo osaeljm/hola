@@ -118,7 +118,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
-                    </div>                   
+                    </div>
+                    
 
                     <div class="row" id="Container">
                         <?php
@@ -175,7 +176,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">   
                             <div class="col-md-12">
                                 <ul>
-                                    <li><a href="perfil.php">Volver</a></li>                                    
+                                    <li><a href="perfil_admin.php?c=3">Volver</a></li>                                    
                                 </ul>
                             </div>
                         </div>

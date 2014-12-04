@@ -133,7 +133,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 
                                                 include("autenticacion/class/config.php");
 
-                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = $ImagenProducto = "";
+                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = $ImagenProducto = $Categoria = "";
 
                                                 function test_input($data){
                                                    $data = trim($data);
@@ -178,10 +178,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $PrecioProducto = test_input($_POST["precio"]); 
                                                     $DescripcionProducto = test_input($_POST["descripcion"]);
                                                     // $ImagenProducto = test_input($_POST["imagen"]); 
-                                                     $ImagenProducto = subirDocumento($_FILES["imagen"]);     
+                                                     $ImagenProducto = subirDocumento($_FILES["imagen"]); 
+                                                     $CategoriaProducto =  test_input($_POST["categoria"]);    
                                                 }
 
-                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto, $ImagenProducto,&$error){
+                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,
+                                                    $DescripcionProducto, $ImagenProducto,$CategoriaProducto,&$error){
                                                 if($CodigoProducto == null){
                                                     $error = "Debe digitar el código del producto.";
                                                     // header('Location:registrarse.php?error=3');
@@ -220,6 +222,16 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     // header('Location:registrarse.php?error=7');
                                                     return false;
                                                 }
+                                                if($CategoriaProducto == null){
+                                                    $error = "Debe seleccionar una categoria para el producto.";
+                                                    // header('Location:registrarse.php?error=7');
+                                                    return false;
+                                                }
+                                                if($ImagenProducto == null){
+                                                    $error = "Debe seleccionar una imagen para el producto.";
+                                                    // header('Location:registrarse.php?error=7');
+                                                    return false;
+                                                }
                                                 $error = "";
                                                 return true;
                                                 } 
@@ -244,7 +256,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     // seguridad_x($LoginUsuario);
                                                     // seguridad_x($ContrasenaUsuario);
                                                 if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,
-                                                            $DescripcionProducto,$ImagenProducto,$error_encontrado)){
+                                                            $DescripcionProducto,$ImagenProducto,$CategoriaProducto,$error_encontrado)){
                                                     try {
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
@@ -253,7 +265,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                         $conn->beginTransaction();
                                                       
-                                                        $sql = "call  Insertar_Producto(:proc_CodigoProducto,:proc_NombreProducto,:proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto,:proc_ImagenProducto)";
+                                                        $sql = "call  Insertar_Producto(:proc_CodigoProducto,:proc_NombreProducto,:proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto,:proc_ImagenProducto,:proc_CategoriaProducto)";
                                                         $stmt = $conn->prepare($sql);
                                                         $stmt->bindParam(":proc_CodigoProducto", $CodigoProducto, PDO::PARAM_STR);
                                                         $stmt->bindParam(":proc_NombreProducto", $NombreProducto, PDO::PARAM_STR);
@@ -261,6 +273,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $stmt->bindParam(":proc_PrecioProducto", $PrecioProducto, PDO::PARAM_INT);
                                                         $stmt->bindParam(":proc_DescripcionProducto", $DescripcionProducto, PDO::PARAM_STR);
                                                         $stmt->bindParam(":proc_ImagenProducto", $ImagenProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_CategoriaProducto", $CategoriaProducto, PDO::PARAM_STR);
                                                         $stmt->execute(); 
 
                                                         //Finalizar transacción 
@@ -299,6 +312,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                             <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];} ?>"/><br><br>
                                                             <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];} ?>"/><br><br> 
                                                             <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];} ?>"/><br>
+                                                            <select name="categoria">
+                                                              <option value=""></option>
+                                                              <option value="tes" <?php if($_POST['categoria']=='tes'){echo 'selected';} ?>>Tes de canastilla</option>
+                                                              <option value="cumple" <?php if($_POST['categoria']=='cumple'){echo 'selected';} ?>>Cumpleaños</option>
+                                                              <option value="fiesta" <?php if($_POST['categoria']=='fiesta'){echo 'selected';} ?>>Fiesta</option>
+                                                              <option value="mesa" <?php if($_POST['categoria']=='mesa'){echo 'selected';} ?>>Mesas de dulce</option>
+                                                              <option value="queque" <?php if($_POST['categoria']=='queque'){echo 'selected';} ?>>Queque</option>
+                                                              <option value="cupcake" <?php if($_POST['categoria']=='cupcake'){echo 'selected';} ?>>Cupcake</option>
+                                                            </select>
                                                             <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];} ?></textarea><br><br> 
                                                             <!-- <input type="text" name="imagen" placeholder="Imagen" value="<?php //if (isset($_POST['imagen'])) {echo $_POST['imagen'];} ?>"/><br> -->
                                                            <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
@@ -315,6 +337,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }                                               
                                                 
                                             } else if($v==2){
+
+                                                ///////////////////////////////////////////////////////////////////////////
                                                 
                                                 include("autenticacion/class/config.php");
 
@@ -323,7 +347,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 $results = $mysqli->query("SELECT * FROM Producto WHERE IdProducto = $i");
                                                 $obj = $results->fetch_object();
 
-                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = $ImagenProducto = "";
+                                                $CodigoProducto = $NombreProducto = $CantidadProducto = $PrecioProducto = $DescripcionProducto = $ImagenProducto = $CategoriaProducto = "";
 
                                                 function test_input($data){
                                                    $data = trim($data);
@@ -368,10 +392,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $PrecioProducto = test_input($_POST["precio"]); 
                                                     $DescripcionProducto = test_input($_POST["descripcion"]);   
                                                     $ImagenProducto = test_input($_POST["imagen"]); 
-                                                     // $ImagenProducto = subirDocumento($_FILES["imagen"]);   
+                                                     // $ImagenProducto = subirDocumento($_FILES["imagen"]); 
+                                                    $CategoriaProducto = test_input($_POST["categoria"]);
+
                                                 }
 
-                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,&$error){
+                                                function validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,$CategoriaProducto,&$error){
                                                 if($CodigoProducto == null){
                                                     $error = "Debe digitar el código del producto.";
                                                     // header('Location:registrarse.php?error=3');
@@ -410,6 +436,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     // header('Location:registrarse.php?error=7');
                                                     return false;
                                                 }
+                                                if($CategoriaProducto == null){
+                                                    $error = "Debe digitar la descripción del producto.";
+                                                    // header('Location:registrarse.php?error=7');
+                                                    return false;
+                                                }
                                                 $error = "";
                                                 return true;
                                                 }                                                 
@@ -434,7 +465,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     // seguridad_x($CorreoUsuario);
                                                     // seguridad_x($LoginUsuario);
                                                     // seguridad_x($ContrasenaUsuario);
-                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,$error_encontrado)){
+                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,$CategoriaProducto,$error_encontrado)){
                                                     try {
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
@@ -443,7 +474,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $conn->beginTransaction();
                                                       
                                                         $sql = "call Modificar_Producto(:proc_IdProducto,:proc_CodigoProducto,:proc_NombreProducto,
-                                                            :proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto,:proc_ImagenProducto)";
+                                                            :proc_CantidadProducto,:proc_PrecioProducto,:proc_DescripcionProducto,:proc_ImagenProducto,:proc_CategoriaProducto)";
                                                         $stmt = $conn->prepare($sql);
                                                         $stmt->bindParam(":proc_IdProducto", $i, PDO::PARAM_INT);
                                                         $stmt->bindParam(":proc_CodigoProducto", $CodigoProducto, PDO::PARAM_STR);
@@ -452,6 +483,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $stmt->bindParam(":proc_PrecioProducto", $PrecioProducto, PDO::PARAM_INT);
                                                         $stmt->bindParam(":proc_DescripcionProducto", $DescripcionProducto, PDO::PARAM_STR);
                                                         $stmt->bindParam(":proc_ImagenProducto", $ImagenProducto, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_CategoriaProducto", $CategoriaProducto, PDO::PARAM_STR);
                                                         $stmt->execute(); 
 
                                                         //Finalizar transacción 
@@ -489,6 +521,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                             <label>Nombre:</label> <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];}else{echo $obj->NombreProducto;} ?>"/><br><br>
                                                             <label>Cantidad:</label> <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];}else{echo $obj->CantidadProducto;} ?>"/><br><br> 
                                                             <label>Precio:</label> <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];}else{echo $obj->PrecioProducto;} ?>"/><br>
+                                                            <select name="categoria">
+                                                              <option value=""></option>
+                                                              <option value="tes" <?php if($obj->CategoriaProducto=='tes'){echo 'selected';} ?>>Tes de canastilla</option>
+                                                              <option value="cumple" <?php if($obj->CategoriaProducto=='cumple'){echo 'selected';} ?>>Cumpleaños</option>
+                                                              <option value="fiesta" <?php if($obj->CategoriaProducto=='fiesta'){echo 'selected';} ?>>Fiesta</option>
+                                                              <option value="mesa" <?php if($obj->CategoriaProducto=='mesa'){echo 'selected';} ?>>Mesas de dulce</option>
+                                                              <option value="queque" <?php if($obj->CategoriaProducto=='queque'){echo 'selected';} ?>>Queque</option>
+                                                              <option value="cupcake" <?php if($obj->CategoriaProducto=='cupcake'){echo 'selected';} ?>>Cupcake</option>
+                                                            </select><br>
                                                             <label>Descripción:</label> <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
                                                              <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
                                                             <input name="imagen" type="file" class="rightContrasena" value=""/></label><br>
@@ -505,6 +546,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
 
                                         } else if($v==3){
+
+                                            ///////////////////////////////////////////////////////////////////////////
+
+
                                             include("autenticacion/class/config.php");
                                                 $i = isset($_GET['i']) ? $_GET['i'] : null ;                                               
 
@@ -540,11 +585,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                </div>
-                                               <?php 
-                                                }
+                                                </div> 
 
-                                                                                                                                         
+                                                <?php 
+                                                {                                                                               
                                                 ?>
 
                                             </div>
@@ -606,18 +650,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
         <script src="js/vendor/jquery-1.11.0.min.js"></script>
         <script src="js/vendor/jquery.gmap3.min.js"></script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>    
-
-        <script>
-        window.onload=function(){
-        var pos=window.name || 0;
-        window.scrollTo(0,pos);
-        }
-        window.onunload=function(){
-        window.name=self.pageYOffset || (document.documentElement.scrollTop+document.body.scrollTop);
-        }
-        </script>
-   
+        <script src="js/main.js"></script>       
 
     </body>
 </html>

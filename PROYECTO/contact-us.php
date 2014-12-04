@@ -82,19 +82,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </header>
-
 
             <div id="heading1">
                 <div class="container">
@@ -107,7 +98,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </div>
                 </div>
             </div>
-
 
             <div id="product-post">
                 <div class="container">
@@ -259,15 +249,65 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="info">                                                
-                                                <ul>
-                                                    <li><i class="fa fa-phone"></i>010-020-0340</li>
-                                                    <li><i class="fa fa-globe"></i>123 Dagon Studio, Yakin Street, Digital Estate</li>
-                                                    <li><i class="fa fa-envelope"></i><a href="#">info@company.com</a></li>
-                                                </ul>
+                                       
+
+                                          <div class="col-md-3 col-md-offset-1">
+                                            <div class="side-bar">
+                                                <div class="news-letters">
+                                                    <h4>HolaCupCakes | Fiestas</h4>
+                                                    <div class="archives-list">
+                                                        <ul>
+                                                            <iframe width="100%" height="auto" src="//www.youtube.com/embed/n8cYJj2xoHg" frameborder="0" allowfullscreen></iframe>
+                                                        </ul>
+                                                    </div>        
+                                                </div>
+                                                <div class="recent-post">
+                                                    <h4>Noticias</h4>
+                                                    <div class="testimonails-slider">
+                                                        <ul class="slides">
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>Rebeca Alba vende cupcakes en apoyo a la lucha contra el cáncer.
+                                                                     <a target="_blank" href="http://www.sdpnoticias.com/estilo-de-vida/2014/12/03/rebecca-de-alba-vende-cupcakes-en-apoyo-a-la-lucha-contra-el-cancer">Ver más</a></p>
+                                                                    <!-- <h6>Jennifer - <a href="#">Chief Designer</a></h6> -->
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>Los cupcakes le dan una ventaja a los niños de Durban en Sudáfrica. 
+                                                                    <a target="_blank" href="http://www.iol.co.za/news/south-africa/kwazulu-natal/cupcakes-give-children-a-leg-up-1.1790283#.VH-ZGDHF_2c">
+                                                                    Ver más</a></p>
+                                                                </div> 
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>La tienda de cupcakes SweetArt en St. Louis, USA, se ha convertido en un centro de conversación en busca de respuestas y consuelo alrededor de la muerte del joven Michael Brown.
+                                                                    <a target="_blank" href="http://www.msnbc.com/msnbc/race-and-class-side-cupcakes-ferguson">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>Cómo los cupcakes de $6 de la empresa Whole Foods ayuda a los pobres del área urbana de Detroit.
+                                                                    <a target="_blank" href="http://grist.org/food/how-do-whole-foods-6-cupcakes-help-detroits-urban-poor/">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="testimonails-content">
+                                                                    <p>La empresa Turlock en USA, vende cupcakes para ayudar a niños necesitados en navidad.
+                                                                        <a target="_blank" href="http://www.turlockjournal.com/archives/27937/">Ver más</a>
+                                                                    </p>
+                                                                </div>
+                                                            </li>                              
+                                                        </ul>
+                                                    </div>
+                                                </div>                                                   
                                             </div>
-                                        </div>     
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>

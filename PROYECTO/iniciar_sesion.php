@@ -100,12 +100,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
-
             <div id="product-post">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="heading-section">                                
+                            <div class="heading-section">
+                                <h2>Ingrese usuario y contraseña</h2>                               
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
@@ -123,23 +123,23 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 $err = isset($_GET['error']) ? $_GET['error'] : null ;
                                                 
                                                 if($err==1){
-                                                    echo "<p class='error-login'>Usuario o contraseña erróneos.</p>";
+                                                    echo "<p class='error-login'>Usuario o contraseña erróneos</p>";
                                                 }
                                                 if($err==2){
-                                                    echo ".<p class='error-login'>Debe iniciar sesion para poder acceder el sitio.</p>";
+                                                    echo "<p class='error-login'>Debe iniciar sesion para poder acceder el sitio</p>";
                                                 }
                                                 if($err==3){
-                                                    echo "<p class='error-login'>Debe iniciar sesion antes de comprar</p>.";
+                                                    echo "<p class='error-login'>Debe iniciar sesion antes de comprar</p>";
                                                 }
                                                 if($err==4){
-                                                    echo "<p>Usuario creado, por favor inicie sesión para realizar compras.</p>.";
+                                                    echo "<p>Usuario creado, por favor inicie sesión para realizar compras.</p>";
                                                 }
                                                 ?>
 
                                                 <form  action="autenticacion/session_init.php" method="post" class="send-message" onsubmit="return validaform()">
                                                     <div class="row">
                                                         <div class="name col-md-4">
-                                                            <br><input type="text" name="usern" placeholder="Usuario" value=""/><br><br>                                                     
+                                                            <br><input type="text" name="usern" placeholder="Usuario" value="" autofocus/><br><br>                                                     
                                                             <input type="password" name="passwd" placeholder="Contraseña" value=""/>
                                                         </div>                                                 
                                                     </div>                                                                                 
@@ -189,7 +189,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div> 
                             <div class="col-md-3">
                                <div class="social-bottom">                                   
-                                    <span>Siganos en </span>
+                                    <span>Síguenos en </span>
                                     <ul>
                                         <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     

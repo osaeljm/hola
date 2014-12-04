@@ -131,7 +131,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <ul id="filters" class="clearfix">
                                 <li><span><a href="perfil_admin.php">Clientes</a></span></li>
                                 <li><span><a href="perfil_admin.php?c=1">Datos personales</a></span></li>
-                                <li><span><a href="perfil_admin.php?c=2">Productos</a></span></li>                                  
+                                <li><span><a href="perfil_admin.php?c=2">Productos</a></span></li>
+                                <li><span><a href="perfil_admin.php?c=3">Facturas</a></span></li>                                   
                             </ul>
                         </div>
                     </div>
@@ -189,6 +190,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                         <?php 
                         } else if ($c==2) { 
+                            ///////////////////////////////////////////////
                         ?>
 
                         
@@ -243,6 +245,71 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         </div>                  
 
                        </div>
+                       <?php 
+                        } else if ($c==3){ 
+                        ?>
+
+
+
+                         <div class="row" id="Container">
+                        <?php
+                        //current URL of the Page. cart_update.php redirects back to this URL 
+                           $results = $mysqli->query("SELECT * FROM EncabezadoFactura ORDER BY FechaFactura ASC");
+                            if ($results) 
+                            { 
+                                ?>
+                               
+                        <style>
+                        @-moz-document url-prefix() {
+                          fieldset { display: table-cell; }
+                        }
+                        </style>
+
+                       
+                        <div class="table-responsive">
+                          <table class="table">
+                            <tr>
+                                <th>#</th>
+                                <th>CLIENTE</th>
+                                <th>FECHA</th>
+                                <th>ESTADO</th>
+                                <th>TOTAL</th>
+                            </tr>
+                            <?php
+                             //output results from database  
+                             $i=0;                             
+                                while($obj = $results->fetch_object())
+                                { 
+                                    $i++;
+                                    $obj->CantidadProducto = 1;
+
+                                    $results_cl = $mysqli->query("SELECT NombreUsuario FROM Usuario WHERE IdUsuario = $obj->Usuario_IdUsuario");
+                                    $obj2 = $results_cl->fetch_object();                                 
+                            ?> 
+                              <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $obj2->NombreUsuario ?></td>
+                                <td><?php echo $obj->FechaFactura ?></td>
+                                <td>-</td>
+                                <td><?php echo $obj->TotalFactura ?></td>
+                                <th><a href="detallefactura_ad.php?v=<?php echo $obj->NumeroFactura; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Detalle</button></a></th>
+                              </tr>
+                        <?php                                    
+                                }
+
+                            }
+                            if(empty($results)){
+                                echo 'No hay compras realizadas.';
+                            }
+                        ?>
+                        </table>
+                        </div>
+                        </div>
+
+
+
+
+
                         <?php 
                         } else { 
                         ?>
@@ -296,6 +363,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         </div>                  
 
                        </div>
+
                        <?php 
                        } 
                        ?>

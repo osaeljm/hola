@@ -85,14 +85,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,23 +106,24 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="product-heading">                                
+                            <div id="product-heading">                            
                                 <img src="images/under-heading.png" alt="" >
                             </div>
                         </div>
                     </div>
-                   <!--  <div class="row">
+                    <div class="row">
                         <div class="filters col-md-12 col-xs-12">
                             <ul id="filters" class="clearfix">
-                                <li><span class="filter" data-filter="all">All</span></li>
-                                <li><span class="filter" data-filter=".ginger">Ginger</span></li>
-                                <li><span class="filter" data-filter=".pizza">Pizza</span></li>
-                                <li><span class="filter" data-filter=".pasta">Pasta</span></li>
-                                <li><span class="filter" data-filter=".drink">Drink</span></li>
-                                <li><span class="filter" data-filter=".hamburger">Hamburger</span></li>
+                                <li><span class="filter" data-filter="all">Todos</span></li>
+                                <li><span class="filter" data-filter=".tes">Tes de canastilla</span></li>
+                                <li><span class="filter" data-filter=".cumple">Cumpleaños</span></li>
+                                <li><span class="filter" data-filter=".fiesta">Fiestas</span></li>
+                                <li><span class="filter" data-filter=".mesa">Mesas de dulce</span></li>
+                                <li><span class="filter" data-filter=".queque">Queque</span></li>
+                                <li><span class="filter" data-filter=".cupcake">Cupcakes</span></li>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="row" id="Container">
                         <?php
@@ -145,7 +138,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     $obj->CantidadProducto = 1;
                         ?>                           
                         <form method="post" action="cart_update.php">
-                            <div class="col-md-3 col-sm-6 mix portfolio-item Pizza" style="display:inline-block;">       
+                            <div class="col-md-3 col-sm-6 mix portfolio-item <?php echo $obj->CategoriaProducto?>" >       
                                 <div class="portfolio-wrapper">                
                                     <div class="portfolio-thumb">
                                         <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
