@@ -197,7 +197,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 echo '</table>';
                                                 echo '<span class="check-out-txt">';
-                                                echo '<strong>Total : '.$currency.$total.'    - Artículos: ' .$cart_items. '</strong>  ';
+                                                echo '<strong><h4>Total : '.$currency.$total.'    - Artículos: ' .$cart_items. '</h4></strong>  ';
                                                 echo '</span>';
                                                 echo '</form>';
 
