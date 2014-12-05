@@ -802,6 +802,17 @@ input, textarea, select {
   color: #000;
   outline: none; 
 }
+.cant_view {
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  border: 1px solid #e2e2e2;
+  width: 100%;
+  margin-top: 25px;
+  font-size: 13px;
+  font-weight: 300;
+  color: #000;
+  outline: none; 
+}
 
 textarea {
   height: 165px;

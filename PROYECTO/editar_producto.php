@@ -112,8 +112,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 echo '<h2>Insertar producto</h2>'; 
                             } else if ($v==2){
                                 echo '<h2>Modificar producto</h2>';
-                            } else if ($v==3){
-                                echo '<h2>Eliminar producto</h2>';
                             }
                             ?>                             
                                 <img src="images/under-heading.png" alt="" >
@@ -297,7 +295,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             echo '<div class="send">';
                                                   echo ' <button name="enter" type="submit"><a href="perfil_admin.php?c=2">Volver</a></button>';
                                             echo '</div>';
-                                            } else {   
+                                            } else { 
 
                                             ?>
 
@@ -312,7 +310,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];} ?>"/><br><br> 
                                                         <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];} ?>"/><br>
                                                         <select name="categoria">
-                                                          <option value=""></option>
+                                                          <option value="" disabled selected>Categoría</option>
                                                           <option value="tes" <?php if($_POST['categoria']=='tes'){echo 'selected';} ?>>Tes de canastilla</option>
                                                           <option value="cumple" <?php if($_POST['categoria']=='cumple'){echo 'selected';} ?>>Cumpleaños</option>
                                                           <option value="fiesta" <?php if($_POST['categoria']=='fiesta'){echo 'selected';} ?>>Fiesta</option>
@@ -321,8 +319,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                           <option value="cupcake" <?php if($_POST['categoria']=='cupcake'){echo 'selected';} ?>>Cupcake</option>
                                                         </select>
                                                         <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];} ?></textarea><br><br> 
-                                                        <!-- <input type="text" name="imagen" placeholder="Imagen" value="<?php //if (isset($_POST['imagen'])) {echo $_POST['imagen'];} ?>"/><br> -->
-                                                       <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
+                                                        <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
                                                         <input name="imagen" type="file" class="rightContrasena" value=""/></label><br>
                                                     </div>                                                 
                                                 </div>                                                                                 
@@ -391,6 +388,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 $PrecioProducto = test_input($_POST["precio"]); 
                                                 $DescripcionProducto = test_input($_POST["descripcion"]);   
                                                 $ImagenProducto = test_input($_POST["imagen"]);
+                                                // $ImagenProducto = subirDocumento($_FILES["imagen"]); 
                                                 $CategoriaProducto = test_input($_POST["categoria"]);
 
                                             }
@@ -518,7 +516,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         <label>Nombre:</label> <input type="text" name="nombre" placeholder="Nombre" value="<?php if (isset($_POST['nombre'])) {echo $_POST['nombre'];}else{echo $obj->NombreProducto;} ?>"/><br><br>
                                                         <label>Cantidad:</label> <input type="text" name="cantidad" placeholder="Cantidad" value="<?php if (isset($_POST['cantidad'])) {echo $_POST['cantidad'];}else{echo $obj->CantidadProducto;} ?>"/><br><br> 
                                                         <label>Precio:</label> <input type="text" name="precio" placeholder="Precio" value="<?php if (isset($_POST['precio'])) {echo $_POST['precio'];}else{echo $obj->PrecioProducto;} ?>"/><br>
-                                                        <select name="categoria">
+                                                        <label>Categoría:</label> <select name="categoria">
                                                           <option value=""></option>
                                                           <option value="tes" <?php if($obj->CategoriaProducto=='tes'){echo 'selected';} ?>>Tes de canastilla</option>
                                                           <option value="cumple" <?php if($obj->CategoriaProducto=='cumple'){echo 'selected';} ?>>Cumpleaños</option>
@@ -527,8 +525,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                           <option value="queque" <?php if($obj->CategoriaProducto=='queque'){echo 'selected';} ?>>Queque</option>
                                                           <option value="cupcake" <?php if($obj->CategoriaProducto=='cupcake'){echo 'selected';} ?>>Cupcake</option>
                                                         </select><br>
-                                                        <label>Descripción:</label> <textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
-                                                         <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
+                                                        <label>Descripción:</label><textarea name="descripcion" placeholder="Descripción"><?php if (isset($_POST['descripcion'])) {echo $_POST['descripcion'];}else{echo $obj->DescripcionProducto;} ?></textarea><br><br> 
+                                                        <label class="leftContrasena">Adjuntar imagen:</label><label class="rightContrasena">
                                                         <input name="imagen" type="file" class="rightContrasena" value=""/></label><br>
                                                        
                                                     </div>                                                 
