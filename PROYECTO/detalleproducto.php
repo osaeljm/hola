@@ -110,10 +110,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                 </div>
             </div>
 
-
-
-
-
             <div id="product-post">
                 <div class="container">
                     <div class="row">
@@ -129,31 +125,72 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="row">
                                 <div class="product-item col-md-12">
                                     <div class="row">
+
                                         <?php
-                                         $i = isset($_GET['i']) ? $_GET['i'] : null ;
+                                        $i = isset($_GET['i']) ? $_GET['i'] : null ;
                                         //current URL of the Page. cart_update.php redirects back to this URL 
-                                           $results = $mysqli->query("SELECT * FROM Producto WHERE IdProducto = $i");
-                                            if ($results)
-                                            {   //output results from database
-                                                $obj = $results->fetch_object();                                     
-                                                    
-                                                  
-                                        ?>                                      
+                                        $results = $mysqli->query("SELECT * FROM Producto WHERE IdProducto = $i");
+                                        if ($results)
+                                        {   //output results from database
+                                            $obj = $results->fetch_object(); 
+                                        ?>  
+
+                                        <form method="post" action="cart_update.php">
+                                            <div class="col-md-8">  
+                                                <div class="image">
+                                                    <div class="image-post">
+                                                        <img style="width:auto;height:auto;" src="images/<?php echo $obj->ImagenProducto; ?>" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="product-content">
+                                                    <div class="product-title">
+                                                        <h3><?php echo $obj->NombreProducto; ?></h3>                                                        
+                                                    </div>
+                                                    <p><?php echo $obj->DescripcionProducto; ?></p>
+                                                </div>
+                                                <div class="label-text">                                                    
+                                                    <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
+                                                    <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
+                                                    <input type="hidden" name="CantidadProducto" value="<?php echo $obj->CantidadProducto?>" />
+                                                    <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
+                                                    <input type="hidden" name="type" value="add" />
+                                                    <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
+                                                </div>                                  
+                                            </div>
+                                        </form>
+
+
+
+
+
+
+                                            <div class="col-md-3 col-sm-6 mix portfolio-item <?php echo $obj->CategoriaProducto?>" >       
+                                                <div class="portfolio-wrapper">                
+                                                    <div class="portfolio-thumb">
+                                                        <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
+                                                        <div class="hover">
+                                                            <div class="hover-iner">
+                                                                <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
+                                                            </div>
+                                                        </div>                                                    
+                                                    </div>                             
+                                                    <div class="label-text">
+                                                        <h3><a href="detalleproducto.php?i=<?php echo $obj->IdProducto ?>"><?php echo $obj->NombreProducto ?></a></h3>
+                                                        <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
+                                                        <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
+                                                        <input type="hidden" name="CantidadProducto" value="<?php echo $obj->CantidadProducto?>" />
+                                                        <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
+                                                        <input type="hidden" name="type" value="add" />
+                                                        <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
+                                                    </div>  
+                                                </div>      
+                                            </div>
                                         
 
-                                        <div class="col-md-8">  
-                                            <div class="image">
-                                                <div class="image-post">
-                                                    <img style="width:auto;height:auto;" src="images/<?php echo $obj->ImagenProducto; ?>" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-title">
-                                                    <h3><?php echo $obj->NombreProducto; ?></h3>                                                        
-                                                </div>
-                                                <p><?php echo $obj->DescripcionProducto; ?></p>
-                                            </div>                                  
-                                        </div>
+
+
+
+
 
 
                                          <?php

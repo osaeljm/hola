@@ -126,6 +126,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     </div>
 
                     <div class="row" id="Container">
+
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL 
                            $results = $mysqli->query("SELECT * FROM Producto ORDER BY IdProducto ASC");
@@ -136,7 +137,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 { 
                                     
                                     $obj->CantidadProducto = 1;
-                        ?>                           
+                        ?>  
+
                         <form method="post" action="cart_update.php">
                             <div class="col-md-3 col-sm-6 mix portfolio-item <?php echo $obj->CategoriaProducto?>" >       
                                 <div class="portfolio-wrapper">                
@@ -145,8 +147,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <div class="hover">
                                             <div class="hover-iner">
                                                 <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
-                                                <!-- <span><?php //echo $obj->NombreProducto ?> </span> -->
-                                                <!-- <button class="add_to_cart">Add To Cart</button>                                                             -->
                                             </div>
                                         </div>                                                    
                                     </div>                             
@@ -162,13 +162,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 </div>      
                             </div>
                         </form>
+
                         <?php
                               
                                 }               
                             }
                         ?>
-
-
 
                         <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
                             <div class="portfolio-wrapper">                

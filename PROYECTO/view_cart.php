@@ -140,7 +140,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     echo '<h3>'.$obj->NombreProducto.'</h3>';
                                                     echo '<div class="p-price">Precio: '.$currency.$obj->PrecioProducto.'</div>';                                   
                                                     echo '<div class="product-info">';                                 
-                                                    echo 'Cantidad: <select>
+                                                    echo 'Cantidad: <select class="cant_view">
                                                           <option value="1"selected>1</option>
                                                           <option value="2">2</option>
                                                           <option value="3">3</option>
