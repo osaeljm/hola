@@ -540,9 +540,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             </form> 
 
                                             <?php
+                                           
                                             }
 
-                                    } else if($v==3){
+                                    } else if($v==3) {
 
                                         ///////////////////////////////////////////////////////////////////////////
 
@@ -572,6 +573,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $conn->rollBack();
                                                     die("Ocurrio un error: " . $pe->getMessage());    
                                                 }
+
                                                 ?>
 
                                             <div class="btn-carrito">
@@ -584,8 +586,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 </div>
                                             </div> 
 
-                                            <?php 
-                                            {                                                                               
+                                            <?php
+
+                                            }                                                                              
+                                            
                                             ?>
 
                                         </div>
@@ -638,9 +642,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>                                                     
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a></p>
-                    </div>
-                    <!-- <div class="bottom-footer">                     
-                    </div>  -->                   
+                    </div>                  
                 </div>
             </footer>
 

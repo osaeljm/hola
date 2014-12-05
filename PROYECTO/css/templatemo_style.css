@@ -791,7 +791,7 @@ a:hover {
   text-transform: uppercase;
 }
 
-input, textarea {
+input, textarea, select {
   font-family: 'Roboto', sans-serif;
   padding: 10px;
   border: 1px solid #e2e2e2;

@@ -246,10 +246,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 if ($_POST){
                                                     $error_encontrado="";
-                                                    seguridad_x($NombreUsuario);
-                                                    seguridad_x($CorreoUsuario);
-                                                    seguridad_x($LoginUsuario);
-                                                    seguridad_x($ContrasenaUsuario);
+                                                    // seguridad_x($NombreUsuario);
+                                                    // seguridad_x($CorreoUsuario);
+                                                    // seguridad_x($LoginUsuario);
+                                                    // seguridad_x($ContrasenaUsuario);
                                                 if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario, $error_encontrado)){
                                                     try {
 
@@ -308,7 +308,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 </form> 
 
                                                 <?php
-}
+
+                                                    }
+
                                                 ?>  
                                             </div>
                                         </div>                                           
