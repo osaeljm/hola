@@ -224,7 +224,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 while($obj2 = $results->fetch_object())
                                 { 
                                     $i++;
-                                    $obj->CantidadProducto = 1;                                    
+                                    $obj2->CantidadProducto = 1;                                    
                             ?> 
                               <tr>                               
                                 <td><?php echo $obj2->CodigoProducto ?></td>
@@ -288,10 +288,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             ?> 
                               <tr>
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $obj2->NombreUsuario ?></td>
-                                <td><?php echo $obj->FechaFactura ?></td>
+                                <td><?php echo $obj2->NombreUsuario; ?></td>
+                                <td><?php echo $obj->FechaFactura; ?></td>
                                 <td>-</td>
-                                <td><?php echo $obj->TotalFactura ?></td>
+                                <td><?php echo $obj->TotalFactura; ?></td>
                                 <th><a href="detallefactura_ad.php?v=<?php echo $obj->NumeroFactura; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Detalle</button></a></th>
                               </tr>
                         <?php                                    
