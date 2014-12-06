@@ -169,7 +169,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             }
                         ?>
 
-                        <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
+                       <!--  <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
                             <div class="portfolio-wrapper">                
                                 <div class="portfolio-thumb">
                                     <img src="images/product1.jpg" alt="" />
@@ -185,7 +185,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <span class="text-category">$16.00</span>
                                 </div>
                             </div>          
-                        </div>
+                        </div> -->
 
                     <!--      <div class="col-md-3 col-sm-6 mix portfolio-item ginger">       
                             <div class="portfolio-wrapper">                
