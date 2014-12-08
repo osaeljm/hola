@@ -38,30 +38,28 @@ http://www.templatemo.com/preview/templatemo_417_grill
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
-            <header>
+             <header>
                 <div id="top-header">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="home-account">
                                     <?php
+                                    session_start();
                                     if(isset($_SESSION["usuario"])){
                                         echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
-                                        echo '<a href="perfil.php"> Perfil</a>';
+                                        echo '<a href="https://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/perfil.php"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
-                                        echo '<a href="registrarse.php">Registrar</a>';
-                                        echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
+                                        echo '<a href="https://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/registrarse.php">Registrar</a>';
+                                        echo '<a href="https://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="cart-info">                                    
-                                   <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>
-                                    
-                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=<?php echo $current_url ?>"> Vaciar carrito </a></span> -->
-                                  
+                                <div class="cart-info">
+                                    <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -72,31 +70,24 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="logo">
-                                    <a href="index.php"><img src="images/logoCupcake.png" title="Holacupcakes" alt="Holacupcakes" ></a>
+                                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/index.php"><img src="images/logoCupcake.png" title="Holacupcakes" alt="holacupcakes" ></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="main-menu">
-                                    <ul>
-                                        <li><a href="index.php">Inicio</a></li>
-                                        <li><a href="about-us.php">Nosotros</a></li>
-                                        <li><a href="products.php">Productos</a></li>
-                                        <li><a href="contact-us.php">Contáctenos</a></li>
+                                    <ul>                                     
+                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/index.php">Inicio</a></li>
+                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/about-us.php">Nosotros</a></li>
+                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/products.php">Productos</a></li>
+                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
-            </header>
+            </header>  
             
             <div id="heading">
                 <div class="container">

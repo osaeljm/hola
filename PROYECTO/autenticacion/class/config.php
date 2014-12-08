@@ -13,7 +13,7 @@ class Connection{
 		//Iniciar las variables con los datos de la base de datos
 		$this->server = 'localhost';
 		$this->userdb = 'root';
-		$this->passdb = '';
+		$this->passdb = 'ubuosapk';
 		$this->dbname = 'hola';
 		
 	}
@@ -33,7 +33,7 @@ class Connection{
 
 $currency = '₡'; 
 $db_username = 'root';
-$db_password = '';
+$db_password = 'ubuosapk';
 $db_name = 'hola';
 $db_host = 'localhost';
 $mysqli = new mysqli($db_host, $db_username, $db_password,$db_name);
