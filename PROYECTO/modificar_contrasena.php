@@ -141,34 +141,38 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 }
 
                                                 $error = "";
-                                                function validar($claveactual,$clave,$confirmaClave,&$error){
-                                                if($antclave <> $claveactual){
-                                                $error_clave = "Las clave actual es incorrecta.";
-                                                return false;
-                                                }
-                                                if($claveactual == null){
-                                                    $error = "Debe digitar su usuario.";
-                                                    return false;
-                                                }
-                                                if(strlen($claveactual) > 15){
-                                                    $error = "La contraseña actual debe ser menor a 15 caracteres.";
-                                                    return false;
-                                                }
-                                                if($confirmaClave == null){
-                                                    $error = "Debe volver a digitar la nueva contraseña.";
-                                                    return false;
-                                                }
-                                                if ($clave <> $confirmaClave){
-                                                $error_clave = "Las claves no coinciden";
-                                                return false;
-                                                }
-                                                $error = "";
-                                                return true;
+                                                function validar($claveactual,$clave,$confirmaClave,$antclave,&$error){
+                                                    if($claveactual == null){
+                                                        $error = "Debe digitar su contraseña actual.";
+                                                        return false;
+                                                    }
+                                                    if($clave == null){
+                                                        $error = "Debe digitar su nueva contraseña.";
+                                                        return false;
+                                                    }
+                                                    if($confirmaClave == null){
+                                                        $error = "Debe confirmar la nueva contraseña.";
+                                                        return false;
+                                                    }                                                    
+                                                    if(strlen($clave) > 15){
+                                                        $error = "La contraseña actual debe ser menor a 15 caracteres.";
+                                                        return false;
+                                                    }                                          
+                                                    if ($clave != $confirmaClave){
+                                                        $error = "Las contraseñas no coinciden";
+                                                        return false;
+                                                    }
+                                                    if($antclave != $claveactual){
+                                                        $error = "La clave actual es incorrecta.";
+                                                        return false;
+                                                    }
+                                                    $error = "";
+                                                    return true;
                                                 }
 
                                                 if ($_POST){
                                                     $error_encontrado="";                                                    
-                                                if(validar($claveactual,$clave,$confirmaClave,$error_encontrado)){
+                                                if(validar($claveactual,$clave,$confirmaClave,$antclave,$error_encontrado)){
                                                     try {
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
@@ -179,12 +183,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $sql = "call Modificar_ContrasenaUsuario(:proc_IdUsuario,:proc_ContrasenaUsuario)";
                                                         $stmt = $conn->prepare($sql);
                                                         $stmt->bindParam(":proc_IdUsuario", $id, PDO::PARAM_INT);
-                                                        $stmt->bindParam(":proc_ContrasenaUsuario", $LoginUsuario, PDO::PARAM_STR);
+                                                        $stmt->bindParam(":proc_ContrasenaUsuario", $clave, PDO::PARAM_STR);
                                                         $stmt->execute();   
 
                                                         //Finalizar transacción 
-                                                        $conn->commit();                                                                                                      
-                                                        // header('Location:iniciar_sesion.php?error=4'); 
+                                                        $conn->commit();
+
                                                         $error_encontrado2 = 'Contraseña modificada.';
 
                                                     } catch (PDOException $pe) {
@@ -210,9 +214,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
                                                         <div class="row">
                                                             <div class="name col-md-5">
-                                                                <br><input type="text" name="claveactual" placeholder="Contraseña actual" value=""/><br><br>
-                                                                <input type="text" name="clave" placeholder="Nueva contraseña" value=""/><br><br>
-                                                                <input type="text" name="confirmaClave" placeholder="Confirmar contraseña" value=""/><br><br>
+                                                                <br><input type="text" name="claveactual" placeholder="Contraseña actual"/><br><br>
+                                                                <input type="text" name="clave" placeholder="Nueva contraseña"/><br><br>
+                                                                <input type="text" name="confirmaClave" placeholder="Confirmar contraseña"/><br><br>
                                                             </div>                                                 
                                                         </div>                                                                                 
                                                         <div class="send2">

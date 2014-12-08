@@ -42,19 +42,20 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     <?php
                                     session_start();
                                     if(isset($_SESSION["usuario"])){
-                                        echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
-                                        echo '<a href="https://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/perfil.php"> Perfil</a>';
+                                        echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
+                                        echo '<a href="#"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
                                     } else{
-                                        echo '<a href="https://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/registrarse.php">Registrar</a>';
-                                        echo '<a href="https://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/iniciar_sesion.php">Iniciar sesión</a>';
+                                        echo '<a href="registrarse.php">Registrar</a>';
+                                        echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">
-                                    <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>
+                                    <!-- <i class="fa fa-shopping-cart"></i>
+                                    (<a href="#">5 artículos</a>) en el carrito -->
                                 </div>
                             </div>
                         </div>
@@ -65,24 +66,25 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="logo">
-                                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/index.php"><img src="images/logoCupcake.png" title="Holacupcakes" alt="holacupcakes" ></a>
+                                    <a href="index.html"><img src="images/logoCupcake.png" title="Holacupcakes" alt="Holacupcakes" ></a>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="main-menu">
-                                    <ul>                                     
-                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/index.php">Inicio</a></li>
-                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/about-us.php">Nosotros</a></li>
-                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/products.php">Productos</a></li>
-                                        <li><a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/hola/PROYECTO/contact-us.php">Contáctenos</a></li>
+                                    <ul>
+                                        <li><a href="index.php">Inicio</a></li>
+                                        <li><a href="about-us.php">Nosotros</a></li>
+                                        <li><a href="products.php">Productos</a></li>
+                                        <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
                             </div>
-                           
+                            <div class="col-md-3">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </header>  
+            </header>
 
 
           <div id="heading4">
@@ -116,7 +118,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <div class="col-md-8">  
                                             <div class="message-form">
 
-                                                <?php                                              
+                                                <?php                                               
                                                 
                                                 include("autenticacion/class/config.php");
 
@@ -150,7 +152,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     return false;
                                                 }
                                                 if(!isEmail($CorreoUsuario)){
-                                                    $error = "Correo electrónico inválido.";                                                    
+                                                    $error = "Correo electrónico inválido.";    
                                                     return false;
                                                 }
                                                 if($LoginUsuario == null){
@@ -160,22 +162,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 if(strlen($LoginUsuario) > 15){
                                                     $error = "El nombre de usuario no debe ser mayor a 15 caracteres.";
                                                     return false;
-                                                }
-                                                // if($LoginUsuario != null){
-                                                //     $result = $mysqli->query("SELECT LoginUsuario FROM Usuario WHERE LoginUsuario = $LoginUsuario");
-                                                //     $comprobar = mysql_query($result);
-                                                //         if(mysql_num_rows($comprobar) > 0){
-                                                //             $error = "Error, el usuario existe digite uno nuevo.";                                                          
-                                                //         }
-                                                // }
-                                                if($LoginUsuario != null){
-                                                    $results = $mysqli->query("SELECT LoginUsuario FROM Usuario WHERE LoginUsuario = $LoginUsuario");
-                                                    $obj = $results->fetch_object();
-                                                        if($obj->LoginUsuario == $LoginUsuario){
-                                                            $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
-                                                           
-                                                        }
-                                                }
+                                                }                                                
                                                 if($ContrasenaUsuario == null){
                                                     $error = "Debe digitar su contraseña.";
                                                     return false;
@@ -184,8 +171,18 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $error = "El nombre de usuario no debe ser mayor a 10 caracteres.";
                                                     return false;
                                                 }
+                                                //if($LoginUsuario != null){
+                                                //   $results = $mysqli->query("SELECT LoginUsuario FROM Usuario WHERE LoginUsuario = $LoginUsuario");
+                                                 //   $obj = $results->fetch_object();
+                                                //    $res = $obj->LoginUsuario;
+                                                 //       if(!empty($res)){
+                                                 //           $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
+                                                 //           return false;
+                                                 //       }
+                                                //echo $LoginUsuario;
+                                                //echo $res;
+                                                //}
                                                 $error = "";
-                                               
                                                 return true;
                                                 } 
 
@@ -209,7 +206,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $texto = ereg_replace('php','',$texto);
                                                     return $texto;
                                                 }
-
 
                                                 if ($_POST){
                                                     $error_encontrado="";
@@ -258,11 +254,14 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
                                                     <div class="row">
+
                                                         <div class="name col-md-5">
+
                                                             <br><input type="text" name="username" placeholder="Nombre completo" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>"/><br><br>
                                                             <input type="text" name="email" id="correo" placeholder="Correo electrónico" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/><br><br>
                                                             <input type="text" name="user" placeholder="Usuario" value=""/><br><br>                                                      
-                                                            <input type="password" name="password" placeholder="Contraseña" value=""/>                                                           
+                                                            <input type="password" name="password" placeholder="Contraseña" value=""/> 
+                                                           
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send">
@@ -319,7 +318,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                <div class="social-bottom">                                   
                                     <span>Síguenos en </span>
                                     <ul>
-                                        <li><a target="_blank" href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     
                                 </div>
                             </div>                                                     

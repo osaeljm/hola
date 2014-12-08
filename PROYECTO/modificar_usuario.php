@@ -142,32 +142,26 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 function validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,&$error){
                                                 if($NombreUsuario == null){
                                                     $error = "Debe digitar su nombre completo.";
-                                                    // header('Location:registrarse.php?error=3');
                                                     return false;
                                                 }
                                                 if($NombreUsuario > 100){
                                                     $error = "El nombre completo es muy extenso.";
-                                                    // header('Location:registrarse.php?error=4');
                                                     return false;
                                                 }
                                                 if($CorreoUsuario == null){
                                                     $error = "Debe digitar el correo electrónico.";
-                                                    // header('Location:registrarse.php?error=5');
                                                     return false;
                                                 }
                                                 if(!isEmail($CorreoUsuario)){
                                                     $error = "Correo electrónico inválido.";
-                                                    // header('Location:registrarse.php?error=6');
                                                     return false;
                                                 }
                                                 if($LoginUsuario == null){
                                                     $error = "Debe digitar su usuario.";
-                                                    // header('Location:registrarse.php?error=7');
                                                     return false;
                                                 }
                                                 if(strlen($LoginUsuario) > 15){
                                                     $error = "El nombre de usuario no debe ser mayor a 15 caracteres.";
-                                                    // header('Location:registrarse.php?error=8');
                                                     return false;
                                                 }
                                                 // if($LoginUsuario != null){
@@ -178,6 +172,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 //             header('Location:registrarse.php?error=9');
                                                 //         }
                                                 // }
+                                                /*if($LoginUsuario != null){
+                                                    $results = $mysqli->query("SELECT LoginUsuario FROM Usuario WHERE LoginUsuario = $LoginUsuario");
+                                                    $obj = $results->fetch_object();
+                                                    $res = $obj->LoginUsuario;
+                                                    if($res = $LoginUsuario){
+                                                        $error = "Usuario incorrecto, este usuario ya existe digite uno nuevo.";
+                                                        return false;
+                                                    }
+                                                }*/
                                             
                                                 $error = "";
                                                 return true;
@@ -208,7 +211,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     $error_encontrado="";
                                                     $NombreUsuario = seguridad($NombreUsuario);
                                                     $LoginUsuario = seguridad($LoginUsuario);
-                                                if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario, $error_encontrado)){
+                                                if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$error_encontrado)){
                                                     try {
 
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
@@ -225,8 +228,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         $stmt->execute();   
 
                                                         //Finalizar transacción 
-                                                        $conn->commit();                                                                                                      
-                                                        // header('Location:iniciar_sesion.php?error=4'); 
+                                                        $conn->commit();
+
                                                         $error_encontrado2 = 'Usuario modificado.';
 
                                                     } catch (PDOException $pe) {
@@ -255,12 +258,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                                 <br><input type="text" name="username" placeholder="Nombre completo" value="<?php if (isset($_POST['username'])) {echo $_POST['username'];}else{echo $obj->NombreUsuario;} ?>"/><br><br>
                                                                 <input type="text" name="email" id="correo" placeholder="Correo electrónico" value="<?php if (isset($_POST['email'])) {echo $_POST['email'];}else{echo $obj->CorreoUsuario;} ?>"/><br><br>
                                                                 <input type="text" name="user" placeholder="Usuario" value="<?php if (isset($_POST['user'])) {echo $_POST['user'];}else{echo $obj->LoginUsuario;} ?>"/><br><br> 
-                                                               
                                                             </div>                                                 
                                                         </div>                                                                                 
                                                         <div class="send2">
-                                                            <button name="enter" type="submit">Modificar</button>
-                                                            
+                                                            <button name="enter" type="submit">Modificar</button>                                                            
                                                         </div>
                                                         <div class="send">
                                                            <a href="perfil.php"<button name="enter" type="submit">Volver</button></div></a>
