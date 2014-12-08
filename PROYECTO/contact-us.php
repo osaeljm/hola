@@ -155,12 +155,12 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                             $plain_text = "Nombre: $nombre Teléfono: $telefono Correo electrónico: $correo Descripción: $descripcion";
 
-                            $html_text = "<html><body><p>
-                            <span style='font-weight:bold;color:red'> HolaCupcakes ---> Nuevo Cliente</span><br/><br/>
-                            <span style='font-weight:bold;color:black'>Nombre completo: </span>".$nombre."<br/>             
-                            <span style='font-weight:bold;color:black'>Teléfono : </span>".$telefono."<br/>
-                            <span style='font-weight:bold;color:black'>Correo electrónico: </span>".$correo."<br/>
-                            <span style='font-weight:bold;color:black'>Descripción : </span>".$descripcion."</p></body></html>";
+                            $html_text = "
+                            HolaCupcakes -> Nuevo mensaje
+                            Nombre completo: ".$nombre."             
+                            Teléfono: ".$telefono."
+                            Correo electrónico: ".$correo."
+                            Descripción: ".$descripcion."";
 
                             $semi_rand = md5(time());
                             $mime_boundary = $semi_rand;
@@ -171,12 +171,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             $subject = 'Contacto';
 
                             $body = '--' . $mime_boundary . '
-                            Content-Type: text/plain; charset=utf-8
-                            ' . $plain_text . '
-                            --' . $mime_boundary . '
                             Content-Type: text/html; charset=utf-8
                             ' . $html_text . '
-                            --' . $mime_boundary . '--';
+                            --Fin del mensaje--';
 
                             if (mail ($to, $subject, $body, 
                                 'From: ' . $from . "\n" . 

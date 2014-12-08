@@ -168,6 +168,15 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="send4">
+                                        <div class="row">   
+                                            <div class="col-md-12">
+                                                <ul>
+                                                    <a href="modificar_contrasena.php"><button>Cambiar contraseña</button></a>                                    
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                     </div> 
                                 </div>                        
                             </div>                     
@@ -185,7 +194,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                          <div class="row" id="Container">
                         <?php
                         //current URL of the Page. cart_update.php redirects back to this URL 
-                           $results = $mysqli->query("SELECT * FROM EncabezadoFactura ORDER BY FechaFactura ASC");
+                        $id = $_SESSION['idusuario'];
+                           $results = $mysqli->query("SELECT * FROM EncabezadoFactura WHERE Usuario_IdUsuario = $id ORDER BY FechaFactura ASC");
                             if ($results) 
                             { 
                                 ?>

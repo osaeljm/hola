@@ -214,9 +214,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
                                                         <div class="row">
                                                             <div class="name col-md-5">
-                                                                <br><input type="text" name="claveactual" placeholder="Contraseña actual"/><br><br>
-                                                                <input type="text" name="clave" placeholder="Nueva contraseña"/><br><br>
-                                                                <input type="text" name="confirmaClave" placeholder="Confirmar contraseña"/><br><br>
+                                                                <br><input type="password" name="claveactual" placeholder="Contraseña actual"/><br><br>
+                                                                <input type="password" name="clave" placeholder="Nueva contraseña"/><br><br>
+                                                                <input type="password" name="confirmaClave" placeholder="Confirmar contraseña"/><br><br>
                                                             </div>                                                 
                                                         </div>                                                                                 
                                                         <div class="send2">
