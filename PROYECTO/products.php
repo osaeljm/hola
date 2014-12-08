@@ -169,42 +169,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             }
                         ?>
 
-                       <!--  <div class="col-md-3 col-sm-6 mix portfolio-item Pizza">       
-                            <div class="portfolio-wrapper">                
-                                <div class="portfolio-thumb">
-                                    <img src="images/product1.jpg" alt="" />
-                                    <div class="hover">
-                                        <div class="hover-iner">
-                                            <a class="fancybox" href="images/product1_big.jpg"><img src="images/open-icon.png" alt="" /></a>
-                                            <span>Pizza</span>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="label-text">
-                                    <h3><a href="single-post.html">Vege Pizza</a></h3>
-                                    <span class="text-category">$16.00</span>
-                                </div>
-                            </div>          
-                        </div> -->
-
-                    <!--      <div class="col-md-3 col-sm-6 mix portfolio-item ginger">       
-                            <div class="portfolio-wrapper">                
-                                <div class="portfolio-thumb">
-                                    <img src="images/product2.jpg" alt="" />
-                                    <div class="hover">
-                                        <div class="hover-iner">
-                                            <a class="fancybox" href="images/product2_big.jpg"><img src="images/open-icon.png" alt="" /></a>
-                                            <span>Ginger</span>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="label-text">
-                                    <h3><a href="single-post.html">Ginger Tea</a></h3>
-                                    <span class="text-category">$24.00</span>
-                                </div>
-                            </div>          
-                        </div> -->
-                       
+                                           
 
                        </div>
                     <div class="btn-carrito">

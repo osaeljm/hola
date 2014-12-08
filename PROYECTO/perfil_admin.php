@@ -137,9 +137,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         </div>
                     </div>
 
-
-
-
                     <?php $c = isset($_GET['c']) ? $_GET['c'] : null ;
                     if($c==1){ ?>
 
