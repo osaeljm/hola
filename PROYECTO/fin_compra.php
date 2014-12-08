@@ -38,7 +38,7 @@ try {
 
             //Ingreso de detalle en la tabla FacturaDetalle           
             $total = 0;  
-            $cantidad = 1;
+            $cantidad = $cart_itm["qty"];
             $subtotal = $cantidad *  $product_price;                                           
             $sql = "call Insertar_FacturaDetalle(:proc_EncabezadoFactura_NumeroEncabezadoFactura,
             :proc_Cantidad,:proc_SubTotal,:Producto_IdProducto)";

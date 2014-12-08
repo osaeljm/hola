@@ -221,7 +221,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 while($obj2 = $results->fetch_object())
                                 { 
                                     $i++;
-                                    $obj2->CantidadProducto = 1;                                    
+                                                                      
                             ?> 
                               <tr>                               
                                 <td><?php echo $obj2->CodigoProducto ?></td>
@@ -404,7 +404,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div> 
                             <div class="col-md-3">
                                <div class="social-bottom">                                   
-                                    <span>Siganos en </span>
+                                    <span>Síguenos en </span>
                                     <ul>
                                         <li><a target="_blank" href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     

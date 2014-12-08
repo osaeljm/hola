@@ -15,7 +15,7 @@ if(isset($_GET["emptycart"]) && $_GET["emptycart"]==1)
 if(isset($_POST["type"]) && $_POST["type"]=='add')
 {
     $product_code   = filter_var($_POST["CodigoProducto"], FILTER_SANITIZE_STRING); //product code
-    $product_qty    = filter_var($_POST["product_qty"], FILTER_SANITIZE_NUMBER_INT); //product code
+    $product_qty    = filter_var($_POST["CantidadProducto"], FILTER_SANITIZE_NUMBER_INT); //product code
     $return_url     = base64_decode($_POST["return_url"]); //return url
     
     //limit quantity for single product
@@ -34,7 +34,7 @@ if(isset($_POST["type"]) && $_POST["type"]=='add')
             'id'=>$obj->IdProducto,
             'name'=>$obj->NombreProducto, 
             'code'=>$product_code, 
-            'qty'=>$CantidadProducto, 
+            'qty'=>$product_qty, 
             'price'=>$obj->PrecioProducto));
         
         if(isset($_SESSION["products"])) //if we have the session

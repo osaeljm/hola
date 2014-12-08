@@ -142,24 +142,13 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     echo '<h3>'.$obj->NombreProducto.'</h3>';
                                                     echo '<div class="p-price">Precio: '.$currency.$obj->PrecioProducto.'</div>';                                   
                                                     echo '<div class="product-info">';                                 
-                                                    echo 'Cantidad: <select class="cant_view">
-                                                          <option value="1"selected>1</option>
-                                                          <option value="2">2</option>
-                                                          <option value="3">3</option>
-                                                          <option value="4">4</option>
-                                                          <option value="5">5</option>
-                                                          <option value="6">6</option>
-                                                          <option value="7">7</option>
-                                                          <option value="8">8</option>
-                                                          <option value="9">9</option>
-                                                          <option value="10">10</option>
-                                                        </select>';
+                                                    echo '<div>Cantidad: '.$cart_itm["qty"].'</div>';
                                                     echo '<div>'.$obj->DescripcionProducto.'</div>';
                                                     //echo '<span class="remove-itm"><a href="cart_update.php?removep='.$cart_itm["code"].'&return_url='.$current_url.'">Eliminar del carrito</a></span>';
                                                     echo '</div>';
                                                     echo '</td>';
                                                     echo '</tr >';
-                                                    $subtotal = ($cart_itm["price"]*1); //$cart_itm["qty"]
+                                                    $subtotal = ($cart_itm["price"]*$cart_itm["qty"]); //$cart_itm["qty"]
                                                     $total = ($total + $subtotal);
 
                                                     echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->NombreProducto.'" />';

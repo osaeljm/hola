@@ -138,11 +138,24 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         <h3><?php echo $obj->NombreProducto; ?></h3>                                                        
                                                     </div>
                                                     <p><?php echo $obj->DescripcionProducto; ?></p>
+                                                    <label>Cantidad: </label><select name="CantidadProducto" style="padding:0;width:25%;">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                        <option value="15">15</option>
+                                                        <option value="20">20</option>
+                                                    </select>
                                                 </div>
                                                 <div class="label-text">                                                    
                                                     <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
                                                     <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                                    <input type="hidden" name="CantidadProducto" value="<?php echo $obj->CantidadProducto?>" />
                                                     <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
                                                     <input type="hidden" name="type" value="add" />
                                                     <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
