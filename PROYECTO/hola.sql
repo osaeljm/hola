@@ -316,7 +316,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `hola`.`Modificar_ContrasenaUsuario`
-(IN proc_IdUsuario INT,IN proc_LoginUsuario VARCHAR(15))                                     
+(IN proc_IdUsuario INT,IN proc_ContrasenaUsuario VARCHAR(15))                                     
 BEGIN
   UPDATE `Usuario` SET ContrasenaUsuario = proc_ContrasenaUsuario
   WHERE IdUsuario = proc_IdUsuario;
