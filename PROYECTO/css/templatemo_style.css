@@ -886,6 +886,27 @@ textarea {
   background-color: #29BEE7;
   color: #444;
 }
+.send4 button {
+  width: 220px;
+  color: #fff;
+  cursor: pointer;
+  height: 35px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #444; 
+  font-family: "Arial Rounded MT", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 0;
+  outline: none;
+ 
+}
+.send4 button:hover {
+  background-color: #29BEE7;
+  color: #444;
+}
 .leave input {
   width: 90px;
   cursor: pointer;

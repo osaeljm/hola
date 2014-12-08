@@ -169,11 +169,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="btn-carrito">
+                                    <div class="send4">
                                         <div class="row">   
                                             <div class="col-md-12">
                                                 <ul>
-                                                    <li><a href="modificar_contrasena.php">Cambiar contraseña</a></li>                                    
+                                                    <a href="modificar_contrasena.php"><button>Cambiar contraseña</button></a>                                    
                                                 </ul>
                                             </div>
                                         </div>
