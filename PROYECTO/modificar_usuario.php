@@ -190,24 +190,26 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 ,$correo_e));
                                                 }
 
-                                                // function seguridad_x($texto){
-                                                //     $texto = stripslashes($texto);
-                                                //     $texto = addslashes($texto);
-                                                //     $texto = ereg_replace(";","",$texto);
-                                                //     $texto = ereg_replace("<","",$texto);
-                                                //     $texto = ereg_replace(">","",$texto);
-                                                //     $texto = ereg_replace("/","",$texto);
-                                                //     $texto = ereg_replace(':',"",$texto);
-                                                //     return $texto;
-                                                // }
-
+                                               function seguridad($texto){
+                                                    $texto = stripslashes($texto);
+                                                    $texto = addslashes($texto);
+                                                    $texto = ereg_replace('&lt;','',$texto);
+                                                    $texto = ereg_replace('&gt;','',$texto);
+                                                    $texto = ereg_replace(';','',$texto);
+                                                    $texto = ereg_replace('<','',$texto);
+                                                    $texto = ereg_replace('>','',$texto);
+                                                    $texto = ereg_replace('/','',$texto);
+                                                    $texto = ereg_replace(':','',$texto);
+                                                    $texto = ereg_replace('script','',$texto);
+                                                    $texto = ereg_replace('alert','',$texto);
+                                                    $texto = ereg_replace('php','',$texto);
+                                                    return $texto;
+                                                }
 
                                                 if ($_POST){
                                                     $error_encontrado="";
-                                                    // seguridad_x($NombreUsuario);
-                                                    // seguridad_x($CorreoUsuario);
-                                                    // seguridad_x($LoginUsuario);
-                                                    // seguridad_x($ContrasenaUsuario);
+                                                    $NombreUsuario = seguridad($NombreUsuario);
+                                                    $LoginUsuario = seguridad($LoginUsuario);
                                                 if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario, $error_encontrado)){
                                                     try {
 

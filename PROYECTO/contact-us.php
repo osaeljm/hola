@@ -254,10 +254,10 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                           <div class="col-md-3 col-md-offset-1">
                                             <div class="side-bar">
                                                 <div class="news-letters">
-                                                    <h4>HolaCupCakes | Fiestas</h4>
+                                                    <h4>HolaCupCakes | Mix</h4>
                                                     <div class="archives-list">
                                                         <ul>
-                                                            <iframe width="100%" height="auto" src="//www.youtube.com/embed/n8cYJj2xoHg" frameborder="0" allowfullscreen></iframe>
+                                                            <iframe width="100%" height="auto" src="//www.youtube.com/embed/fowfqu7l6P4" frameborder="0" allowfullscreen></iframe>
                                                         </ul>
                                                     </div>        
                                                 </div>

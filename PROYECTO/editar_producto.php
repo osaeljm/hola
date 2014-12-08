@@ -1,6 +1,5 @@
 <?php
 session_start();
-include_once("autenticacion/class/config.php"); //include config file
 $current_url = base64_encode("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']); 
 ?>
 <!DOCTYPE html>
@@ -46,7 +45,6 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             <div class="col-md-6">
                                 <div class="home-account">
                                     <?php
-                                    session_start();
                                     if(isset($_SESSION["usuario"])){
                                         echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
                                         echo '<a href="perfil.php"> Perfil</a>';
@@ -240,24 +238,28 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             } 
 
                                             
-                                            // function seguridad_x($texto){
-                                            //     $texto = stripslashes($texto);
-                                            //     $texto = addslashes($texto);
-                                            //     $texto = ereg_replace(";","",$texto);
-                                            //     $texto = ereg_replace("<","",$texto);
-                                            //     $texto = ereg_replace(">","",$texto);
-                                            //     $texto = ereg_replace("/","",$texto);
-                                            //     $texto = ereg_replace(':',"",$texto);
-                                            //     return $texto;
-                                            // }
+                                            function seguridad($texto){
+                                                    $texto = stripslashes($texto);
+                                                    $texto = addslashes($texto);
+                                                    $texto = ereg_replace('&lt;','',$texto);
+                                                    $texto = ereg_replace('&gt;','',$texto);
+                                                    $texto = ereg_replace(';','',$texto);
+                                                    $texto = ereg_replace('<','',$texto);
+                                                    $texto = ereg_replace('>','',$texto);
+                                                    $texto = ereg_replace('/','',$texto);
+                                                    $texto = ereg_replace(':','',$texto);
+                                                    $texto = ereg_replace('script','',$texto);
+                                                    $texto = ereg_replace('alert','',$texto);
+                                                    $texto = ereg_replace('php','',$texto);
+                                                    return $texto;
+                                                }
 
 
                                             if ($_POST){
                                                 $error_encontrado="";
-                                                // seguridad_x($NombreUsuario);
-                                                // seguridad_x($CorreoUsuario);
-                                                // seguridad_x($LoginUsuario);
-                                                // seguridad_x($ContrasenaUsuario);
+                                                $CodigoProducto = seguridad($CodigoProducto);
+                                                $NombreProducto = seguridad($NombreProducto);
+                                                $DescripcionProduct = seguridad($DescripcionProduct);
                                             if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,
                                                         $DescripcionProducto,$ImagenProducto,$CategoriaProducto,$error_encontrado)){
                                                 try {
@@ -446,27 +448,34 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             return true;
                                             }                                                 
 
-                                            // function seguridad_x($texto){
-                                            //     $texto = stripslashes($texto);
-                                            //     $texto = addslashes($texto);
-                                            //     $texto = ereg_replace(";","",$texto);
-                                            //     $texto = ereg_replace("<","",$texto);
-                                            //     $texto = ereg_replace(">","",$texto);
-                                            //     $texto = ereg_replace("/","",$texto);
-                                            //     $texto = ereg_replace(':',"",$texto);
-                                            //     return $texto;
-                                            // }
+                                            function seguridad($texto){
+                                                    $texto = stripslashes($texto);
+                                                    $texto = addslashes($texto);
+                                                    $texto = ereg_replace('&lt;','',$texto);
+                                                    $texto = ereg_replace('&gt;','',$texto);
+                                                    $texto = ereg_replace(';','',$texto);
+                                                    $texto = ereg_replace('<','',$texto);
+                                                    $texto = ereg_replace('>','',$texto);
+                                                    $texto = ereg_replace('/','',$texto);
+                                                    $texto = ereg_replace(':','',$texto);
+                                                    $texto = ereg_replace('script','',$texto);
+                                                    $texto = ereg_replace('alert','',$texto);
+                                                    $texto = ereg_replace('php','',$texto);
+                                                    return $texto;
+                                                }
+
+                                                
                                             if(empty($ImagenProducto)){
                                                 $ImagenProducto = $obj->ImagenProducto;
                                             }
 
                                             if ($_POST){
                                                 $error_encontrado="";
-                                                // seguridad_x($NombreUsuario);
-                                                // seguridad_x($CorreoUsuario);
-                                                // seguridad_x($LoginUsuario);
-                                                // seguridad_x($ContrasenaUsuario);
-                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,$ImagenProducto,$CategoriaProducto,$error_encontrado)){
+                                                $CodigoProducto = seguridad($CodigoProducto);
+                                                $NombreProducto = seguridad($NombreProducto);
+                                                $DescripcionProduct = seguridad($DescripcionProduct);
+                                                if(validar($CodigoProducto,$NombreProducto,$CantidadProducto,$PrecioProducto,$DescripcionProducto,
+                                                    $ImagenProducto,$CategoriaProducto,$error_encontrado)){
                                                     try {
                                                         $conn = new PDO("mysql:host=$db_host;dbname=$db_name",$db_username, $db_password);
                                                         //Iniciar transacción

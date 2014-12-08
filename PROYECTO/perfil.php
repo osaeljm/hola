@@ -159,7 +159,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     </tr>
                                     <tr>
                                         <td><h5>Tipo usuario: </h5></td>
-                                        <td><h6> <?php echo $obj1->IdPerfil ?></h6></td>
+                                        <td><h6><?php if($obj1->IdPerfil == 1){echo 'Administrador';}else{echo 'Cliente';} ?></h6></td>
                                     </tr>
                                     <tr>
                                         <td><h5>Usuario: </h5></td>
@@ -227,8 +227,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                               <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $obj->FechaFactura ?></td>
-                                <td>-</td>
-                                <td><?php echo $obj->TotalFactura ?></td>
+                                <td>Cancelada</td>
+                                <td><?php echo '₡'.$obj->TotalFactura ?></td>
                                 <th><a href="detallefactura.php?v=<?php echo $obj->NumeroFactura; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Detalle</button></a></th>
                               </tr>
                         <?php                                    

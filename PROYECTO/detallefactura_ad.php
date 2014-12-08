@@ -160,7 +160,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <td><?php echo $obj->EncabezadoFactura_NumeroEncabezadoFactura; ?></td>
                                 <td><?php echo $obj->NombreProducto;  ?></td>
                                 <td><?php echo $obj->Cantidad; ?></td>
-                                <td><?php echo $obj->SubTotal; ?></td>                                
+                                <td><?php echo '₡'.$obj->SubTotal; ?></td>                                
                               </tr>
                         <?php                                    
                                 }

@@ -118,43 +118,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <div class="col-md-8">  
                                             <div class="message-form">
 
-                                                <?php
-                                                // Evitar los warnings the variables no definidas!!!
-                                                // $err = isset($_GET['error']) ? $_GET['error'] : null ;
-                                                
-                                                // if($err==1){
-                                                //     echo "<p class='error-login'>Error al crear usuario.</p>";
-                                                // }
-                                                // if($err==2){
-                                                //     echo ".<p class=''>Usuario creado correctamente, inicie sesión para realizar una compra.</p>";
-                                                // }
-                                                // if($err==3){
-                                                //     echo "<p class='error-login'>Debe digitar su nombre completo.</p>";
-                                                // }
-                                                // if($err==4){
-                                                //     echo "<p class='error-login'>El nombre completo es muy extenso.</p>";
-                                                // }
-                                                // if($err==5){
-                                                //     echo "<p class='error-login'>Debe digitar el correo electrónico.</p>";
-                                                // }
-                                                // if($err==6){
-                                                //     echo "<p class='error-login'>Correo electrónico inválido.</p>";
-                                                // }
-                                                // if($err==7){
-                                                //     echo "<p class='error-login'>Debe digitar su nombre completo.</p>";
-                                                // }
-                                                // if($err==8){
-                                                //     echo "<p class='error-login'>El nombre de usuario no debe ser mayor a 15 caracteres.</p>";
-                                                // }
-                                                // if($err==9){
-                                                //     echo "<p class='error-login'>Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.</p>";
-                                                // }
-                                                // if($err==10){
-                                                //     echo "<p class='error-login'>Debe digitar su contraseña.</p>";
-                                                // }
-                                                // if($err==11){
-                                                //     echo "<p class='error-login'>El nombre de usuario no debe ser mayor a 10 caracteres.</p>";
-                                                // }
+                                                <?php                                              
                                                 
                                                 include("autenticacion/class/config.php");
 
@@ -177,53 +141,53 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 function validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario,&$error){
                                                 if($NombreUsuario == null){
                                                     $error = "Debe digitar su nombre completo.";
-                                                    // header('Location:registrarse.php?error=3');
                                                     return false;
                                                 }
                                                 if($NombreUsuario > 100){
                                                     $error = "El nombre completo es muy extenso.";
-                                                    // header('Location:registrarse.php?error=4');
                                                     return false;
                                                 }
                                                 if($CorreoUsuario == null){
                                                     $error = "Debe digitar el correo electrónico.";
-                                                    // header('Location:registrarse.php?error=5');
                                                     return false;
                                                 }
                                                 if(!isEmail($CorreoUsuario)){
-                                                    $error = "Correo electrónico inválido.";
-                                                    // header('Location:registrarse.php?error=6');
+                                                    $error = "Correo electrónico inválido.";                                                    
                                                     return false;
                                                 }
                                                 if($LoginUsuario == null){
                                                     $error = "Debe digitar su usuario.";
-                                                    // header('Location:registrarse.php?error=7');
                                                     return false;
                                                 }
                                                 if(strlen($LoginUsuario) > 15){
                                                     $error = "El nombre de usuario no debe ser mayor a 15 caracteres.";
-                                                    // header('Location:registrarse.php?error=8');
                                                     return false;
                                                 }
                                                 // if($LoginUsuario != null){
-                                                //     $sql = "select LoginUsuario from Usuario where LoginUsuario = '$LoginUsuario'";
-                                                //     $comprobar = mysql_query($sql);
+                                                //     $result = $mysqli->query("SELECT LoginUsuario FROM Usuario WHERE LoginUsuario = $LoginUsuario");
+                                                //     $comprobar = mysql_query($result);
                                                 //         if(mysql_num_rows($comprobar) > 0){
-                                                //             // $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
-                                                //             header('Location:registrarse.php?error=9');
+                                                //             $error = "Error, el usuario existe digite uno nuevo.";                                                          
                                                 //         }
                                                 // }
+                                                if($LoginUsuario != null){
+                                                    $results = $mysqli->query("SELECT LoginUsuario FROM Usuario WHERE LoginUsuario = $LoginUsuario");
+                                                    $obj = $results->fetch_object();
+                                                        if($obj->LoginUsuario == $LoginUsuario){
+                                                            $error = "Nombre de usuario incorrecto, ya este usuario existe digite uno nuevo.";
+                                                           
+                                                        }
+                                                }
                                                 if($ContrasenaUsuario == null){
                                                     $error = "Debe digitar su contraseña.";
-                                                    // header('Location:registrarse.php?error=10');
                                                     return false;
                                                 }
                                                 if(strlen($ContrasenaUsuario) > 10){
                                                     $error = "El nombre de usuario no debe ser mayor a 10 caracteres.";
-                                                    // header('Location:registrarse.php?error=11');
                                                     return false;
                                                 }
                                                 $error = "";
+                                               
                                                 return true;
                                                 } 
 
@@ -232,24 +196,26 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 ,$correo_e));
                                                 }
 
-                                                // function seguridad_x($texto){
-                                                //     $texto = stripslashes($texto);
-                                                //     $texto = addslashes($texto);
-                                                //     $texto = ereg_replace(";","",$texto);
-                                                //     $texto = ereg_replace("<","",$texto);
-                                                //     $texto = ereg_replace(">","",$texto);
-                                                //     $texto = ereg_replace("/","",$texto);
-                                                //     $texto = ereg_replace(':',"",$texto);
-                                                //     return $texto;
-                                                // }
+                                                function seguridad($texto){
+                                                    $texto = stripslashes($texto);
+                                                    $texto = addslashes($texto);
+                                                    $texto = ereg_replace('&lt;','',$texto);
+                                                    $texto = ereg_replace('&gt;','',$texto);
+                                                    $texto = ereg_replace(';','',$texto);
+                                                    $texto = ereg_replace('<','',$texto);
+                                                    $texto = ereg_replace('>','',$texto);
+                                                    $texto = ereg_replace('/','',$texto);
+                                                    $texto = ereg_replace(':','',$texto);
+                                                    $texto = ereg_replace('script','',$texto);
+                                                    $texto = ereg_replace('alert','',$texto);
+                                                    $texto = ereg_replace('php','',$texto);
+                                                    return $texto;
+                                                }
 
 
                                                 if ($_POST){
                                                     $error_encontrado="";
-                                                    // seguridad_x($NombreUsuario);
-                                                    // seguridad_x($CorreoUsuario);
-                                                    // seguridad_x($LoginUsuario);
-                                                    // seguridad_x($ContrasenaUsuario);
+                                                    
                                                 if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario, $error_encontrado)){
                                                     try {
 
@@ -257,8 +223,9 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                         //Iniciar transacción
 
                                                         $conn->beginTransaction();
-
-                                                        $IdPerfil = 1;
+                                                        $NombreUsuario = seguridad($NombreUsuario);
+                                                        $LoginUsuario = seguridad($LoginUsuario);
+                                                        $IdPerfil = 2;
                                                         $sql = "call Insertar_Usuario(:proc_LoginUsuario,:proc_ContrasenaUsuario,:proc_IdPerfil,:proc_CorreoUsuario,:proc_NombreUsuario)";
                                                         $stmt = $conn->prepare($sql); 
                                                         $stmt->bindParam(":proc_LoginUsuario", $LoginUsuario, PDO::PARAM_STR);

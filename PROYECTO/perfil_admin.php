@@ -161,7 +161,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                     </tr>
                                     <tr>
                                         <td><h5>Tipo usuario: </h5></td>
-                                        <td><h6> <?php echo $obj1->IdPerfil ?></h6></td>
+                                        <td><h6> <?php if($obj1->IdPerfil == 1){echo 'Administrador';}else{echo 'Cliente';} ?></h6></td>
                                     </tr>
                                     <tr>
                                         <td><h5>Usuario: </h5></td>
@@ -290,8 +290,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $obj2->NombreUsuario; ?></td>
                                 <td><?php echo $obj->FechaFactura; ?></td>
-                                <td>-</td>
-                                <td><?php echo $obj->TotalFactura; ?></td>
+                                <td>Cancelada</td>
+                                <td><?php echo '₡'.$obj->TotalFactura; ?></td>
                                 <th><a href="detallefactura_ad.php?v=<?php echo $obj->NumeroFactura; ?>"><button style="height:30px;" type="button" class="btn btn-warning">Detalle</button></a></th>
                               </tr>
                         <?php                                    
@@ -335,7 +335,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                           <table class="table">
                             <tr>
                                 <th>NOMBRE</th>
-                                <th>USUARIO</th>
+                                <th>TIPO USUARIO</th>
                                 <th>CORREO ELECTRÓNICO</th>
                             </tr>
                             <?php
@@ -348,7 +348,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             ?> 
                               <tr>                               
                                 <td><?php echo $obj->NombreUsuario ?></td>
-                                <td><?php echo $obj->LoginUsuario ?></td>
+                                <td><?php if($obj->IdPerfil == 1){echo 'Administrador';}else{echo 'Cliente';} ?></h6></td>
                                 <td><?php echo $obj->CorreoUsuario ?></td>
                               </tr>
                         <?php                                    
@@ -368,15 +368,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                        } 
                        ?>
 
-                   <!--  <div class="btn-carrito">
-                        <div class="row">   
-                            <div class="col-md-12">
-                                <ul>
-                                    <li><a href="view_cart.php">Ver carrito<i class="fa fa-shopping-cart"></i></a></li>                                    
-                                </ul>
-                            </div>
-                        </div>
-                    </div>  -->    
+                      
                 </div>
             </div>
 
@@ -423,9 +415,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>                                                     
                         </div>
                          <p>Copyright © 2014 Holacupcakes</a> <!-- Credit: www.templatemo.com --></p>
-                    </div>
-                    <!-- <div class="bottom-footer">                     
-                    </div>  -->                   
+                    </div>                 
                 </div>
             </footer>
 
