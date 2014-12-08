@@ -215,7 +215,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 if ($_POST){
                                                     $error_encontrado="";
-                                                    
+                                                    $NombreUsuario = seguridad($NombreUsuario);
+                                                    $LoginUsuario = seguridad($LoginUsuario);                                                    
                                                 if(validar($NombreUsuario,$CorreoUsuario,$LoginUsuario,$ContrasenaUsuario, $error_encontrado)){
                                                     try {
 
@@ -259,14 +260,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
 
                                                 <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
                                                     <div class="row">
-
                                                         <div class="name col-md-5">
-
                                                             <br><input type="text" name="username" placeholder="Nombre completo" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>"/><br><br>
                                                             <input type="text" name="email" id="correo" placeholder="Correo electrónico" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"/><br><br>
                                                             <input type="text" name="user" placeholder="Usuario" value=""/><br><br>                                                      
-                                                            <input type="password" name="password" placeholder="Contraseña" value=""/> 
-                                                           
+                                                            <input type="password" name="password" placeholder="Contraseña" value=""/>                                                           
                                                         </div>                                                 
                                                     </div>                                                                                 
                                                     <div class="send">

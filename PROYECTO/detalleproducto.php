@@ -159,46 +159,31 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                             </div>
                                         </form>
 
+                                        <div class="col-md-3 col-sm-6 mix portfolio-item <?php echo $obj->CategoriaProducto?>" >       
+                                            <div class="portfolio-wrapper">                
+                                                <div class="portfolio-thumb">
+                                                    <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
+                                                    <div class="hover">
+                                                        <div class="hover-iner">
+                                                            <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>                             
+                                                <div class="label-text">
+                                                    <h3><a href="detalleproducto.php?i=<?php echo $obj->IdProducto ?>"><?php echo $obj->NombreProducto ?></a></h3>
+                                                    <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
+                                                    <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
+                                                    <input type="hidden" name="CantidadProducto" value="<?php echo $obj->CantidadProducto?>" />
+                                                    <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
+                                                    <input type="hidden" name="type" value="add" />
+                                                    <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
+                                                </div>  
+                                            </div>      
+                                        </div>
 
-
-
-
-
-                                            <div class="col-md-3 col-sm-6 mix portfolio-item <?php echo $obj->CategoriaProducto?>" >       
-                                                <div class="portfolio-wrapper">                
-                                                    <div class="portfolio-thumb">
-                                                        <img src="images/<?php echo $obj->ImagenProducto?>" alt="" />
-                                                        <div class="hover">
-                                                            <div class="hover-iner">
-                                                                <a class="fancybox" href="images/<?php echo $obj->ImagenProducto?>"><img src="images/open-icon.png" alt="" /></a>
-                                                            </div>
-                                                        </div>                                                    
-                                                    </div>                             
-                                                    <div class="label-text">
-                                                        <h3><a href="detalleproducto.php?i=<?php echo $obj->IdProducto ?>"><?php echo $obj->NombreProducto ?></a></h3>
-                                                        <span class="text-category"><?php echo $currency.$obj->PrecioProducto ?> </span>
-                                                        <h7><a href="#" class="add_to_cart"> <button class="add_to_cart">Agregar <i class="fa fa-shopping-cart" ></i></button></a></h7>                                                    
-                                                        <input type="hidden" name="CantidadProducto" value="<?php echo $obj->CantidadProducto?>" />
-                                                        <input type="hidden" name="CodigoProducto" value="<?php echo $obj->CodigoProducto ?>" />
-                                                        <input type="hidden" name="type" value="add" />
-                                                        <input type="hidden" name="return_url" value="<?php echo $current_url ?>" />
-                                                    </div>  
-                                                </div>      
-                                            </div>
-                                        
-
-
-
-
-
-
-
-                                         <?php
-                              
-                                                          
-                                            }
+                                        <?php
+                                        }
                                         ?>
-
 
                                         <div class="col-md-3 col-md-offset-1">
                                             <div class="side-bar">
@@ -276,8 +261,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     </div>
                                                 </div>    
                                             </div>
-                                        </div>
-                                             
+                                        </div>                                             
                                     </div>
                                 </div>
                             </div>
