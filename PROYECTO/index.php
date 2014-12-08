@@ -94,7 +94,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="slider-caption">
                             <h1>Mesas de dulces</h1>
                             <p>Combinaciones personalizadas
-                            <br><br>Para diferentes eventos.</p>
+                            <br><br>para diferentes eventos</p>
                             <a href="single-post.html">Descripción</a>
                         </div>
                       <img src="images/mesadulce.jpg" alt="" />
@@ -103,7 +103,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                         <div class="slider-caption">
                             <h1>Fiestas<br>infantiles</h1>
                             <p>Diferenrentes temas  
-                            <br><br>Diseños variados.</p>
+                            <br><br>y diseños variados</p>
                             <a href="single-post.html">Descripción</a>
                         </div>
                       <img src="images/fiestainfantil.jpg" alt="" />
@@ -111,8 +111,8 @@ http://www.templatemo.com/preview/templatemo_417_grill
                     <li>
                         <div class="slider-caption">
                             <h1>Queques</h1>
-                            <p>Diferentes tipos y sabores
-                            <br><br>Combinación de rellenos ys abores.</p>
+                            <p>Diferentes tipos y sabores,
+                            <br><br>combinación de rellenos y sabores</p>
                             <a href="single-post.html">Descripción</a>
                         </div>
                       <img src="images/queque.jpg" alt="" />
