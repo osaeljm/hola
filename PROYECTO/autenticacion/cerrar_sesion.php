@@ -6,6 +6,6 @@ $objses->init();
 
 $objses->destroy();
 
-header('Location:../index.php');
+header('Location:http://'.$_SERVER['HTTP_HOST'].'/hola/PROYECTO/index.php');
 
 ?>
