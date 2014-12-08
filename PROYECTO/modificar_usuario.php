@@ -250,23 +250,22 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                 } else {   
 
                                                 ?>
-<div class="btn-carrito">
-                                                <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
-                                                    <div class="row">
+                                                <div class="btn-carrito">
+                                                    <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="send-message">
+                                                        <div class="row">
 
-                                                        <div class="name col-md-5">
+                                                            <div class="name col-md-5">
 
-                                                            <br><input type="text" name="username" placeholder="Nombre completo" value="<?php if (isset($_POST['username'])) {echo $_POST['username'];}else{echo $obj->NombreUsuario;} ?>"/><br><br>
-                                                            <input type="text" name="email" id="correo" placeholder="Correo electrónico" value="<?php if (isset($_POST['email'])) {echo $_POST['email'];}else{echo $obj->CorreoUsuario;} ?>"/><br><br>
-                                                            <input type="text" name="user" placeholder="Usuario" value="<?php if (isset($_POST['user'])) {echo $_POST['user'];}else{echo $obj->LoginUsuario;} ?>"/><br><br> 
-                                                           
-                                                        </div>                                                 
-                                                    </div>                                                                                 
-                                                    <div class="send2">
-                                                        <button name="enter" type="submit">Modificar</button>
-                                                    </div>
-                                                </form> 
-                                                
+                                                                <br><input type="text" name="username" placeholder="Nombre completo" value="<?php if (isset($_POST['username'])) {echo $_POST['username'];}else{echo $obj->NombreUsuario;} ?>"/><br><br>
+                                                                <input type="text" name="email" id="correo" placeholder="Correo electrónico" value="<?php if (isset($_POST['email'])) {echo $_POST['email'];}else{echo $obj->CorreoUsuario;} ?>"/><br><br>
+                                                                <input type="text" name="user" placeholder="Usuario" value="<?php if (isset($_POST['user'])) {echo $_POST['user'];}else{echo $obj->LoginUsuario;} ?>"/><br><br> 
+                                                               
+                                                            </div>                                                 
+                                                        </div>                                                                                 
+                                                        <div class="send2">
+                                                            <button name="enter" type="submit">Modificar</button>
+                                                        </div>
+                                                    </form>                                                
                                                 
                                                     <div class="row">   
                                                         <div class="col-md-12">
@@ -277,7 +276,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                                     </div>
                                                 </div> 
                                                 <?php
-}
+                                                }
                                                 ?>  
                                             </div>
                                         </div>                                           
