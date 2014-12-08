@@ -314,7 +314,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                <div class="social-bottom">                                   
                                     <span>Siganos en </span>
                                     <ul>
-                                        <li><a href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
+                                        <li><a target="_blank" href="https://www.facebook.com/Hola.Cupcakes" class="fa fa-facebook"></a></li>                           
                                     </ul>                                     
                                 </div>
                             </div>                                                     
