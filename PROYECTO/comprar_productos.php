@@ -52,11 +52,11 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                 <div class="home-account">
                                      <?php
                                     if(isset($_SESSION["usuario"])){
-                                        echo '<a style="color:white;"> Bienvenido '.$_SESSION["usuario"].'</a>';
-                                        echo '<a href="#"> Perfil</a>';
+                                        echo '<span class="check-out-txt"><a> Bienvenido '.$_SESSION["usuario"].'</a></span>';
+                                        echo '<a href="perfil.php"> Perfil</a>';
                                         echo '<a href="autenticacion/cerrar_sesion.php"> Cerrar Sesión</a>';
-                                    } else{
-                                        echo '<a href="#">Registrar</a>';
+                                    } else {
+                                        echo '<a href="registrarse.php">Registrar</a>';
                                         echo '<a href="iniciar_sesion.php">Iniciar sesión</a>';
                                     }
                                     ?>
@@ -64,10 +64,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">                                    
-                                    <a href="view_cart.php">Ver <i class="fa fa-shopping-cart"></i></a>
-                                    
-                                    <!-- <span class="empty-cart"><a href="cart_update.php?emptycart=1&return_url=echo $current_url ?>">Empty Cart</a></span> -->
-                                    <!--  -->
+                                    <a href="view_cart.php">Ver carrito <i class="fa fa-shopping-cart"></i></a>                                    
                                 </div>
                             </div>
                         </div>
@@ -90,15 +87,7 @@ http://www.templatemo.com/preview/templatemo_417_grill
                                         <li><a href="contact-us.php">Contáctenos</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="search-box">  
-                                    <form name="search_form" method="get" class="search_form">
-                                        <input id="search" type="text" />
-                                        <input type="submit" id="search-button" />
-                                    </form>
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

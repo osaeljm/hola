@@ -158,11 +158,9 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `hola`.`Insertar_FacturaDetalle`
-(IN proc_EncabezadoFactura_NumeroEncabezadoFactura int(11), IN proc_Cantidad int(11),
-  IN proc_SubTotal int(11), IN proc_Producto_IdProducto int(11))                                     
+(IN proc_EncabezadoFactura_NumeroEncabezadoFactura int(11), IN proc_Cantidad int(11),IN proc_SubTotal int(11), IN proc_Producto_IdProducto int(11))                                     
 BEGIN
-  INSERT INTO `FacturaDetalle` (`EncabezadoFactura_NumeroEncabezadoFactura`,`Cantidad`,
-                                `SubTotal`,`Producto_IdProducto`)
+  INSERT INTO `FacturaDetalle` (`EncabezadoFactura_NumeroEncabezadoFactura`,`Cantidad`,`SubTotal`,`Producto_IdProducto`)
   VALUES (proc_EncabezadoFactura_NumeroEncabezadoFactura,proc_Cantidad, proc_SubTotal,proc_Producto_IdProducto);
 END //
 DELIMITER ;
@@ -239,8 +237,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `hola`.`Insertar_Usuario`
-(IN proc_LoginUsuario VARCHAR(15),IN proc_ContrasenaUsuario VARCHAR(10),
-  IN proc_IdPerfil int, IN proc_CorreoUsuario VARCHAR(50), IN proc_NombreUsuario VARCHAR(100))                                     
+(IN proc_LoginUsuario VARCHAR(15),IN proc_ContrasenaUsuario VARCHAR(10),IN proc_IdPerfil int, IN proc_CorreoUsuario VARCHAR(50), IN proc_NombreUsuario VARCHAR(100))                                     
 BEGIN
   INSERT INTO `Usuario` (`LoginUsuario`,`ContrasenaUsuario`,`IdPerfil`,`CorreoUsuario`,`NombreUsuario`)
   VALUES (proc_LoginUsuario,proc_ContrasenaUsuario, proc_IdPerfil,proc_CorreoUsuario,proc_NombreUsuario);
@@ -271,12 +268,9 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `hola`.`Modificar_Producto`
-(IN proc_IdProducto INT(11),IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),
-  IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext,
-  IN proc_ImagenProducto tinytext,IN proc_CategoriaProducto VARCHAR(45))                                     
+(IN proc_IdProducto INT(11),IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11), IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext,IN proc_ImagenProducto tinytext,IN proc_CategoriaProducto VARCHAR(45))                                     
 BEGIN
-  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto, 
-  PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto ,ImagenProducto = proc_ImagenProducto, CategoriaProducto = proc_CategoriaProducto
+  UPDATE `Producto` SET CodigoProducto = proc_CodigoProducto, NombreProducto = proc_NombreProducto,CantidadProducto = proc_CantidadProducto,PrecioProducto = proc_PrecioProducto, DescripcionProducto = proc_DescripcionProducto ,ImagenProducto = proc_ImagenProducto, CategoriaProducto = proc_CategoriaProducto
   WHERE IdProducto = proc_IdProducto;
 
 END //
@@ -290,9 +284,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE `hola`.`Insertar_Producto`
-(IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11),
- IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext,
- IN proc_CategoriaProducto VARCHAR(45))                                     
+(IN proc_CodigoProducto VARCHAR(45),IN proc_NombreProducto VARCHAR(45),IN proc_CantidadProducto INT(11),IN proc_PrecioProducto INT(11), IN proc_DescripcionProducto tinytext, IN proc_ImagenProducto tinytext,IN proc_CategoriaProducto VARCHAR(45))                                     
 BEGIN
   INSERT INTO `Producto` (`CodigoProducto`,`NombreProducto`,`CantidadProducto`,`PrecioProducto`,`DescripcionProducto`,`ImagenProducto`,`CategoriaProducto`)
   VALUES (proc_CodigoProducto,proc_NombreProducto, proc_CantidadProducto,proc_PrecioProducto,proc_DescripcionProducto,proc_ImagenProducto,proc_CategoriaProducto);
